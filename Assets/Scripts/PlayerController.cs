@@ -24,6 +24,11 @@ public class PlayerController : MonoBehaviour
     public void Update()
     {
         ProccessInput();
+        if(Input.GetKeyDown(KeyCode.LeftShift))
+            moveSpeed = 13;
+        else if (Input.GetKeyUp(KeyCode.LeftShift))
+            moveSpeed = 10;
+        
     }
 
     private void FixedUpdate()

@@ -6,7 +6,7 @@ public class Attack : MonoBehaviour
 {
     public GameObject Melee;
     bool isAttacking = false;
-    float atkDuration = 1f;
+    [SerializeField] float atkDuration = 1f;
     float atkTimer = 0f;
 
     //Ranged Attack Var
