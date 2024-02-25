@@ -18,7 +18,8 @@ Upgrade gear at the blacksmith.
 
 Purchase items from a merchant.
 
-Gain temporary health by spending time with a prostitute (cost gold).
+Gain extra temporary health by spending time with a prostitute (cost gold).
+
 Gamble gold/currency at blackjack and/or texas hold'em tables (texas hold'em available only in multiplayer).
 
 _________________________________________________________________________
