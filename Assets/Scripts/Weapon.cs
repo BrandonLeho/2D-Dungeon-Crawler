@@ -11,6 +11,7 @@ public class Weapon : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         EnemyController enemy = collision.GetComponent<EnemyController>();
+
         if(enemy != null)
         {
             enemy.TakeDamage(damage);
@@ -21,6 +22,13 @@ public class Weapon : MonoBehaviour
             {
                 Destroy(gameObject);
             }
+        }
+
+        // Check if the object collided with is tagged as "Wall"
+        if (collision.gameObject.CompareTag("Wall") && weaponType == WeaponType.Bullet)
+        {
+            // Destroy the bullet gameObject
+            Destroy(gameObject);
         }
     }
 }
