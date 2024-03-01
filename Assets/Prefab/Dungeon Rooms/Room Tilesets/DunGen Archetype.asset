@@ -23,13 +23,18 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cdcd31b71d9cb9347bb6dfa43efebbb7, type: 2}
   - {fileID: 11400000, guid: 30c00b70b7d0d4d48bcb14ab269a7be0, type: 2}
   - {fileID: 11400000, guid: f62e6a37a7feac34f959826ff70fbc80, type: 2}
+  - {fileID: 11400000, guid: 4e09265539d5208479ab275f047702c9, type: 2}
+  - {fileID: 11400000, guid: 803de04382462474fb8f737d1391fcf8, type: 2}
+  - {fileID: 11400000, guid: db2808090b001fe4791998ed1aa332c8, type: 2}
+  - {fileID: 11400000, guid: 58989c97e3885284ca76edee63ab5f56, type: 2}
+  - {fileID: 11400000, guid: e926b4b60b09aa949b8ff518853d89f7, type: 2}
   BranchCapTileSets: []
   BranchCapType: 1
   BranchingDepth:
-    Min: 10
-    Max: 20
+    Min: 2
+    Max: 5
   BranchCount:
-    Min: 5
-    Max: 20
+    Min: 10
+    Max: 15
   StraightenChance: 0
   Unique: 0

@@ -15,8 +15,8 @@ MonoBehaviour:
   TileWeights:
     Weights:
     - Value: {fileID: 1059403364758981612, guid: 2a13d323619efb645a209ccffac0b06c, type: 3}
-      MainPathWeight: 1
-      BranchPathWeight: 1
+      MainPathWeight: 0.5
+      BranchPathWeight: 0.5
       DepthWeightScale:
         serializedVersion: 2
         m_Curve:

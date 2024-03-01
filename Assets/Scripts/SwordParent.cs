@@ -4,19 +4,25 @@ using System.Collections.Generic;
 using System.Data.Common;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.Events;
 
 public class SwordParent : MonoBehaviour
 {
     public SpriteRenderer characterRenderer, weaponRenderer;
     public Vector2 PointerPosition { get; set; }
     public float delay = 0.3f;
-    private bool attackBlocked;
     public Animator animator;
+    private AnimationEventHelper animationEventHelper;
     public bool IsAttacking { get; private set; }
     public Transform circleOrigin;
 
     [SerializeField]
     public float radius;
+
+    [SerializeField] private AgentMover agentMover;
+    [SerializeField] private float lungeDistance = 20f;
+    [SerializeField] private float lungeSpeed = 100f;
+
 
     private void Update() {
         if(IsAttacking)
@@ -39,21 +45,69 @@ public class SwordParent : MonoBehaviour
             weaponRenderer.sortingOrder = characterRenderer.sortingOrder + 1;
     }
 
+    public bool canAttack;
+    public int attackState = 0;
+    public bool chainAttack;
+
     public void Attack()
     {
-        if(attackBlocked)
-            return;
-        animator.SetTrigger("Attack");
-        IsAttacking = true;
-        attackBlocked = true;
-        StartCoroutine(DelayAttack());
+        //Debug.Log(attackState);
+        //Debug.Log(canAttack);
+        if(canAttack)
+        {
+            if(attackState < 3)
+            {
+                Vector2 direction = (PointerPosition - (Vector2)transform.position).normalized;
+                //Debug.Log(direction);
+                agentMover.Lunge(direction, lungeDistance, lungeSpeed); // Lunge towards the pointer position
+
+                attackState++;
+                canAttack = false;
+                IsAttacking = true;
+                animator.SetInteger("AttackState", attackState);
+            }
+
+        }
+        else
+        {
+             Stop();
+        }
     }
 
-    private IEnumerator DelayAttack()
+    public void Next()
+    {
+        canAttack = true;
+        IsAttacking = false;
+        if (Input.GetMouseButtonUp(0))
+        {
+            chainAttack = true;
+            
+        }
+    }
+
+    public void Stop()
+    {
+        IsAttacking = false;
+        if(chainAttack)
+        {
+            Attack();
+            chainAttack = false;
+        }
+        else
+        {
+            canAttack = true;
+            StartCoroutine(DelayAttack());
+            attackState = 0;
+            animator.SetInteger("AttackState", attackState);
+            
+        }
+    }
+
+     private IEnumerator DelayAttack()
     {
         yield return new WaitForSeconds(delay);
-        attackBlocked = false;
     }
+    
     
     public void ResetIsAttacking()
     {
@@ -71,7 +125,7 @@ public class SwordParent : MonoBehaviour
     {
         foreach (Collider2D collider in Physics2D.OverlapCircleAll(circleOrigin.position,radius))
         {
-            Debug.Log(collider.name);
+            //Debug.Log(collider.name);
             Health health;
             if(health = collider.GetComponent<Health>())
             {
@@ -79,16 +133,5 @@ public class SwordParent : MonoBehaviour
             }
         }
     }
-
-    /* public void PerformAnAttack()
-    {
-        if(weapon == null)
-        {
-            Debug.LogError("Weapon is null", gameObject);
-            return;
-        }
-        Weapon.Use();
-        WeaponRotationSpeed = true;
-    } */
 }
 

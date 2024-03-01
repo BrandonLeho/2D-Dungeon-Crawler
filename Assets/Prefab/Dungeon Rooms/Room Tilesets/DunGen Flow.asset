@@ -15,15 +15,15 @@ MonoBehaviour:
   globalPropGroupID_obsolete: 
   globalPropRanges_obsolete: []
   Length:
-    Min: 30
-    Max: 50
+    Min: 35
+    Max: 45
   BranchMode: 1
   BranchCount:
     Min: 5
     Max: 10
   GlobalProps: []
   KeyManager: {fileID: 0}
-  DoorwayConnectionChance: 0.328
+  DoorwayConnectionChance: 1
   RestrictConnectionToSameSection: 0
   TileInjectionRules: []
   TileTagConnectionMode: 0
@@ -53,7 +53,7 @@ MonoBehaviour:
     TileSets:
     - {fileID: 11400000, guid: c4c7bb19697e50d48b94797e60c235e0, type: 2}
     NodeType: 0
-    Position: 0.34102565
+    Position: 0.26434425
     Label: New Node
     Keys: []
     Locks: []
@@ -62,7 +62,16 @@ MonoBehaviour:
     TileSets:
     - {fileID: 11400000, guid: c4c7bb19697e50d48b94797e60c235e0, type: 2}
     NodeType: 0
-    Position: 0.7025641
+    Position: 0.58606565
+    Label: New Node
+    Keys: []
+    Locks: []
+    LockPlacement: 0
+  - Graph: {fileID: 11400000}
+    TileSets:
+    - {fileID: 11400000, guid: c4c7bb19697e50d48b94797e60c235e0, type: 2}
+    NodeType: 0
+    Position: 0.92622954
     Label: New Node
     Keys: []
     Locks: []

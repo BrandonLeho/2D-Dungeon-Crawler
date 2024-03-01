@@ -14,6 +14,17 @@ public class AgentMover : MonoBehaviour
     private Vector2 oldMovementInput;
     public Vector2 MovementInput { get; set; }
 
+    public float dashSpeed;
+    public float dashLength = 0.5f, dashCooldown = 1f;
+    public float dashCounter;
+    public float dashCoolCounter;
+    public bool isDashing;
+
+    private void Start()
+    {
+
+    }
+
     private void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
@@ -21,18 +32,78 @@ public class AgentMover : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (MovementInput.magnitude > 0 && currentSpeed >= 0)
+        if(isDashing)
         {
-            oldMovementInput = MovementInput;
-            currentSpeed += acceleration * maxSpeed * Time.deltaTime;
+            if(dashCounter > 0)
+            {
+                dashCounter -= Time.deltaTime;
+                 rb2d.velocity = oldMovementInput * currentSpeed;
+
+                if(dashCounter <= 0)
+                {
+                    currentSpeed = maxSpeed;
+                    dashCoolCounter = dashCooldown;
+                    isDashing = false;
+                }
+                
+            }
+
+            
         }
         else
         {
-            currentSpeed -= deacceleration * maxSpeed * Time.deltaTime;
+            if (MovementInput.magnitude > 0 && currentSpeed >= 0)
+            {
+                oldMovementInput = MovementInput;
+                currentSpeed += acceleration * maxSpeed * Time.deltaTime;
+            }
+            else
+            {
+                currentSpeed -= deacceleration * maxSpeed * Time.deltaTime;
+            }
+            currentSpeed = Mathf.Clamp(currentSpeed, 0, maxSpeed);
+            rb2d.velocity = oldMovementInput * currentSpeed;
+            
+            if(dashCoolCounter > 0)
+            {
+                dashCoolCounter -= Time.deltaTime;
+            }
         }
-        currentSpeed = Mathf.Clamp(currentSpeed, 0, maxSpeed);
-        rb2d.velocity = oldMovementInput * currentSpeed;
+        
 
+        
+    }
+
+    public void Dash()
+    {
+        if(dashCoolCounter <= 0 && dashCounter <= 0)
+        {
+            currentSpeed = dashSpeed;
+            dashCounter = dashLength;
+            isDashing = true;
+        }
+    }
+
+    public void Lunge(Vector2 direction, float lungeDistance, float lungeSpeed)
+    {
+        StartCoroutine(LungeCoroutine(direction, lungeDistance, lungeSpeed));
+    }
+
+    private IEnumerator LungeCoroutine(Vector2 direction, float lungeDistance, float lungeSpeed)
+    {
+        //Debug.Log("Lunge");
+        float startTime = Time.time;
+        // Calculate lunge time based on distance and speed
+        float lungeTime = lungeDistance / lungeSpeed;
+
+        while (Time.time < startTime + lungeTime)
+        {
+            rb2d.velocity = direction.normalized * lungeSpeed;
+            yield return null;
+        }
+
+        // Optionally, reset velocity to 0 or keep momentum
+        rb2d.velocity = Vector2.zero;
     }
 
 

@@ -16,16 +16,18 @@ public class Agent : MonoBehaviour
     private SwordParent swordParent;
 
     [SerializeField]
-    private InputActionReference movement, attack, pointerPosition;
+    private InputActionReference movement, attack, pointerPosition, dash;
 
     private void OnEnable() 
     {
-        attack.action.started += PerformAttack;
+        attack.action.performed += PerformAttack;
+        dash.action.performed += PerformDash;
     }
 
     private void OnDisable() 
     {
-        attack.action.started -= PerformAttack;
+        attack.action.performed -= PerformAttack;
+        dash.action.performed -= PerformDash;
     }
 
     private void PerformAttack(InputAction.CallbackContext obj)
@@ -36,6 +38,11 @@ public class Agent : MonoBehaviour
             return;
         }
         swordParent.Attack();
+    }
+
+    private void PerformDash(InputAction.CallbackContext obj)
+    {
+        agentMover.Dash();
     }
 
     private void Update()
