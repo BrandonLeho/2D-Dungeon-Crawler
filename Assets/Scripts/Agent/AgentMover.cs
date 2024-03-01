@@ -19,6 +19,10 @@ public class AgentMover : MonoBehaviour
     public float dashCounter;
     public float dashCoolCounter;
     public bool isDashing;
+    public bool isLunging;
+
+    public float lungeDistance, lungeSpeed, lungeTime, startTime;
+    private Vector2 direction;
 
     private void Start()
     {
@@ -50,6 +54,22 @@ public class AgentMover : MonoBehaviour
 
             
         }
+        else if(isLunging)
+        {
+
+            lungeTime = lungeDistance / lungeSpeed;
+            startTime += Time.deltaTime;
+
+            if(startTime <= lungeTime)
+            {
+                rb2d.velocity = direction.normalized * lungeSpeed;
+            }
+            else
+            {
+                isLunging = false;
+            }
+            
+        }
         else
         {
             if (MovementInput.magnitude > 0 && currentSpeed >= 0)
@@ -68,10 +88,8 @@ public class AgentMover : MonoBehaviour
             {
                 dashCoolCounter -= Time.deltaTime;
             }
-        }
-        
-
-        
+            startTime = 0;
+        }        
     }
 
     public void Dash()
@@ -86,25 +104,9 @@ public class AgentMover : MonoBehaviour
 
     public void Lunge(Vector2 direction, float lungeDistance, float lungeSpeed)
     {
-        StartCoroutine(LungeCoroutine(direction, lungeDistance, lungeSpeed));
+        this.direction = direction;
+        this.lungeDistance = lungeDistance;
+        this.lungeSpeed = lungeSpeed;
+        isLunging = true;
     }
-
-    private IEnumerator LungeCoroutine(Vector2 direction, float lungeDistance, float lungeSpeed)
-    {
-        //Debug.Log("Lunge");
-        float startTime = Time.time;
-        // Calculate lunge time based on distance and speed
-        float lungeTime = lungeDistance / lungeSpeed;
-
-        while (Time.time < startTime + lungeTime)
-        {
-            rb2d.velocity = direction.normalized * lungeSpeed;
-            yield return null;
-        }
-
-        // Optionally, reset velocity to 0 or keep momentum
-        rb2d.velocity = Vector2.zero;
-    }
-
-
 }
