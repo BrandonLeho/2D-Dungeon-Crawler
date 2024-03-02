@@ -16,4 +16,10 @@ public class AnimationEventHelper : MonoBehaviour
     {
         OnAttackPerformed?.Invoke();
     }
+
+    public void PopupEnd()
+    {
+        GameObject parent = gameObject.transform.parent.gameObject;
+        Destroy(parent);
+    }
 }

@@ -11,59 +11,41 @@ public class Agent : MonoBehaviour
 
     private Vector2 pointerInput, movementInput;
 
-    public Vector2 PointerInput => pointerInput;
+    public Vector2 PointerInput { get => pointerInput; set => pointerInput = value; }
+    public Vector2 MovementInput { get => movementInput; set => movementInput = value; }
 
-    private SwordParent swordParent;
+    //private SwordParent swordParent;
+    private KatanaParent katanaParent;
 
-    [SerializeField]
-    private InputActionReference movement, attack, pointerPosition, dash;
-
-    private void OnEnable() 
+    public void PerformAttack()
     {
-        attack.action.performed += PerformAttack;
-        dash.action.performed += PerformDash;
-    }
-
-    private void OnDisable() 
-    {
-        attack.action.performed -= PerformAttack;
-        dash.action.performed -= PerformDash;
-    }
-
-    private void PerformAttack(InputAction.CallbackContext obj)
-    {
-        if(swordParent == null)
+        if(katanaParent == null)
         {
             Debug.LogError("Weapon parent is null", gameObject);
             return;
         }
-        swordParent.Attack();
+        katanaParent.Attack();
     }
 
-    private void PerformDash(InputAction.CallbackContext obj)
+    public void PerformDash()
     {
         agentMover.Dash();
-    }
+    } 
 
     private void Update()
     {
-        pointerInput = GetPointerInput();
-        movementInput = movement.action.ReadValue<Vector2>().normalized;
+        //pointerInput = GetPointerInput();
+        //movementInput = movement.action.ReadValue<Vector2>().normalized;
         agentMover.MovementInput = movementInput;
-        swordParent.PointerPosition = pointerInput;
+        katanaParent.PointerPosition = pointerInput;
 
         AnimateCharacter();
-    }
-
-    public void PerformAttack()
-    {
-        swordParent.Attack();
     }
 
     private void Awake()
     {
         agentAnimations = GetComponentInChildren<AgentAnimations>();
-        swordParent = GetComponentInChildren<SwordParent>();
+        katanaParent = GetComponentInChildren<KatanaParent>();
         agentMover = GetComponent<AgentMover>();
     }
 
@@ -73,12 +55,4 @@ public class Agent : MonoBehaviour
         agentAnimations.RotateToPointer(lookDirection);
         agentAnimations.PlayAnimation(movementInput);
     }
-
-    private Vector2 GetPointerInput()
-    {
-        Vector3 mousePos = pointerPosition.action.ReadValue<Vector2>();
-        mousePos.z = Camera.main.nearClipPlane;
-        return Camera.main.ScreenToWorldPoint(mousePos);
-    }
-
 }
