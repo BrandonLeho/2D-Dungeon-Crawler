@@ -47,10 +47,17 @@ thx to chat for organizing this template <3
 
 _________________________________________________________________________
 (March 2, 2024)
-Combat Update 1!!! 
+
+Combat Update 1!!!
+
 -Added Katana
+
 -Basic Enemy AI WIP
+
 -Weapon Knockback
+
 -Damage Numbers Popups
+
 ![CombatDemo-ezgif com-video-to-gif-converter](https://github.com/BrandonLeho/2D-Dungeon-Crawler/assets/89223038/7df759ee-03dd-4f42-85bd-f6c8f6026f99)
+
 The character teleportation that looks like they are snapping around every now and then is the dash ability. It has no animation yet.
