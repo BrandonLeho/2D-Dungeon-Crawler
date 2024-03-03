@@ -84,6 +84,7 @@ public class KatanaParent : MonoBehaviour
         }
         else
         {
+            chainAttack = false;
             Stop();
         }
     }
@@ -105,7 +106,6 @@ public class KatanaParent : MonoBehaviour
         if(chainAttack)
         {
             Attack();
-            chainAttack = false;
         }
         else
         {

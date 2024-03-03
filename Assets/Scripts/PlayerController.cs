@@ -24,10 +24,7 @@ public class PlayerController : MonoBehaviour
     public void Update()
     {
         ProccessInput();
-        if(Input.GetKeyDown(KeyCode.LeftShift))
-            moveSpeed = 13;
-        else if (Input.GetKeyUp(KeyCode.LeftShift))
-            moveSpeed = 10;
+        SprintInput();
         
     }
 
@@ -49,6 +46,14 @@ public class PlayerController : MonoBehaviour
         }
         
         input = new Vector2(moveX, moveY).normalized;
+    }
+
+    private void SprintInput()
+    {
+        if(Input.GetKeyDown(KeyCode.LeftShift))
+            moveSpeed = 13;
+        else if (Input.GetKeyUp(KeyCode.LeftShift))
+            moveSpeed = 10;
     }
 
     private void Move()

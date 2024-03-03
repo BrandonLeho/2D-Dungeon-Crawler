@@ -45,6 +45,8 @@ public class PlayerShoot : MonoBehaviour
         Destroy(bullet, 2f);
     }
 
+    
+
     void OnAttack()
     {
         if(!isAttacking)

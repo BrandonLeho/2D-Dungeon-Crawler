@@ -6,13 +6,14 @@ using UnityEngine.Events;
 
 public class Health : MonoBehaviour
 {
+    public HealthBar healthBar;
     public GameObject damagePopup, character;
     public TMP_Text popupText;
 
     [SerializeField]
     private int currentHealth, maxHealth;
 
-    public UnityEvent<GameObject> OnHitWithReference, OnDeathWithReference;
+    public UnityEvent<GameObject> OnHitWithReference, OnDeathWithReference;    
 
     [SerializeField]
     private bool isDead = false;
@@ -21,6 +22,7 @@ public class Health : MonoBehaviour
     {
         currentHealth = healthValue;
         maxHealth = healthValue;
+        healthBar.SetMaxHealth(maxHealth);
         isDead = false;
     }
 
@@ -32,6 +34,8 @@ public class Health : MonoBehaviour
             return;
         
         currentHealth -= amount;
+
+        healthBar.SetHealth((int)((float)currentHealth/(float)maxHealth * 1000));
 
         Vector3 randomPopup = new Vector3
         (character.transform.position.x + Random.Range(-0.75f, 0.75f), 

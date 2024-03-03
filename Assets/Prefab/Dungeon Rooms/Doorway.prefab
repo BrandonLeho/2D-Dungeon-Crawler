@@ -58,7 +58,7 @@ MonoBehaviour:
   socketGroup_obsolete: -1
   doorPrefabs_obsolete: []
   blockerPrefabs_obsolete: []
-  socket: {fileID: -6033417093771319193, guid: 8db4b694037396a42b4c4b80bd21b63f, type: 2}
+  socket: {fileID: 7319271268272526702, guid: 8db4b694037396a42b4c4b80bd21b63f, type: 2}
   doorPrefabInstance: {fileID: 0}
   doorComponent: {fileID: 0}
   tile: {fileID: 0}
@@ -77,7 +77,7 @@ GameObject:
   - component: {fileID: 1476085091690865976}
   - component: {fileID: 8522205393238926704}
   - component: {fileID: 252447603812165086}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Blocker
   m_TagString: Wall
   m_Icon: {fileID: 0}
