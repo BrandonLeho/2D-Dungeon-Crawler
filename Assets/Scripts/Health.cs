@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
-    public HealthBar healthBar;
+    public Slider healthBar;
+    public Slider healthBarFalloff;
+    public float lerpSpeed = 0.05f;
     public GameObject damagePopup, character;
     public TMP_Text popupText;
 
@@ -22,7 +25,6 @@ public class Health : MonoBehaviour
     {
         currentHealth = healthValue;
         maxHealth = healthValue;
-        healthBar.SetMaxHealth(maxHealth);
         isDead = false;
     }
 
@@ -34,8 +36,6 @@ public class Health : MonoBehaviour
             return;
         
         currentHealth -= amount;
-
-        healthBar.SetHealth((int)((float)currentHealth/(float)maxHealth * 1000));
 
         Vector3 randomPopup = new Vector3
         (character.transform.position.x + Random.Range(-0.75f, 0.75f), 
@@ -52,6 +52,19 @@ public class Health : MonoBehaviour
             OnDeathWithReference?.Invoke(sender);
             isDead = true;
             Destroy(gameObject);
+        }
+    }
+
+    private void Update()
+    {
+        if(healthBar.value != currentHealth)
+        {
+            healthBar.value = currentHealth;
+        }
+
+        if(healthBar.value != healthBarFalloff.value)
+        {
+            healthBarFalloff.value = Mathf.Lerp(healthBarFalloff.value, currentHealth, lerpSpeed);
         }
     }
 }

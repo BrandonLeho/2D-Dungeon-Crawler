@@ -8,6 +8,7 @@ public class Agent : MonoBehaviour
 {
     private AgentAnimations agentAnimations;
     private AgentMover agentMover;
+    private Parry parry;
 
     private Vector2 pointerInput, movementInput;
 
@@ -30,7 +31,17 @@ public class Agent : MonoBehaviour
     public void PerformDash()
     {
         agentMover.Dash();
-    } 
+    }
+
+    public void PerformParry()
+    {
+        parry.StartBlockAndParry();
+    }
+
+    public void PerformedParry()
+    {
+        parry.EndBlockAndParry();
+    }
 
     private void Update()
     {
@@ -47,6 +58,7 @@ public class Agent : MonoBehaviour
         agentAnimations = GetComponentInChildren<AgentAnimations>();
         katanaParent = GetComponentInChildren<KatanaParent>();
         agentMover = GetComponent<AgentMover>();
+        parry = GetComponent<Parry>();
     }
 
     private void AnimateCharacter()

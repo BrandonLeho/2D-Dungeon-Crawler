@@ -20,6 +20,5 @@ public class AgentAnimations : MonoBehaviour
     public void PlayAnimation(Vector2 movementInput)
     {
         animator.SetBool("isMoving", movementInput.magnitude > 0);
-
     }
 }

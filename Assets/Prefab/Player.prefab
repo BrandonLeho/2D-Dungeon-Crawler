@@ -107,11 +107,12 @@ GameObject:
   - component: {fileID: 3883968767663289639}
   - component: {fileID: 8762755452498768548}
   - component: {fileID: 3431770236160565510}
-  - component: {fileID: 5825642249079211311}
   - component: {fileID: 2528325562295888897}
   - component: {fileID: 2258279374989249880}
   - component: {fileID: 6558754717651403222}
+  - component: {fileID: 9120136403132025015}
   - component: {fileID: 9007420928895434137}
+  - component: {fileID: 5825642249079211311}
   - component: {fileID: 3378358997364795026}
   m_Layer: 6
   m_Name: Player
@@ -316,18 +317,6 @@ MonoBehaviour:
   rb: {fileID: 3883968767663289639}
   input: {x: 0, y: 0}
   sword: {fileID: 0}
---- !u!114 &5825642249079211311
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5433083863269606360}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4413b0bd6a0a7a343a37bf1681114cf1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2528325562295888897
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -355,6 +344,7 @@ MonoBehaviour:
   maxSpeed: 8
   acceleration: 50
   deacceleration: 100
+  finalMaxSpeed: 0
   currentSpeed: 0
   dashSpeed: 30
   dashLength: 0.1
@@ -363,6 +353,7 @@ MonoBehaviour:
   dashCoolCounter: 0
   isDashing: 0
   isLunging: 0
+  isBlocking: 0
   lungeDistance: 0
   lungeSpeed: 0
   lungeTime: 0
@@ -412,6 +403,29 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+--- !u!114 &9120136403132025015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5433083863269606360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a32d428c18601094d93deb6fecfaddeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerIsAttacking: 0
+  playerIsBlocking: 0
+  playerCanMove: 0
+  playerIsJumping: 0
+  playerIsParrying: 0
+  playerIsRolling: 0
+  parryWindowTimer: 0.5
+  parryWindowShort: 0.5
+  parryDelayTimer: 0
+  parryWindowOriginal: 0.5
+  parryCooldown: 0.5
 --- !u!114 &9007420928895434137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -424,6 +438,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f47a1f767908654eaa67f090a87e5c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthBar: {fileID: 0}
+  healthBarFalloff: {fileID: 0}
+  lerpSpeed: 0.05
   damagePopup: {fileID: 8870602603912708972, guid: a3b5bc15c0984014386724ed152fc91c, type: 3}
   character: {fileID: 5433083863269606360}
   popupText: {fileID: 0}
@@ -448,6 +465,18 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   isDead: 0
+--- !u!114 &5825642249079211311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5433083863269606360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4413b0bd6a0a7a343a37bf1681114cf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3378358997364795026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -520,10 +549,41 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnParry:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5825642249079211311}
+        m_TargetAssemblyTypeName: Agent, Assembly-CSharp
+        m_MethodName: PerformParry
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnPerformedParry:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5825642249079211311}
+        m_TargetAssemblyTypeName: Agent, Assembly-CSharp
+        m_MethodName: PerformedParry
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   movement: {fileID: 421168985744500162, guid: 4cbd6f251bd3d614ab6355d8c043c295, type: 3}
   attack: {fileID: 6792376721719885646, guid: 4cbd6f251bd3d614ab6355d8c043c295, type: 3}
   pointerPosition: {fileID: 6974337385416790007, guid: 4cbd6f251bd3d614ab6355d8c043c295, type: 3}
   dash: {fileID: -4986965713202076466, guid: 4cbd6f251bd3d614ab6355d8c043c295, type: 3}
+  parry: {fileID: -7025999032421690164, guid: 4cbd6f251bd3d614ab6355d8c043c295, type: 3}
 --- !u!1 &5791941401172794310
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,7 +8,7 @@ public class AgentMover : MonoBehaviour
     private Rigidbody2D rb2d;
 
     [SerializeField]
-    private float maxSpeed = 2, acceleration = 50, deacceleration = 100;
+    private float maxSpeed, acceleration, deacceleration, finalMaxSpeed;
     [SerializeField]
     private float currentSpeed = 0;
     private Vector2 oldMovementInput;
@@ -18,20 +18,15 @@ public class AgentMover : MonoBehaviour
     public float dashLength = 0.5f, dashCooldown = 1f;
     public float dashCounter;
     public float dashCoolCounter;
-    public bool isDashing;
-    public bool isLunging;
+    public bool isDashing, isLunging, isBlocking;
 
     public float lungeDistance, lungeSpeed, lungeTime, startTime;
     private Vector2 direction;
 
-    private void Start()
-    {
-
-    }
-
     private void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
+        finalMaxSpeed = maxSpeed;
     }
 
     private void FixedUpdate()
@@ -100,6 +95,29 @@ public class AgentMover : MonoBehaviour
             dashCounter = dashLength;
             isDashing = true;
         }
+    }
+
+    public void Blocking(bool playerIsBlocking, bool playerIsParrying)
+    {
+        if(playerIsBlocking && playerIsParrying)
+        {
+            Debug.Log("Parry");
+            isBlocking = true;
+            maxSpeed = finalMaxSpeed/5;
+        }
+        else if(playerIsBlocking && !playerIsParrying)
+        {
+            Debug.Log("Block");
+            isBlocking = true;
+            //maxSpeed = finalMaxSpeed/3;       
+        }
+        else
+        {
+            Debug.Log("Normal");
+            isBlocking = false;
+            maxSpeed = finalMaxSpeed;
+        }
+        Debug.Log(maxSpeed);
     }
 
     public void Lunge(Vector2 direction, float lungeDistance, float lungeSpeed)

@@ -51,7 +51,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""id"": ""97b2f325-cb24-4271-b70f-a0567edc233f"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """",
+                    ""interactions"": ""Hold"",
                     ""initialStateCheck"": false
                 },
                 {
@@ -61,6 +61,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Parry"",
+                    ""type"": ""Button"",
+                    ""id"": ""d7733ae7-a3bf-4452-9852-b6143e4b63d5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press"",
                     ""initialStateCheck"": false
                 }
             ],
@@ -152,6 +161,17 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""Dash"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""684af624-38d8-4adc-a54e-d922fc0db56c"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": ""Hold(duration=0.4,pressPoint=0.5)"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Parry"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -192,6 +212,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_PlayerInput_PointerPosition = m_PlayerInput.FindAction("PointerPosition", throwIfNotFound: true);
         m_PlayerInput_Attack = m_PlayerInput.FindAction("Attack", throwIfNotFound: true);
         m_PlayerInput_Dash = m_PlayerInput.FindAction("Dash", throwIfNotFound: true);
+        m_PlayerInput_Parry = m_PlayerInput.FindAction("Parry", throwIfNotFound: true);
         // PauseMenu
         m_PauseMenu = asset.FindActionMap("PauseMenu", throwIfNotFound: true);
         m_PauseMenu_Newaction = m_PauseMenu.FindAction("New action", throwIfNotFound: true);
@@ -260,6 +281,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerInput_PointerPosition;
     private readonly InputAction m_PlayerInput_Attack;
     private readonly InputAction m_PlayerInput_Dash;
+    private readonly InputAction m_PlayerInput_Parry;
     public struct PlayerInputActions
     {
         private @Controls m_Wrapper;
@@ -268,6 +290,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @PointerPosition => m_Wrapper.m_PlayerInput_PointerPosition;
         public InputAction @Attack => m_Wrapper.m_PlayerInput_Attack;
         public InputAction @Dash => m_Wrapper.m_PlayerInput_Dash;
+        public InputAction @Parry => m_Wrapper.m_PlayerInput_Parry;
         public InputActionMap Get() { return m_Wrapper.m_PlayerInput; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -289,6 +312,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Dash.started += instance.OnDash;
             @Dash.performed += instance.OnDash;
             @Dash.canceled += instance.OnDash;
+            @Parry.started += instance.OnParry;
+            @Parry.performed += instance.OnParry;
+            @Parry.canceled += instance.OnParry;
         }
 
         private void UnregisterCallbacks(IPlayerInputActions instance)
@@ -305,6 +331,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Dash.started -= instance.OnDash;
             @Dash.performed -= instance.OnDash;
             @Dash.canceled -= instance.OnDash;
+            @Parry.started -= instance.OnParry;
+            @Parry.performed -= instance.OnParry;
+            @Parry.canceled -= instance.OnParry;
         }
 
         public void RemoveCallbacks(IPlayerInputActions instance)
@@ -374,6 +403,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnPointerPosition(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
+        void OnParry(InputAction.CallbackContext context);
     }
     public interface IPauseMenuActions
     {

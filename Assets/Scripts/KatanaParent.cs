@@ -146,5 +146,6 @@ public class KatanaParent : MonoBehaviour
                 health.GetHit(UnityEngine.Random.Range(10, 50), transform.parent.gameObject);
             }
         }
+        //FindAnyObjectByType<HitLag>().Stop(1f);
     }
 }
