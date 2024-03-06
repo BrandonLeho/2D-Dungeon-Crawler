@@ -23,10 +23,13 @@ public class AgentMover : MonoBehaviour
     public float lungeDistance, lungeSpeed, lungeTime, startTime;
     private Vector2 direction;
 
+    private Stamina stamina;
+
     private void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
         finalMaxSpeed = maxSpeed;
+        stamina = GetComponent<Stamina>();
     }
 
     private void FixedUpdate()
@@ -89,35 +92,40 @@ public class AgentMover : MonoBehaviour
 
     public void Dash()
     {
-        if(dashCoolCounter <= 0 && dashCounter <= 0)
+        if(!isBlocking)
         {
-            currentSpeed = dashSpeed;
-            dashCounter = dashLength;
-            isDashing = true;
+            if(dashCoolCounter <= 0 && dashCounter <= 0 && stamina.GetCurrentStamina() > 0)
+            {
+                currentSpeed = dashSpeed;
+                dashCounter = dashLength;
+                isDashing = true;
+                stamina.UseStamina(150);
+            }
         }
+        
     }
 
     public void Blocking(bool playerIsBlocking, bool playerIsParrying)
     {
-        if(playerIsBlocking && playerIsParrying)
+        if(!playerIsBlocking && playerIsParrying)
         {
-            Debug.Log("Parry");
+            //Debug.Log("Parry");
             isBlocking = true;
             maxSpeed = finalMaxSpeed/5;
         }
         else if(playerIsBlocking && !playerIsParrying)
         {
-            Debug.Log("Block");
+            //Debug.Log("Block");
             isBlocking = true;
             //maxSpeed = finalMaxSpeed/3;       
         }
         else
         {
-            Debug.Log("Normal");
+            //Debug.Log("Normal");
             isBlocking = false;
             maxSpeed = finalMaxSpeed;
         }
-        Debug.Log(maxSpeed);
+        //Debug.Log(maxSpeed);
     }
 
     public void Lunge(Vector2 direction, float lungeDistance, float lungeSpeed)

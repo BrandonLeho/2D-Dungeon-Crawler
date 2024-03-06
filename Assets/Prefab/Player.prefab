@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 2528325562295888897}
   - component: {fileID: 2258279374989249880}
   - component: {fileID: 6558754717651403222}
-  - component: {fileID: 9120136403132025015}
+  - component: {fileID: 5079362279996597094}
   - component: {fileID: 9007420928895434137}
   - component: {fileID: 5825642249079211311}
   - component: {fileID: 3378358997364795026}
@@ -403,7 +403,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
---- !u!114 &9120136403132025015
+--- !u!114 &5079362279996597094
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -412,20 +412,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 5433083863269606360}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a32d428c18601094d93deb6fecfaddeb, type: 3}
+  m_Script: {fileID: 11500000, guid: 065556b30507b28488c82d4b293050c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerIsAttacking: 0
-  playerIsBlocking: 0
-  playerCanMove: 0
-  playerIsJumping: 0
-  playerIsParrying: 0
-  playerIsRolling: 0
-  parryWindowTimer: 0.5
-  parryWindowShort: 0.5
-  parryDelayTimer: 0
-  parryWindowOriginal: 0.5
-  parryCooldown: 0.5
+  staminaBar: {fileID: 0}
+  staminaBarFalloff: {fileID: 0}
+  lerpSpeed: 0.05
+  character: {fileID: 0}
+  currentStamina: 100
+  maxStamina: 100
+  dashCost: 15
+  OnStaminaWithReference:
+    m_PersistentCalls:
+      m_Calls: []
+  OnRecoverWithReference:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &9007420928895434137
 MonoBehaviour:
   m_ObjectHideFlags: 0

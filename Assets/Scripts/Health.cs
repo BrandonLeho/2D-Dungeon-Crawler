@@ -16,6 +16,8 @@ public class Health : MonoBehaviour
     [SerializeField]
     private int currentHealth, maxHealth;
 
+    [SerializeField] private Parry parry;
+
     public UnityEvent<GameObject> OnHitWithReference, OnDeathWithReference;    
 
     [SerializeField]
@@ -34,6 +36,17 @@ public class Health : MonoBehaviour
             return;
         if(sender.layer == gameObject.layer)
             return;
+
+        if(parry.GetParryState())
+        {
+            if(sender.GetComponent<Stamina>() != null)
+                sender.GetComponent<Stamina>().UseStamina(150);
+            return;
+        }
+        else if(parry.GetBlockState())
+        {
+            amount /= 2;
+        }
         
         currentHealth -= amount;
 

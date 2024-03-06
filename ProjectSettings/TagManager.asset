@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Dungeon
   - Wall
+  - Manager
   layers:
   - Default
   - TransparentFX

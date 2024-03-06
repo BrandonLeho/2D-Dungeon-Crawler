@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,43 +10,50 @@ public class Parry : MonoBehaviour
     SpriteRenderer playerSprite;
     AgentMover agentMover;
 
-    public bool playerIsAttacking, playerIsBlocking, playerCanMove, 
-     playerIsJumping, playerIsParrying, playerIsRolling;
+    public bool playerIsBlocking, playerIsParrying, playerIsRolling, cantParry;
 
     public float parryWindowTimer, parryWindowShort, parryDelayTimer, 
-    parryWindowOriginal;
+    parryWindowOriginal ,parryCooldown;
 
     private void Awake()
     {
         agentMover = GetComponent<AgentMover>();
     }
+
+    public void Update()
+    {
+
+        if(parryWindowTimer < 0)
+        {
+            cantParry = false;
+        }
+    }
     
     public void StartBlockAndParry()
     {
-        if (!playerIsAttacking && !playerIsRolling && !playerIsJumping)
+        if (!playerIsParrying && !cantParry)
         {
             //Debug.Log("Starting PlayerBlockAndParry Coroutine");
+            playerIsParrying = true;
+            cantParry = true;
             StartCoroutine(PlayerBlockAndParry());
         }
     }
 
  
     IEnumerator PlayerBlockAndParry()
-    {
-        playerIsBlocking = true;
-        playerIsParrying = true;
-        
+    { 
         agentMover.Blocking(playerIsBlocking, playerIsParrying);
 
         //Debug.Log(parryWindowTimer + "      " + Mathf.Epsilon);
  
-        while (playerIsBlocking == true && parryWindowTimer > Mathf.Epsilon)
+        while (playerIsParrying == true && parryWindowTimer > 0)
         {
-            Debug.Log("Parrying: " + playerIsParrying);
+            //Debug.Log("Parrying: " + playerIsParrying);
             parryWindowTimer -= Time.deltaTime;
             yield return null;
         }
- 
+        playerIsBlocking = true;
         playerIsParrying = false;
         //Debug.Log("Parrying: " + playerIsParrying);
         agentMover.Blocking(playerIsBlocking, playerIsParrying);
@@ -55,49 +63,44 @@ public class Parry : MonoBehaviour
  
     public void EndBlockAndParry()
     {
-        if (!playerIsAttacking && !playerIsRolling && !playerIsJumping)
+        if(parryDelayTimer == parryCooldown && cantParry || playerIsBlocking)
         {
-            Debug.Log("Ended Block and Parry");
-            playerIsBlocking = false;
-            parryWindowTimer = parryWindowShort;
-            
-            agentMover.Blocking(playerIsBlocking, playerIsParrying);
-
+            //Debug.Log("Ended Block and Parry");
             StartCoroutine(ParryDelayFunction());
         }
     }
  
     IEnumerator ParryDelayFunction()
     {
-        while (playerIsBlocking == false && parryDelayTimer >= Mathf.Epsilon)
+        while (playerIsParrying)
         {
+            yield return null;
+        }
+        parryWindowTimer = parryWindowShort;
+        playerIsBlocking = false;
+        agentMover.Blocking(playerIsBlocking, playerIsParrying);
+
+        while (parryDelayTimer >= 0)
+        {
+            cantParry = true;
             parryDelayTimer -= Time.deltaTime;
             yield return null;
         }
  
-        if (parryDelayTimer <= Mathf.Epsilon)
+        if (parryDelayTimer <= 0)
         {
             parryWindowTimer = parryWindowOriginal;
-            parryDelayTimer = 1.5f;
-        }
-        else if (parryDelayTimer > Mathf.Epsilon)
-        {
-            parryDelayTimer = 1.5f;
+            parryDelayTimer = parryCooldown;
+            cantParry = false;
         }
     }
- 
-    [SerializeField] float parryCooldown;
-    IEnumerator PlayerNewBlockAndParry()
+    public bool GetParryState()
     {
-        playerIsParrying = true;
-        playerCanMove = false;
-        playerRB.velocity = new Vector2 (0f,0f);
-        playerSprite.color = Color.green;
- 
-        yield return new WaitForSeconds(parryCooldown);
- 
-        playerSprite.color = Color.white;
-        playerIsParrying = false;
-        playerCanMove = true;
+        return playerIsParrying;
+    }
+
+    public bool GetBlockState()
+    {
+        return playerIsBlocking;
     }
 }

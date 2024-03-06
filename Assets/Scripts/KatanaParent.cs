@@ -5,6 +5,7 @@ using System.Data.Common;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.Events;
+using Unity.VisualScripting;
 
 public class KatanaParent : MonoBehaviour
 {
@@ -13,19 +14,19 @@ public class KatanaParent : MonoBehaviour
     public float delay = 0.3f;
     public Animator animator;
     private AnimationEventHelper animationEventHelper;
+    
     public bool IsAttacking { get; private set; }
     public Transform circleOrigin;
 
     [SerializeField]
     public float radius;
-
+    [SerializeField] private Parry parry;
     [SerializeField] private AgentMover agentMover;
     [SerializeField] private float lungeDistance = 20f;
     [SerializeField] private float lungeSpeed = 100f;
     
-    public bool canAttack;
-    public int attackState = 0;
-    public bool chainAttack;
+    public bool canAttack, chainAttack, canLunge;
+    public int attackState = 0, damage = 50, staminaDamage = 75;
 
 
     private void Update() {
@@ -51,6 +52,32 @@ public class KatanaParent : MonoBehaviour
             attackState = 0;
             animator.SetInteger("AttackState", attackState);
         }
+        if(parry != null && parry.GetParryState() && !parry.GetBlockState())
+        {
+            animator.SetBool("Parry", true);
+            canLunge = false;
+            chainAttack = false;
+            canAttack = false;
+        }
+        else
+        {
+            animator.SetBool("Parry", false);
+        }
+            
+
+        if(parry != null && parry.GetBlockState())
+        {
+            animator.SetBool("Block", true);
+            canLunge = false;
+            chainAttack = false;
+            
+            Stop();
+        }     
+        else
+        {
+            animator.SetBool("Block", false);
+        }
+            
     }
 
     
@@ -59,7 +86,7 @@ public class KatanaParent : MonoBehaviour
     {
         //Debug.Log(attackState);
         //Debug.Log(canAttack);
-        if(canAttack)
+        if(canAttack && !(parry != null && parry.GetBlockState()) && !(parry != null && parry.GetParryState() && parry.GetBlockState()))
         {
             if(attackState < 4)
             {
@@ -71,9 +98,12 @@ public class KatanaParent : MonoBehaviour
                 {
                     lungeDistance = 0.5f;
                 }
-                Vector2 direction = (PointerPosition - (Vector2)transform.position).normalized;
-                //Debug.Log(direction);
-                agentMover.Lunge(direction, lungeDistance, lungeSpeed); // Lunge towards the pointer position
+                if(canLunge)
+                {
+                    Vector2 direction = (PointerPosition - (Vector2)transform.position).normalized;
+                    //Debug.Log(direction);
+                    agentMover.Lunge(direction, lungeDistance, lungeSpeed); // Lunge towards the pointer position
+                }
 
                 attackState++;
                 canAttack = false;
@@ -84,6 +114,7 @@ public class KatanaParent : MonoBehaviour
         }
         else
         {
+            canLunge = false;
             chainAttack = false;
             Stop();
         }
@@ -109,8 +140,8 @@ public class KatanaParent : MonoBehaviour
         }
         else
         {
-            canAttack = true;
             StartCoroutine(DelayAttack());
+            canAttack = true;
             attackState = 0;
             animator.SetInteger("AttackState", attackState);
             
@@ -120,6 +151,7 @@ public class KatanaParent : MonoBehaviour
      private IEnumerator DelayAttack()
     {
         yield return new WaitForSeconds(delay);
+        canLunge = true;
     }
     
     
@@ -141,9 +173,16 @@ public class KatanaParent : MonoBehaviour
         {
             //Debug.Log(collider.name);
             Health health;
+            Stamina stamina;
             if(health = collider.GetComponent<Health>())
             {
-                health.GetHit(UnityEngine.Random.Range(10, 50), transform.parent.gameObject);
+                health.GetHit(damage, transform.parent.gameObject);
+
+                if(stamina = collider.GetComponent<Stamina>())
+                {
+                        stamina.damageStamina(staminaDamage, transform.parent.gameObject);
+                }
+                    
             }
         }
         //FindAnyObjectByType<HitLag>().Stop(1f);
