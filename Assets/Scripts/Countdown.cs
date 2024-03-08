@@ -19,7 +19,7 @@ public class Countdown : MonoBehaviour
 
         if(remainingTime > 0)
         {
-            remainingTime -= Time.deltaTime;
+            remainingTime -= Time.unscaledDeltaTime;
             timerText.text = remainingTime.ToString();
 
             timerText.text = string.Format("{0:00}:{1:00}.{2:000}", minutes, seconds, milliseconds);

@@ -105,8 +105,6 @@ GameObject:
   - component: {fileID: 6259761555887385117}
   - component: {fileID: 8499128600715956574}
   - component: {fileID: 3883968767663289639}
-  - component: {fileID: 8762755452498768548}
-  - component: {fileID: 3431770236160565510}
   - component: {fileID: 2528325562295888897}
   - component: {fileID: 2258279374989249880}
   - component: {fileID: 6558754717651403222}
@@ -284,39 +282,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &8762755452498768548
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5433083863269606360}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8291f2c9b8e451848a2a33ac91f1334d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 1891715265878088686, guid: 12d08f003e57d214cb60f30aa691e084, type: 3}
-  bulletSpeed: 50
-  Melee: {fileID: 0}
-  isAttacking: 0
-  Aim: {fileID: 0}
---- !u!114 &3431770236160565510
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5433083863269606360}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e5ddfa3571215a4d880b50538fa2666, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 10
-  rb: {fileID: 3883968767663289639}
-  input: {x: 0, y: 0}
-  sword: {fileID: 0}
 --- !u!114 &2528325562295888897
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -418,10 +383,18 @@ MonoBehaviour:
   staminaBar: {fileID: 0}
   staminaBarFalloff: {fileID: 0}
   lerpSpeed: 0.05
-  character: {fileID: 0}
+  damagePopup: {fileID: 0}
   currentStamina: 100
   maxStamina: 100
   dashCost: 15
+  parry: {fileID: 0}
+  cam: {fileID: 0}
+  zoom: 0
+  minZoom: 1
+  maxZoom: 20
+  velocity: 0
+  smoothTime: 1
+  freeze: 0
   OnStaminaWithReference:
     m_PersistentCalls:
       m_Calls: []
@@ -448,6 +421,7 @@ MonoBehaviour:
   popupText: {fileID: 0}
   currentHealth: 1000
   maxHealth: 1000
+  parry: {fileID: 0}
   OnHitWithReference:
     m_PersistentCalls:
       m_Calls:
@@ -887,12 +861,16 @@ MonoBehaviour:
   animator: {fileID: 6155843919241161417}
   circleOrigin: {fileID: 1003938611057288381}
   radius: 1.1
+  parry: {fileID: 0}
   agentMover: {fileID: 2258279374989249880}
   lungeDistance: 0.5
   lungeSpeed: 10
   canAttack: 0
-  attackState: 0
   chainAttack: 0
+  canLunge: 0
+  attackState: 0
+  damage: 50
+  staminaDamage: 75
 --- !u!1 &7992969824387617011
 GameObject:
   m_ObjectHideFlags: 0

@@ -19,10 +19,20 @@ public class Stamina : MonoBehaviour
     [SerializeField]
     public int dashCost;
     [SerializeField] private Parry parry;
+    [SerializeField] private Camera cam;
+    [SerializeField] private float zoom, minZoom = 1f, maxZoom = 20f, velocity = 0f, smoothTime = 1f;
+    public bool freeze;
 
+    Rigidbody2D senderRB;
+    Rigidbody2D receiverRB;
+    Vector3 senderVelocity, receiverVelocity;
+
+    private float freezeVelocity;
     private Coroutine regen;
 
     public UnityEvent<GameObject> OnStaminaWithReference, OnRecoverWithReference;
+
+    
 
     public void InitializeStamina(int staminaValue)
     {
@@ -73,7 +83,17 @@ public class Stamina : MonoBehaviour
 
         if(currentStamina <= 0)
         {
-            //TODO
+            freeze = true;
+            zoom = 2;
+            float timer = 0.25f;
+            FindObjectOfType<HitLag>().Stop(timer);
+
+            while(timer >= 0)
+            {
+                timer -= Time.unscaledDeltaTime;
+            }
+            freeze = false;
+            zoom = 8;
         }
         
 
@@ -83,6 +103,17 @@ public class Stamina : MonoBehaviour
         }
 
         regen = StartCoroutine(RegenerateStamina());
+    }
+
+    IEnumerator PoiseBreak()
+    {
+        float timer = 5f;
+        while (timer >= 0)
+        {
+            timer -= Time.deltaTime;
+            yield return null;
+        }
+        zoom = 8;
     }
 
     private IEnumerator RegenerateStamina()
@@ -108,6 +139,9 @@ public class Stamina : MonoBehaviour
 
     private void Update()
     {
+        
+        cam.orthographicSize = Mathf.SmoothDamp(cam.orthographicSize, zoom, ref velocity, smoothTime);
+
         if(staminaBar.value != currentStamina)
         {
             staminaBar.value = currentStamina;
@@ -122,5 +156,11 @@ public class Stamina : MonoBehaviour
     public int GetCurrentStamina()
     {
         return currentStamina;
+    }
+
+    public void Start()
+    {
+        zoom = Mathf.Clamp(zoom, minZoom, maxZoom);
+        zoom = cam.orthographicSize;
     }
 }

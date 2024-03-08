@@ -12,8 +12,8 @@ public class Parry : MonoBehaviour
 
     public bool playerIsBlocking, playerIsParrying, playerIsRolling, cantParry;
 
-    public float parryWindowTimer, parryWindowShort, parryDelayTimer, 
-    parryWindowOriginal ,parryCooldown;
+    public float parryWindowTimer = 0.25f, parryWindowShort = 0.25f, parryDelayTimer = 0.15f, 
+    parryWindowOriginal = 0.25f, parryCooldown = 0.25f;
 
     private void Awake()
     {
@@ -22,7 +22,6 @@ public class Parry : MonoBehaviour
 
     public void Update()
     {
-
         if(parryWindowTimer < 0)
         {
             cantParry = false;

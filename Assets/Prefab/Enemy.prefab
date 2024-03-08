@@ -1638,7 +1638,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb2d: {fileID: 286957855868106648}
-  strength: 30
+  strength: 100
   delay: 0.15
   OnBegin:
     m_PersistentCalls:
@@ -1749,11 +1749,18 @@ MonoBehaviour:
   staminaBar: {fileID: 4530143403179742202}
   staminaBarFalloff: {fileID: 2262768567531206949}
   lerpSpeed: 0.05
-  character: {fileID: 0}
+  damagePopup: {fileID: 0}
   currentStamina: 1000
   maxStamina: 1000
   dashCost: 150
   parry: {fileID: 8930578476364145075}
+  cam: {fileID: 0}
+  zoom: 0
+  minZoom: 1
+  maxZoom: 20
+  velocity: 0
+  smoothTime: 1
+  freeze: 0
   OnStaminaWithReference:
     m_PersistentCalls:
       m_Calls: []
