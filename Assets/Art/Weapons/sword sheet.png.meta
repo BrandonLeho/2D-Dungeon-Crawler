@@ -126,12 +126,12 @@ TextureImporter:
       name: sword sheet_0
       rect:
         serializedVersion: 2
-        x: 5
-        y: 6
-        width: 7
-        height: 18
+        x: 0
+        y: 0
+        width: 32
+        height: 64
       alignment: 9
-      pivot: {x: 0.5, y: 0.18882152}
+      pivot: {x: 0.5159962, y: 0.3053488}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -147,12 +147,12 @@ TextureImporter:
       name: sword sheet_1
       rect:
         serializedVersion: 2
-        x: 17
-        y: 6
-        width: 13
-        height: 18
+        x: 32
+        y: 0
+        width: 32
+        height: 64
       alignment: 9
-      pivot: {x: 0.72854465, y: 0.18882152}
+      pivot: {x: 0.51518977, y: 0.30529112}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -160,6 +160,69 @@ TextureImporter:
       bones: []
       spriteID: f6323ab56b62d5b40b919573f80ce56a
       internalID: -706681310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sword sheet_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5151179, y: 0.30516776}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc69136bcc2f6bf4bb2d238d3908d7bd
+      internalID: 629970379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sword sheet_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 64
+      alignment: 9
+      pivot: {x: 0.51697206, y: 0.30501717}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efce37ba0d9f8934396fa968da0d3799
+      internalID: -2005087644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sword sheet_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 64
+      alignment: 9
+      pivot: {x: 0.51521826, y: 0.305359}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9494919d00f8fc146adf5b8a8658b687
+      internalID: 1932376387
       vertices: []
       indices: 
       edges: []
@@ -177,6 +240,9 @@ TextureImporter:
     nameFileIdTable:
       sword sheet_0: -1669422572
       sword sheet_1: -706681310
+      sword sheet_2: 629970379
+      sword sheet_3: -2005087644
+      sword sheet_4: 1932376387
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

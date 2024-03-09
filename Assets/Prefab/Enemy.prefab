@@ -1392,7 +1392,6 @@ GameObject:
   - component: {fileID: 3002480200743074602}
   - component: {fileID: 7528504117760694926}
   - component: {fileID: 286957855868106648}
-  - component: {fileID: 8341820118065436083}
   - component: {fileID: 520151162087759732}
   - component: {fileID: 4690320701749086863}
   - component: {fileID: 3157981882832236181}
@@ -1401,6 +1400,7 @@ GameObject:
   - component: {fileID: 6080154711205197099}
   - component: {fileID: 6554521761176382712}
   - component: {fileID: 8930578476364145075}
+  - component: {fileID: 6806971323387806136}
   m_Layer: 10
   m_Name: Enemy
   m_TagString: Enemy
@@ -1557,7 +1557,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 100
+  m_Mass: 10
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -1572,18 +1572,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &8341820118065436083
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6884024151763829153}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4413b0bd6a0a7a343a37bf1681114cf1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &520151162087759732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1638,7 +1626,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb2d: {fileID: 286957855868106648}
-  strength: 100
+  strength: 1000
   delay: 0.15
   OnBegin:
     m_PersistentCalls:
@@ -1808,8 +1796,8 @@ MonoBehaviour:
   OnAttackPressed:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8341820118065436083}
-        m_TargetAssemblyTypeName: Agent, Assembly-CSharp
+      - m_Target: {fileID: 6806971323387806136}
+        m_TargetAssemblyTypeName: EnemyAgent, Assembly-CSharp
         m_MethodName: PerformAttack
         m_Mode: 1
         m_Arguments:
@@ -1823,8 +1811,8 @@ MonoBehaviour:
   OnMovementInput:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8341820118065436083}
-        m_TargetAssemblyTypeName: Agent, Assembly-CSharp
+      - m_Target: {fileID: 6806971323387806136}
+        m_TargetAssemblyTypeName: EnemyAgent, Assembly-CSharp
         m_MethodName: set_MovementInput
         m_Mode: 0
         m_Arguments:
@@ -1838,8 +1826,8 @@ MonoBehaviour:
   OnPointerInput:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8341820118065436083}
-        m_TargetAssemblyTypeName: Agent, Assembly-CSharp
+      - m_Target: {fileID: 6806971323387806136}
+        m_TargetAssemblyTypeName: EnemyAgent, Assembly-CSharp
         m_MethodName: set_PointerInput
         m_Mode: 0
         m_Arguments:
@@ -1873,6 +1861,18 @@ MonoBehaviour:
   parryDelayTimer: 0.15
   parryWindowOriginal: 0.25
   parryCooldown: 0.15
+--- !u!114 &6806971323387806136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6884024151763829153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5572c85aa7fbcd4082e2826fc28ca8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7572986137054320111
 GameObject:
   m_ObjectHideFlags: 0

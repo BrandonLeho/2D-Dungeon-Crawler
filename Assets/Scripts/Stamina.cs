@@ -20,7 +20,7 @@ public class Stamina : MonoBehaviour
     public int dashCost;
     [SerializeField] private Parry parry;
     [SerializeField] private Camera cam;
-    [SerializeField] private float zoom, minZoom = 1f, maxZoom = 20f, velocity = 0f, smoothTime = 1f;
+    [SerializeField] private float zoom, minZoom = 1f, maxZoom = 20f, velocity = 0f, smoothTime = 0.25f;
     public bool freeze;
 
     Rigidbody2D senderRB;
@@ -84,12 +84,13 @@ public class Stamina : MonoBehaviour
         if(currentStamina <= 0)
         {
             freeze = true;
-            zoom = 2;
+            zoom = 6;
             float timer = 0.25f;
             FindObjectOfType<HitLag>().Stop(timer);
 
             while(timer >= 0)
             {
+                cam.orthographicSize = Mathf.SmoothDamp(cam.orthographicSize, zoom, ref velocity, smoothTime);
                 timer -= Time.unscaledDeltaTime;
             }
             freeze = false;
@@ -103,17 +104,6 @@ public class Stamina : MonoBehaviour
         }
 
         regen = StartCoroutine(RegenerateStamina());
-    }
-
-    IEnumerator PoiseBreak()
-    {
-        float timer = 5f;
-        while (timer >= 0)
-        {
-            timer -= Time.deltaTime;
-            yield return null;
-        }
-        zoom = 8;
     }
 
     private IEnumerator RegenerateStamina()
@@ -139,7 +129,6 @@ public class Stamina : MonoBehaviour
 
     private void Update()
     {
-        
         cam.orthographicSize = Mathf.SmoothDamp(cam.orthographicSize, zoom, ref velocity, smoothTime);
 
         if(staminaBar.value != currentStamina)

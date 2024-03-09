@@ -15,7 +15,7 @@ public class Agent : MonoBehaviour
     public Vector2 PointerInput { get => pointerInput; set => pointerInput = value; }
     public Vector2 MovementInput { get => movementInput; set => movementInput = value; }
 
-    //private SwordParent swordParent;
+    private SwordParent swordParent;
     private KatanaParent katanaParent;
 
     public void PerformAttack()
@@ -25,7 +25,10 @@ public class Agent : MonoBehaviour
             Debug.LogError("Weapon parent is null", gameObject);
             return;
         }
-        katanaParent.Attack();
+        if(swordParent.gameObject.activeInHierarchy)
+            swordParent.Attack();
+        if(katanaParent.gameObject.activeInHierarchy)
+            katanaParent.Attack();
     }
 
     public void PerformDash()
@@ -45,9 +48,8 @@ public class Agent : MonoBehaviour
 
     private void Update()
     {
-        //pointerInput = GetPointerInput();
-        //movementInput = movement.action.ReadValue<Vector2>().normalized;
         agentMover.MovementInput = movementInput;
+        swordParent.PointerPosition = pointerInput;
         katanaParent.PointerPosition = pointerInput;
 
         AnimateCharacter();
@@ -56,6 +58,7 @@ public class Agent : MonoBehaviour
     private void Awake()
     {
         agentAnimations = GetComponentInChildren<AgentAnimations>();
+        swordParent = GetComponentInChildren<SwordParent>();
         katanaParent = GetComponentInChildren<KatanaParent>();
         agentMover = GetComponent<AgentMover>();
         parry = GetComponent<Parry>();

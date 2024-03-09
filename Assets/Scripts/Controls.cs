@@ -71,6 +71,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": ""Press"",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""WeaponSwitching"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""4c710fc7-4ba0-476e-96d6-504170d98398"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -172,6 +181,17 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""Parry"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f6c16ee0-85a1-45f4-b08b-0de807bd4301"",
+                    ""path"": ""<Mouse>/scroll/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""WeaponSwitching"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -213,6 +233,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_PlayerInput_Attack = m_PlayerInput.FindAction("Attack", throwIfNotFound: true);
         m_PlayerInput_Dash = m_PlayerInput.FindAction("Dash", throwIfNotFound: true);
         m_PlayerInput_Parry = m_PlayerInput.FindAction("Parry", throwIfNotFound: true);
+        m_PlayerInput_WeaponSwitching = m_PlayerInput.FindAction("WeaponSwitching", throwIfNotFound: true);
         // PauseMenu
         m_PauseMenu = asset.FindActionMap("PauseMenu", throwIfNotFound: true);
         m_PauseMenu_Newaction = m_PauseMenu.FindAction("New action", throwIfNotFound: true);
@@ -282,6 +303,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerInput_Attack;
     private readonly InputAction m_PlayerInput_Dash;
     private readonly InputAction m_PlayerInput_Parry;
+    private readonly InputAction m_PlayerInput_WeaponSwitching;
     public struct PlayerInputActions
     {
         private @Controls m_Wrapper;
@@ -291,6 +313,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @Attack => m_Wrapper.m_PlayerInput_Attack;
         public InputAction @Dash => m_Wrapper.m_PlayerInput_Dash;
         public InputAction @Parry => m_Wrapper.m_PlayerInput_Parry;
+        public InputAction @WeaponSwitching => m_Wrapper.m_PlayerInput_WeaponSwitching;
         public InputActionMap Get() { return m_Wrapper.m_PlayerInput; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -315,6 +338,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Parry.started += instance.OnParry;
             @Parry.performed += instance.OnParry;
             @Parry.canceled += instance.OnParry;
+            @WeaponSwitching.started += instance.OnWeaponSwitching;
+            @WeaponSwitching.performed += instance.OnWeaponSwitching;
+            @WeaponSwitching.canceled += instance.OnWeaponSwitching;
         }
 
         private void UnregisterCallbacks(IPlayerInputActions instance)
@@ -334,6 +360,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Parry.started -= instance.OnParry;
             @Parry.performed -= instance.OnParry;
             @Parry.canceled -= instance.OnParry;
+            @WeaponSwitching.started -= instance.OnWeaponSwitching;
+            @WeaponSwitching.performed -= instance.OnWeaponSwitching;
+            @WeaponSwitching.canceled -= instance.OnWeaponSwitching;
         }
 
         public void RemoveCallbacks(IPlayerInputActions instance)
@@ -404,6 +433,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnAttack(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
         void OnParry(InputAction.CallbackContext context);
+        void OnWeaponSwitching(InputAction.CallbackContext context);
     }
     public interface IPauseMenuActions
     {
