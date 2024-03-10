@@ -1469,7 +1469,7 @@ SpriteRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 1
   m_Sprite: {fileID: 576718856, guid: 4c7d3a90851fd4643882d8240784c4ba, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1558,8 +1558,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 10
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_LinearDrag: 5
+  m_AngularDrag: 5
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -1626,7 +1626,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb2d: {fileID: 286957855868106648}
-  strength: 1000
   delay: 0.15
   OnBegin:
     m_PersistentCalls:
@@ -1722,6 +1721,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   isDead: 0
+  sprite: {fileID: 84297907513114573}
 --- !u!114 &8499129400945374001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1743,12 +1743,13 @@ MonoBehaviour:
   dashCost: 150
   parry: {fileID: 8930578476364145075}
   cam: {fileID: 0}
-  zoom: 0
+  zoom: 6
   minZoom: 1
   maxZoom: 20
-  velocity: 0
-  smoothTime: 1
+  velocity: 0.25
+  smoothTime: 0.25
   freeze: 0
+  isStunned: 0
   OnStaminaWithReference:
     m_PersistentCalls:
       m_Calls: []
@@ -1792,7 +1793,7 @@ MonoBehaviour:
   detectionDelay: 0.05
   aiUpdateDelay: 0.06
   attackDelay: 0.5
-  attackDistance: 0.65
+  attackDistance: 0.85
   OnAttackPressed:
     m_PersistentCalls:
       m_Calls:
@@ -1840,6 +1841,8 @@ MonoBehaviour:
         m_CallState: 2
   movementInput: {x: 0, y: 0}
   movementDirectionSolver: {fileID: 7231691416877205832}
+  following: 0
+  isStunned: 0
 --- !u!114 &8930578476364145075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1928,12 +1931,14 @@ MonoBehaviour:
   agentMover: {fileID: 4690320701749086863}
   lungeDistance: 0.5
   lungeSpeed: 10
+  strength: 100
   canAttack: 0
   chainAttack: 0
   canLunge: 0
   attackState: 0
   damage: 50
   staminaDamage: 75
+  knockback: {fileID: 0}
 --- !u!1 &7713209116291838963
 GameObject:
   m_ObjectHideFlags: 0

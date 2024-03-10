@@ -9,10 +9,10 @@ public class Knockback : MonoBehaviour
     private Rigidbody2D rb2d;
 
     [SerializeField]
-    private float strength = 16, delay = 0.15f;    
+    private float delay = 0.15f;    
     public UnityEvent OnBegin, OnDone;
 
-    public void PlayFeedback(GameObject sender)
+    public void PlayFeedback( float strength, GameObject sender)
     {
         StopAllCoroutines();
         OnBegin?.Invoke();

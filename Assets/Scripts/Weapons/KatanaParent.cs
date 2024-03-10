@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.Events;
 using Unity.VisualScripting;
+using Random = UnityEngine.Random;
 
 public class KatanaParent : MonoBehaviour
 {
@@ -22,11 +23,12 @@ public class KatanaParent : MonoBehaviour
     public float radius;
     [SerializeField] private Parry parry;
     [SerializeField] private AgentMover agentMover;
-    [SerializeField] private float lungeDistance = 20f;
-    [SerializeField] private float lungeSpeed = 100f;
+    [SerializeField] private float lungeDistance = 20f, lungeSpeed = 100f, strength = 100f;
     
     public bool canAttack, chainAttack, canLunge;
     public int attackState = 0, damage = 50, staminaDamage = 75;
+
+    [SerializeField] private Knockback knockback;
 
 
     private void Update() {
@@ -93,10 +95,12 @@ public class KatanaParent : MonoBehaviour
                 if(attackState == 3)
                 {
                     lungeDistance = 1f;
+                    strength = 150f;
                 }
                 else
                 {
                     lungeDistance = 0.5f;
+                    strength = 100f;
                 }
                 if(canLunge)
                 {
@@ -104,7 +108,6 @@ public class KatanaParent : MonoBehaviour
                     //Debug.Log(direction);
                     agentMover.Lunge(direction, lungeDistance, lungeSpeed); // Lunge towards the pointer position
                 }
-
                 attackState++;
                 canAttack = false;
                 IsAttacking = true;
@@ -176,15 +179,19 @@ public class KatanaParent : MonoBehaviour
             Stamina stamina;
             if(health = collider.GetComponent<Health>())
             {
-                health.GetHit(damage, transform.parent.gameObject);
+                health.GetHit(Random.Range(20, 35), transform.parent.gameObject);
 
                 if(stamina = collider.GetComponent<Stamina>())
                 {
                         stamina.damageStamina(staminaDamage, transform.parent.gameObject);
                 }
-                    
+
+                if(knockback = collider.GetComponent<Knockback>())
+                {
+                    knockback.PlayFeedback(strength, gameObject); 
+                }
+                 
             }
         }
-        //FindAnyObjectByType<HitLag>().Stop(1f);
     }
 }

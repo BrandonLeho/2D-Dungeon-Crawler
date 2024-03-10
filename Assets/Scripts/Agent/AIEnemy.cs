@@ -30,7 +30,7 @@ public class AIEnemy : MonoBehaviour
     [SerializeField]
     private ContextSolver movementDirectionSolver;
 
-    bool following = false;
+    public bool following = false, isStunned;
 
     private void Start()
     {
@@ -46,8 +46,10 @@ public class AIEnemy : MonoBehaviour
         }
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
+        if(isStunned)
+            return;
         //Enemy AI movement based on Target availability
         if (aiData.currentTarget != null)
         {
@@ -64,8 +66,8 @@ public class AIEnemy : MonoBehaviour
             //Target acquisition logic
             aiData.currentTarget = aiData.targets[0];
         }
-        //Moving the Agent
-        OnMovementInput?.Invoke(movementInput);
+        if(!isStunned)
+            OnMovementInput?.Invoke(movementInput); //Moving the Agent
     }
 
     private IEnumerator ChaseAndAttack()
@@ -82,7 +84,7 @@ public class AIEnemy : MonoBehaviour
         {
             float distance = Vector2.Distance(aiData.currentTarget.position, transform.position);
 
-            if (distance < attackDistance)
+            if (distance < attackDistance && !isStunned)
             {
                 //Attack logic
                 movementInput = Vector2.zero;
@@ -100,5 +102,29 @@ public class AIEnemy : MonoBehaviour
 
         }
 
+    }
+
+    public void Stunned(bool isStunned)
+    {
+        this.isStunned = isStunned;
+        if(isStunned)
+        {
+            StopCoroutine(ChaseAndAttack());
+            StartCoroutine(WaitForKnockback());
+            movementInput = Vector2.zero;
+            gameObject.GetComponent<Rigidbody2D>().mass = 100;
+            
+        }
+        
+    }
+
+    IEnumerator WaitForKnockback()
+    {
+        float time = 0;
+        while(time < 0.5f)
+        {
+            time += Time.deltaTime;
+            yield return null;
+        }
     }
 }

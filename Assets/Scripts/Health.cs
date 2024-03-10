@@ -23,6 +23,15 @@ public class Health : MonoBehaviour
     [SerializeField]
     private bool isDead = false;
 
+    private Color spriteColor;
+    [SerializeField] private SpriteRenderer sprite;
+
+    Stamina stamina;
+
+    private void Start()
+    {
+        spriteColor = sprite.color;
+    }
     public void InitializeHealth(int healthValue)
     {
         currentHealth = healthValue;
@@ -48,7 +57,12 @@ public class Health : MonoBehaviour
             amount /= 2;
         }
         
+        if(gameObject.GetComponent<Stamina>().GetCurrentStamina() <= 0)
+            amount *= 2;
+            
         currentHealth -= amount;
+
+        StartCoroutine(Flash());
 
         Vector3 randomPopup = new Vector3
         (character.transform.position.x + Random.Range(-0.75f, 0.75f), 
@@ -65,6 +79,26 @@ public class Health : MonoBehaviour
             OnDeathWithReference?.Invoke(sender);
             isDead = true;
             Destroy(gameObject);
+        }
+    }
+
+    IEnumerator Flash()
+    {
+        for (int n = 0; n < 2; n++)
+        {
+            SetSpriteColor(Color.red);
+            yield return new WaitForSeconds(0.1f);
+            SetSpriteColor(spriteColor);
+            yield return new WaitForSeconds(0.1f);
+        }
+    }
+
+    private void SetSpriteColor(Color color)
+    {
+        SpriteRenderer[] spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
+        for (int n = 0; n < spriteRenderers.Length; n++)
+        {
+            spriteRenderers[n].color = color;
         }
     }
 

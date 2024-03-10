@@ -30,8 +30,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 702134108847828367}
   - {fileID: 7660544375433541448}
+  - {fileID: 702134108847828367}
   m_Father: {fileID: 237784385855483673}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7126419126245903509
@@ -318,8 +318,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 10
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_LinearDrag: 5
+  m_AngularDrag: 5
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -386,7 +386,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb2d: {fileID: 3883968767663289639}
-  strength: 30
   delay: 0.15
   OnBegin:
     m_PersistentCalls:
@@ -439,12 +438,13 @@ MonoBehaviour:
   dashCost: 15
   parry: {fileID: 0}
   cam: {fileID: 0}
-  zoom: 0
+  zoom: 6
   minZoom: 1
   maxZoom: 20
-  velocity: 0
-  smoothTime: 1
+  velocity: 0.25
+  smoothTime: 0.25
   freeze: 0
+  isStunned: 0
   OnStaminaWithReference:
     m_PersistentCalls:
       m_Calls: []
@@ -491,6 +491,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   isDead: 0
+  sprite: {fileID: 7392603489346231293}
 --- !u!114 &5825642249079211311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -919,12 +920,14 @@ MonoBehaviour:
   agentMover: {fileID: 2258279374989249880}
   lungeDistance: 0.5
   lungeSpeed: 10
+  strength: 100
   canAttack: 0
   chainAttack: 0
   canLunge: 0
   attackState: 0
   damage: 50
   staminaDamage: 75
+  knockback: {fileID: 0}
 --- !u!1 &7992969824387617011
 GameObject:
   m_ObjectHideFlags: 0
