@@ -61,3 +61,24 @@ Combat Update 1!!!
 ![CombatDemo-ezgif com-video-to-gif-converter](https://github.com/BrandonLeho/2D-Dungeon-Crawler/assets/89223038/7df759ee-03dd-4f42-85bd-f6c8f6026f99)
 
 The character teleportation that looks like they are snapping around every now and then is the dash ability. It has no animation yet.
+
+_________________________________________________________________________
+(March 10, 2024)
+
+Another Combat Update!1!!!1!
+
+Changes Since Last Update:
+
+-Improved Enemy AI (Now uses context steering)
+
+-Added Health Bar, Stamina Bar, and Mana Bar
+
+-Added Parry and Block Mechanic (Parry last for a short time (0.25s). Parry negates all incoming damage and depletes enemy stamina. Block follows right after a parry and can be held indefinately, but will only halve the damage taken and it will deplete the player's stamina upon being hit)
+
+-Added Hit Pause (Screen pauses for a split second when landing a heavy blow/stance break)
+
+-Added Weapon Switch (Only weapons available rn are sword and katana)
+
+-Added Stance Break (When player's or enemy's stamina reaches below zero, they will be forced into a stunned state where they cannot move. While in this state, they take double the damage)
+
+![2024-03-1001-40-39-ezgif com-video-to-gif-converter](https://github.com/BrandonLeho/2D-Dungeon-Crawler/assets/89223038/d8a978e2-7d8b-45b4-a4ac-414693b4ad49)
