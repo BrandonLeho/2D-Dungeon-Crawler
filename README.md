@@ -71,9 +71,9 @@ Changes Since Last Update:
 
 -Improved Enemy AI (Now uses context steering)
 
--Added Health Bar, Stamina Bar, and Mana Bar (When hit, health and stamina will both deplete. Health cannot regen, Stamina regens over time, Mana regens when landing hits with melee weapons)
+-Added Health Bar, Stamina Bar, and Mana Bar (When hit, health and stamina will both deplete. Health cannot regen naturally, Stamina regens over time, Mana regens when landing hits with melee weapons)
 
--Added Parry and Block Mechanic (Parry last for a short time (0.25s). Parry negates all incoming damage and depletes enemy stamina. Block follows right after a parry and can be held indefinately, but will only halve the damage taken for both health and stamina)
+-Added Parry and Block Mechanic (Parry last for a short time (0.25s). Parry negates all incoming damage and depletes enemy stamina. Block follows right after a parry and can be held indefinitely, but will only halve the damage taken for both health and stamina)
 
 -Added Hit Pause (Screen pauses for a split second when landing a heavy blow/stance break)
 
