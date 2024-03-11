@@ -23,14 +23,13 @@ public class Health : MonoBehaviour
     [SerializeField]
     private bool isDead = false;
 
-    private Color spriteColor;
+    private Color spriteColor, barColor;
     [SerializeField] private SpriteRenderer sprite;
-
-    Stamina stamina;
 
     private void Start()
     {
         spriteColor = sprite.color;
+        barColor = healthBar.GetComponentsInChildren<Image>()[3].color;
     }
     public void InitializeHealth(int healthValue)
     {
@@ -87,8 +86,15 @@ public class Health : MonoBehaviour
         for (int n = 0; n < 2; n++)
         {
             SetSpriteColor(Color.red);
+            if(n == 0)
+                SetBarColor(Color.white);
+
             yield return new WaitForSeconds(0.1f);
+
             SetSpriteColor(spriteColor);
+            if(n == 0)
+                SetBarColor(barColor);
+                
             yield return new WaitForSeconds(0.1f);
         }
     }
@@ -100,6 +106,11 @@ public class Health : MonoBehaviour
         {
             spriteRenderers[n].color = color;
         }
+    }
+
+    private void SetBarColor(Color color)
+    {
+        healthBar.GetComponentsInChildren<Image>()[3].color = color;
     }
 
     private void Update()

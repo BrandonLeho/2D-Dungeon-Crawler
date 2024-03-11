@@ -432,13 +432,15 @@ MonoBehaviour:
   staminaBar: {fileID: 0}
   staminaBarFalloff: {fileID: 0}
   lerpSpeed: 0.05
-  damagePopup: {fileID: 0}
+  stancePopup: {fileID: 0}
   currentStamina: 100
   maxStamina: 100
   dashCost: 15
   parry: {fileID: 0}
   cam: {fileID: 0}
+  finalZoom: 0
   zoom: 6
+  targetZoom: 3
   minZoom: 1
   maxZoom: 20
   velocity: 0.25
@@ -666,7 +668,7 @@ MonoBehaviour:
   agentMover: {fileID: 2258279374989249880}
   lungeDistance: 1
   lungeSpeed: 15
-  canAttack: 1
+  canAttack: 0
   chainAttack: 0
   canLunge: 0
   attackState: 0

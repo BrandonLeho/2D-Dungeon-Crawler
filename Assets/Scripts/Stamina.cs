@@ -13,19 +13,15 @@ public class Stamina : MonoBehaviour
     public Slider staminaBarFalloff;
     public float lerpSpeed = 0.05f;
     public GameObject stancePopup;
-    private AIEnemy aienemy;
-
-    [SerializeField]
-    private int currentStamina, maxStamina;
-    [SerializeField]
-    public int dashCost;
+    [SerializeField]private int currentStamina, maxStamina;
+    [SerializeField]public int dashCost;
     [SerializeField] private Parry parry;
     [SerializeField] private Camera cam;
-    [SerializeField] public float finalZoom, zoom, targetZoom = 5, minZoom = 1f, maxZoom = 20f, velocity = 0.25f, smoothTime = 0.25f;
+    [SerializeField] public float finalZoom, zoom, targetZoom = 3, minZoom = 1f, maxZoom = 20f, velocity = 0.25f, smoothTime = 0.25f;
     public bool freeze, isStunned;
     private Coroutine regen;
-
     public UnityEvent<GameObject> OnStaminaWithReference, OnRecoverWithReference;
+    Animator animator;
 
     
 
@@ -83,7 +79,7 @@ public class Stamina : MonoBehaviour
 
         if(currentStamina <= 0)
         {
-            gameObject.GetComponent<Knockback>().PlayFeedback(300, sender); 
+            gameObject.GetComponent<Knockback>().PlayFeedback(200, sender); 
             if(gameObject.layer == enemy)
             {
                 isStunned = true;
@@ -100,9 +96,6 @@ public class Stamina : MonoBehaviour
             }
             freeze = false;
             zoom = finalZoom;
-
-            GameObject StanceTextInstance = Instantiate(stancePopup, gameObject.transform.position, Quaternion.identity);
-            StanceTextInstance.transform.GetChild(0).GetComponent<TextMeshPro>().SetText("Stance Break");
 
             StartCoroutine(Stunned());
             return;
@@ -141,11 +134,15 @@ public class Stamina : MonoBehaviour
     private IEnumerator Stunned()
     {
         StopCoroutine(regen);
+        yield return new WaitForSeconds(0.25f);
+        GameObject StanceTextInstance = Instantiate(stancePopup, gameObject.transform.position, Quaternion.identity);
+        StanceTextInstance.transform.GetChild(0).GetComponent<TextMeshPro>().SetText("Stance Break");
         yield return new WaitForSeconds(3);
         isStunned = false;
         regen = StartCoroutine(RegenerateStamina());
         currentStamina += (int)(maxStamina / 1.33);
-        gameObject.GetComponent<AIEnemy>().Stunned(isStunned);
+        if(gameObject.layer == LayerMask.NameToLayer("Enemy"))
+            gameObject.GetComponent<AIEnemy>().Stunned(isStunned);
     }
 
     private void Update()

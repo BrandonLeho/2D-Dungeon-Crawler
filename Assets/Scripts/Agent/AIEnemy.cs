@@ -50,6 +50,7 @@ public class AIEnemy : MonoBehaviour
     {
         if(isStunned)
             return;
+        
         //Enemy AI movement based on Target availability
         if (aiData.currentTarget != null)
         {
@@ -66,8 +67,7 @@ public class AIEnemy : MonoBehaviour
             //Target acquisition logic
             aiData.currentTarget = aiData.targets[0];
         }
-        if(!isStunned)
-            OnMovementInput?.Invoke(movementInput); //Moving the Agent
+        OnMovementInput?.Invoke(movementInput); //Moving the Agent
     }
 
     private IEnumerator ChaseAndAttack()
@@ -103,17 +103,19 @@ public class AIEnemy : MonoBehaviour
         }
 
     }
-
+//movementInput = Vector2.zero;
     public void Stunned(bool isStunned)
     {
         this.isStunned = isStunned;
         if(isStunned)
         {
-            StopCoroutine(ChaseAndAttack());
-            StartCoroutine(WaitForKnockback());
-            movementInput = Vector2.zero;
-            gameObject.GetComponent<Rigidbody2D>().mass = 100;
             
+            StartCoroutine(WaitForKnockback());
+        }
+        else
+        {
+            gameObject.GetComponent<Rigidbody2D>().mass = 10;
+            gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
         }
         
     }
@@ -121,10 +123,13 @@ public class AIEnemy : MonoBehaviour
     IEnumerator WaitForKnockback()
     {
         float time = 0;
-        while(time < 0.5f)
+        while(time < 0.25f)
         {
+            StopCoroutine(ChaseAndAttack());
             time += Time.deltaTime;
             yield return null;
         }
+        gameObject.GetComponent<Rigidbody2D>().mass = 100;
+        gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll; 
     }
 }

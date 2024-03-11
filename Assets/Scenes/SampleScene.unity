@@ -4384,7 +4384,7 @@ PrefabInstance:
       objectReference: {fileID: 687350352}
     - target: {fileID: 8499129400945374001, guid: 38cde4f7598c80f43881d57b230451ac, type: 3}
       propertyPath: targetZoom
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8499129400945374001, guid: 38cde4f7598c80f43881d57b230451ac, type: 3}
       propertyPath: damagePopup
@@ -43163,6 +43163,10 @@ PrefabInstance:
       propertyPath: parry
       value: 
       objectReference: {fileID: 1470887300}
+    - target: {fileID: 2798669850135934481, guid: 4d5b11073d8fb9641bd6fd9c736832ee, type: 3}
+      propertyPath: canAttack
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3378358997364795026, guid: 4d5b11073d8fb9641bd6fd9c736832ee, type: 3}
       propertyPath: parry
       value: 
