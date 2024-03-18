@@ -58,7 +58,7 @@ MonoBehaviour:
   socketGroup_obsolete: -1
   doorPrefabs_obsolete: []
   blockerPrefabs_obsolete: []
-  socket: {fileID: 3658659887419140509, guid: 8db4b694037396a42b4c4b80bd21b63f, type: 2}
+  socket: {fileID: -3078376168931966861, guid: 8db4b694037396a42b4c4b80bd21b63f, type: 2}
   doorPrefabInstance: {fileID: 0}
   doorComponent: {fileID: 0}
   tile: {fileID: 0}
@@ -151,10 +151,10 @@ Tilemap:
   m_AnimatedTiles: {}
   m_TileAssetArray:
   - m_RefCount: 4
-    m_Data: {fileID: 11400000, guid: 4ca55881ba0901544934d33a5252ef98, type: 2}
+    m_Data: {fileID: 11400000, guid: a8a870388a871904ab03ae7e000f5cc0, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 4
-    m_Data: {fileID: -6941422852762540485, guid: a0d3fbbc155eb404a87f827b40a48dfe, type: 3}
+    m_Data: {fileID: 215314868, guid: 3a5aa85f0adb4e34eae68e8281aea45e, type: 3}
   m_TileMatrixArray:
   - m_RefCount: 4
     m_Data:
@@ -221,7 +221,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using Cinemachine;
 
 public class Stamina : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class Stamina : MonoBehaviour
     [SerializeField]private int currentStamina, maxStamina;
     [SerializeField]public int dashCost;
     [SerializeField] private Parry parry;
+    [SerializeField] private CinemachineVirtualCamera vcam;
     [SerializeField] private Camera cam;
     [SerializeField] public float finalZoom, zoom, targetZoom = 3, minZoom = 1f, maxZoom = 20f, velocity = 0.25f, smoothTime = 0.25f;
     public bool freeze, isStunned;
@@ -91,7 +93,8 @@ public class Stamina : MonoBehaviour
 
             while(timer >= 0)
             {
-                cam.orthographicSize = Mathf.SmoothDamp(cam.orthographicSize, targetZoom, ref velocity, smoothTime);
+                vcam.m_Lens.FieldOfView = zoom;
+                //cam.orthographicSize = Mathf.SmoothDamp(cam.orthographicSize, targetZoom, ref velocity, smoothTime);
                 timer -= Time.unscaledDeltaTime;
             }
             freeze = false;
@@ -147,7 +150,8 @@ public class Stamina : MonoBehaviour
 
     private void Update()
     {
-        cam.orthographicSize = Mathf.SmoothDamp(cam.orthographicSize, zoom, ref velocity, smoothTime);
+        vcam.m_Lens.FieldOfView = zoom;
+        //cam.orthographicSize = Mathf.SmoothDamp(cam.orthographicSize, zoom, ref velocity, smoothTime);
 
         if(staminaBar.value != currentStamina)
         {
