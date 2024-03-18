@@ -100,3 +100,4 @@ Changes Since Last Update:
 
 -Added some sound fx (rn only footsteps WIP)
 
+![2024-03-1723-31-08-ezgif com-optimize](https://github.com/BrandonLeho/2D-Dungeon-Crawler/assets/89223038/addf894b-0b94-4596-b4c0-cd51c5420d37)
