@@ -82,24 +82,3 @@ Changes Since Last Update:
 -Added Stance Break (When player's or enemy's stamina reaches below zero, they will be forced into a stunned state where they cannot move. While in this state, they take double the damage)
 
 ![2024-03-1001-40-39-ezgif com-video-to-gif-converter](https://github.com/BrandonLeho/2D-Dungeon-Crawler/assets/89223038/d8a978e2-7d8b-45b4-a4ac-414693b4ad49)
-
-_________________________________________________________________________
-(March 17, 2024)
-
-HORY SHI ENVIRONMENT UPDATE JUST DROPPED!!!!
-
-Changes Since Last Update:
-
--Updated to Universal Render Pipeline Graphics (basically means we have updated graphics and have the ability to make the game way more beautiful than before)
-
--Added a ton of new assets (tilesets, sound fx, sprites)
-
--Overhaul for dungeon tile set. Replaced old tile set with a new tile set that looks better for the envisioned theme of the game. All room layouts have been unchanged and are still temporary
-
--Added light sources that cast shadows for limited amount of objects (WIP)
-
--Added some sound fx (rn only footsteps WIP)
-
-![2024-03-1723-31-08-ezgif com-optimize](https://github.com/BrandonLeho/2D-Dungeon-Crawler/assets/89223038/addf894b-0b94-4596-b4c0-cd51c5420d37)
-
-The compression kinda ruined the lighting for the torches, but it looks better in-game, trust
