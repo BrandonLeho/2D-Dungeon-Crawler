@@ -148,6 +148,7 @@ GameObject:
   - component: {fileID: 4178571252915469800}
   - component: {fileID: 163156455812419646}
   - component: {fileID: 5480609926968143332}
+  - component: {fileID: 8696884067790680219}
   m_Layer: 10
   m_Name: Katana
   m_TagString: Player
@@ -191,7 +192,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -298,6 +299,44 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &8696884067790680219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 780382997100407590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 000000002b5215a89f7f2fc4055fe7f039363858
+  m_ShapePath:
+  - {x: -0.03789816, y: 0.02777597, z: 0}
+  - {x: -0.01289391, y: 0.047981124, z: 0}
+  - {x: -0.013886637, y: 0.11670409, z: 0}
+  - {x: -0.021932146, y: 0.16410908, z: 0}
+  - {x: -0.0176259, y: 0.22158344, z: 0}
+  - {x: 0.018858667, y: 0.16849878, z: 0}
+  - {x: 0.018280096, y: 0.04866898, z: 0}
+  - {x: 0.03872814, y: 0.02697048, z: 0}
+  - {x: 0.015891107, y: 0.015973357, z: 0}
+  - {x: 0.01573032, y: -0.026688224, z: 0}
+  - {x: -0.016184954, y: -0.028160982, z: 0}
+  - {x: -0.019532338, y: 0.015540683, z: 0}
+  m_ShapePathHash: -656085751
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -189888
+  m_LocalBounds:
+    m_Center: {x: 0.0004149899, y: 0.096711226, z: 0}
+    m_Extent: {x: 0.03831315, y: 0.12487221, z: 0}
 --- !u!1 &1015056199647657296
 GameObject:
   m_ObjectHideFlags: 0
@@ -1254,6 +1293,7 @@ GameObject:
   - component: {fileID: 8051346603166353069}
   - component: {fileID: 290988511495697390}
   - component: {fileID: 7156699097200390912}
+  - component: {fileID: 6905629684996826730}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1345,6 +1385,14 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!222 &6905629684996826730
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6239094760207518546}
+  m_CullTransparentMesh: 1
 --- !u!1 &6429317069238257152
 GameObject:
   m_ObjectHideFlags: 0
@@ -1847,6 +1895,7 @@ MonoBehaviour:
         m_CallState: 2
   movementInput: {x: 0, y: 0}
   movementDirectionSolver: {fileID: 7231691416877205832}
+  bars: {fileID: 6239094760207518546}
   following: 0
   isStunned: 0
 --- !u!114 &8930578476364145075
@@ -2031,7 +2080,7 @@ MonoBehaviour:
   - {x: 0.21407127, y: -0.71981144, z: 0}
   m_ShapePathHash: -1537891931
   m_Mesh: {fileID: 0}
-  m_InstanceId: -65080
+  m_InstanceId: 59060
   m_LocalBounds:
     m_Center: {x: -0.005508423, y: -0.06793177, z: 0}
     m_Extent: {x: 0.4928112, y: 0.65187967, z: 0}

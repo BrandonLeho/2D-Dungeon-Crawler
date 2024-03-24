@@ -17,18 +17,33 @@ public class Agent : MonoBehaviour
 
     private SwordParent swordParent;
     private KatanaParent katanaParent;
+    private AK47Parent aK47Parent;
 
     public void PerformAttack()
     {
-        if(katanaParent == null)
-        {
-            Debug.LogError("Weapon parent is null", gameObject);
-            return;
-        }
         if(swordParent.gameObject.activeInHierarchy)
             swordParent.Attack();
         if(katanaParent.gameObject.activeInHierarchy)
             katanaParent.Attack();
+        
+    }
+
+    public void PerformFire()
+    {
+        if(aK47Parent.gameObject.activeInHierarchy)
+        {
+            aK47Parent.Shoot();
+            
+        }
+    }
+
+    public void PerformedFire()
+    {
+        if(aK47Parent.gameObject.activeInHierarchy)
+        {
+            aK47Parent.StopShoot();
+        }
+        
     }
 
     public void PerformDash()
@@ -38,7 +53,11 @@ public class Agent : MonoBehaviour
 
     public void PerformParry()
     {
-        parry.StartBlockAndParry();
+        if(!aK47Parent.gameObject.activeInHierarchy)
+        {
+            parry.StartBlockAndParry();
+        }
+        
     }
 
     public void PerformedParry()
@@ -51,6 +70,7 @@ public class Agent : MonoBehaviour
         agentMover.MovementInput = movementInput;
         swordParent.PointerPosition = pointerInput;
         katanaParent.PointerPosition = pointerInput;
+        aK47Parent.PointerPosition = pointerInput;
 
         AnimateCharacter();
     }
@@ -60,6 +80,7 @@ public class Agent : MonoBehaviour
         agentAnimations = GetComponentInChildren<AgentAnimations>();
         swordParent = GetComponentInChildren<SwordParent>();
         katanaParent = GetComponentInChildren<KatanaParent>();
+        aK47Parent = GetComponentInChildren<AK47Parent>();
         agentMover = GetComponent<AgentMover>();
         parry = GetComponent<Parry>();
     }

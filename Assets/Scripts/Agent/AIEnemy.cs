@@ -30,11 +30,15 @@ public class AIEnemy : MonoBehaviour
     [SerializeField]
     private ContextSolver movementDirectionSolver;
 
+    [SerializeField]
+    private GameObject bars;
+
     public bool following = false, isStunned;
 
     private void Start()
     {
         //Detecting Player and Obstacles around
+        bars.SetActive(false);
         InvokeRepeating("PerformDetection", 0, detectionDelay);
     }
 
@@ -78,10 +82,12 @@ public class AIEnemy : MonoBehaviour
             //Debug.Log("Stopping");
             movementInput = Vector2.zero;
             following = false;
+            bars.SetActive(false);
             yield break;
         }
         else
         {
+            bars.SetActive(true);
             float distance = Vector2.Distance(aiData.currentTarget.position, transform.position);
 
             if (distance < attackDistance && !isStunned)
