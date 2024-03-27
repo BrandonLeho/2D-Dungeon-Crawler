@@ -12,14 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 942a012a96201324596af325e7723512, type: 3}
   m_Name: RegularBullet
   m_EditorClassIdentifier: 
-  <bulletPrefab>k__BackingField: {fileID: 0}
-  <BulletSpeed>k__BackingField: 1
-  <Damage>k__BackingField: 1
+  <bulletPrefab>k__BackingField: {fileID: 2217666590910319113, guid: cceefcdcebc84bd4b9c680fa53a21fb2, type: 3}
+  <BulletSpeed>k__BackingField: 75
+  <Damage>k__BackingField: 100
   <Friction>k__BackingField: 0.1
   <Ricochet>k__BackingField: 0
   <Pierce>k__BackingField: 0
-  <RayCasy>k__BackingField: 0
-  <ImpactObsticlePrefab>k__BackingField: {fileID: 0}
-  <ImpactEnemyPrefab>k__BackingField: {fileID: 0}
-  <KnockbackPower>k__BackingField: 0
+  <RayCast>k__BackingField: 0
+  <ImpactObsticlePrefab>k__BackingField: {fileID: 4041243997726790478, guid: 7354b30998fdc0c4d8f9dff5f2d7d122, type: 3}
+  <ImpactEnemyPrefab>k__BackingField: {fileID: 2174332403008852841, guid: 6619bd51d44911147894e5aa1f8c67fa, type: 3}
+  <KnockbackPower>k__BackingField: 6
   <KnockbackDelay>k__BackingField: 0
+  <BulletLayerMask>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 1216

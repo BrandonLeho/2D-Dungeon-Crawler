@@ -21,7 +21,7 @@ TagManager:
   - BattleZone
   - Interactables
   - Enemy
-  - 
+  - Bullets
   - 
   - 
   - 
@@ -60,4 +60,7 @@ TagManager:
     locked: 0
   - name: UI
     uniqueID: 1480078905
+    locked: 0
+  - name: Bullet
+    uniqueID: 4063065543
     locked: 0

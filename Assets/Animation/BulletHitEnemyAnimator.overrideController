@@ -1,0 +1,13 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: BulletHitEnemyAnimator
+  m_Controller: {fileID: 9100000, guid: 7afd53236f2f756448a8be4b71774783, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 910f1467726481544989e8a31159262a, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 973d3feacfa70844a88194d2086d351b, type: 2}

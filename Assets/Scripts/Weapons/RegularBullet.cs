@@ -29,16 +29,33 @@ public class RegularBullet : Bullet
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        var hittable = collision.GetComponent<IHittable>();
+        hittable?.GetHit(BulletData.Damage, gameObject);
+
         if(collision.gameObject.layer == LayerMask.NameToLayer("SolidObjects"))
         {
-            HitObsticle();
+            HitObsticle(collision);
+        }
+        if(collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        {
+            HitEnemy(collision);
         }
         Destroy(gameObject);
     }
 
-    private void HitObsticle()
+    private void HitObsticle(Collider2D collision)
     {
-        Debug.Log("Hitting Obsticle");
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, 1, BulletData.BulletLayerMask);
+        if(hit.collider!= null)
+        {
+            Instantiate(BulletData.ImpactObsticlePrefab, hit.point, Quaternion.identity);
+        }
+    }
+
+    private void HitEnemy(Collider2D collision)
+    {
+        Vector2 randomOffset = Random.insideUnitCircle * 0.5f;
+        Instantiate(BulletData.ImpactEnemyPrefab, collision.transform.position + (Vector3)randomOffset, Quaternion.identity);
     }
 }
 
