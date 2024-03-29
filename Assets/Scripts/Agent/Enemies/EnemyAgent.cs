@@ -25,7 +25,11 @@ public class EnemyAgent : MonoBehaviour
             Debug.LogError("Weapon parent is null", gameObject);
             return;
         }
-        katanaParent.Attack();
+        else
+        {
+            katanaParent.Attack();
+        }
+        
     }
 
     public void PerformDash()

@@ -23,7 +23,7 @@ public class KatanaParent : MonoBehaviour
     public float radius;
     [SerializeField] private Parry parry;
     [SerializeField] private AgentMover agentMover;
-    [SerializeField] private float lungeDistance = 20f, lungeSpeed = 100f, knockbackStrength = 100f;
+    [SerializeField] private float lungeDistance = 20f, lungeSpeed = 100f, knockBackStrength = 100f;
     
     public bool canAttack, chainAttack, canLunge;
     public int attackState = 0, damage = 50, staminaDamage = 75;
@@ -95,12 +95,12 @@ public class KatanaParent : MonoBehaviour
                 if(attackState == 3)
                 {
                     lungeDistance = 1f;
-                    knockbackStrength = 150f;
+                    knockBackStrength = 150f;
                 }
                 else
                 {
                     lungeDistance = 0.5f;
-                    knockbackStrength = 100f;
+                    knockBackStrength = 100f;
                 }
                 if(canLunge)
                 {
@@ -143,11 +143,13 @@ public class KatanaParent : MonoBehaviour
         }
         else
         {
-            StartCoroutine(DelayAttack());
-            canAttack = true;
-            attackState = 0;
-            animator.SetInteger("AttackState", attackState);
-            
+            if(gameObject != null)
+            {
+                StartCoroutine(DelayAttack());
+                canAttack = true;
+                attackState = 0;
+                animator.SetInteger("AttackState", attackState);
+            }
         }
     }
 
@@ -174,23 +176,15 @@ public class KatanaParent : MonoBehaviour
     {
         foreach (Collider2D collider in Physics2D.OverlapCircleAll(circleOrigin.position,radius))
         {
-            //Debug.Log(collider.name);
-            Health health;
-            Stamina stamina;
-            if(health = collider.GetComponent<Health>())
+            if(collider.name != transform.root.gameObject.name)
             {
-                health.GetHit(Random.Range(20, 35), transform.parent.gameObject, true);
-
-                if(stamina = collider.GetComponent<Stamina>())
-                {
-                        stamina.damageStamina(staminaDamage, transform.parent.gameObject);
-                }
+                var hittable = collider.GetComponent<IHittable>();
+                hittable?.GetHit(Random.Range(20, 35), staminaDamage, transform.root.gameObject);
 
                 if(knockback = collider.GetComponent<Knockback>())
                 {
-                    knockback.PlayFeedback(knockbackStrength, gameObject); 
+                    knockback.PlayFeedback(knockBackStrength, transform.root.gameObject); 
                 }
-                 
             }
         }
     }

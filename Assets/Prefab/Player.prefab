@@ -719,6 +719,7 @@ GameObject:
   - component: {fileID: 1625428452459604291}
   - component: {fileID: 3641984717916133424}
   - component: {fileID: 8057798552688525663}
+  - component: {fileID: 7879786976317406109}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -1052,7 +1053,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   isDead: 0
-  sprite: {fileID: 7392603489346231293}
 --- !u!114 &5825642249079211311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1373,6 +1373,38 @@ MonoBehaviour:
   m_LocalBounds:
     m_Center: {x: -0.014490902, y: -0.056125283, z: 0}
     m_Extent: {x: 0.4971575, y: 0.6518613, z: 0}
+--- !u!114 &7879786976317406109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5433083863269606360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45e1a89d710753d41a36bd47d6c84fa3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Health>k__BackingField: 1000
+  <Stamina>k__BackingField: 1000
+  <OnDie>k__BackingField:
+    m_PersistentCalls:
+      m_Calls: []
+  <OnGetHit>k__BackingField:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2998736780822765594}
+        m_TargetAssemblyTypeName: AgentSounds, Assembly-CSharp
+        m_MethodName: PlayHitSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5528991234656303919
 GameObject:
   m_ObjectHideFlags: 0
@@ -1510,6 +1542,7 @@ MonoBehaviour:
   agentMover: {fileID: 2258279374989249880}
   lungeDistance: 1
   lungeSpeed: 15
+  knockBackStrength: 100
   canAttack: 0
   chainAttack: 0
   canLunge: 0
@@ -1990,7 +2023,7 @@ MonoBehaviour:
   agentMover: {fileID: 2258279374989249880}
   lungeDistance: 0.5
   lungeSpeed: 10
-  knockbackStrength: 100
+  knockBackStrength: 100
   canAttack: 0
   chainAttack: 0
   canLunge: 0

@@ -5,38 +5,22 @@ using UnityEngine.Events;
 
 public class AIEnemy : MonoBehaviour
 {
-    [SerializeField]
-    private List<SteeringBehaviour> steeringBehaviours;
-
-    [SerializeField]
-    private List<Detector> detectors;
-
-    [SerializeField]
-    private AIData aiData;
-
-    [SerializeField]
-    private float detectionDelay = 0.05f, aiUpdateDelay = 0.06f, attackDelay = 1f;
-
-    [SerializeField]
-    private float attackDistance = 0.5f;
-
-    //Inputs sent from the Enemy AI to the Enemy controller
+    [SerializeField] private List<SteeringBehaviour> steeringBehaviours;
+    [SerializeField] private List<Detector> detectors;
+    [SerializeField] private AIData aiData;
+    [SerializeField] private float detectionDelay = 0.05f, aiUpdateDelay = 0.06f, attackDelay = 1f;
+    [SerializeField] private float attackDistance = 0.5f;
     public UnityEvent OnAttackPressed;
     public UnityEvent<Vector2> OnMovementInput, OnPointerInput;
-
-    [SerializeField]
-    private Vector2 movementInput;
-
-    [SerializeField]
-    private ContextSolver movementDirectionSolver;
-
-    [SerializeField]
-    private GameObject bars;
-
-    public bool following = false, isStunned;
+    [SerializeField] private Vector2 movementInput;
+    [SerializeField] private ContextSolver movementDirectionSolver;
+    [SerializeField] private GameObject bars;
+    Animator animator;
+    public bool following = false, isStunned, isHit = false;
 
     private void Start()
     {
+        animator = GetComponent<Animator>();
         //Detecting Player and Obstacles around
         bars.SetActive(false);
         InvokeRepeating("PerformDetection", 0, detectionDelay);
@@ -53,7 +37,11 @@ public class AIEnemy : MonoBehaviour
     private void FixedUpdate()
     {
         if(isStunned)
+        {
+            animator.SetBool("isMoving", false);
             return;
+        }
+            
         
         //Enemy AI movement based on Target availability
         if (aiData.currentTarget != null)
@@ -109,7 +97,7 @@ public class AIEnemy : MonoBehaviour
         }
 
     }
-//movementInput = Vector2.zero;
+
     public void Stunned(bool isStunned)
     {
         this.isStunned = isStunned;

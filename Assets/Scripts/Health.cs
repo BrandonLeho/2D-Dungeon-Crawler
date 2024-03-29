@@ -16,8 +16,6 @@ public class Health : MonoBehaviour
     [SerializeField]
     private int currentHealth, maxHealth;
 
-    [SerializeField] private Parry parry;
-
     public UnityEvent<GameObject> OnHitWithReference, OnDeathWithReference;    
 
     [SerializeField]
@@ -36,26 +34,12 @@ public class Health : MonoBehaviour
         isDead = false;
     }
 
-    public void GetHit(int amount, GameObject sender, bool isSender)
+    public void GetHit(int amount, GameObject sender)
     {
         if(isDead)
             return;
-        if(sender.layer == gameObject.layer && isSender)
+        if(sender.layer == gameObject.layer)
             return;
-
-        if(parry.GetParryState())
-        {
-            if(sender.GetComponent<Stamina>() != null)
-                sender.GetComponent<Stamina>().UseStamina(150);
-            return;
-        }
-        else if(parry.GetBlockState())
-        {
-            amount /= 2;
-        }
-        
-        if(gameObject.GetComponent<Stamina>().GetCurrentStamina() <= 0)
-            amount *= 2;
             
         currentHealth -= amount;
 
@@ -73,13 +57,7 @@ public class Health : MonoBehaviour
         {
             OnDeathWithReference?.Invoke(sender);
             isDead = true;
-            Destroy(gameObject);
         }
-    }
-
-    private void SetBarColor(Color color)
-    {
-        healthBar.GetComponentsInChildren<Image>()[3].color = color;
     }
 
     private void Update()

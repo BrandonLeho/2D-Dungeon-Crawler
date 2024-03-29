@@ -37,7 +37,7 @@ public class RegularBullet : Bullet
             return;
         isDead = true;
         var hittable = collision.GetComponent<IHittable>();
-        hittable?.GetHit(BulletData.Damage, gameObject);
+        hittable?.GetHit(BulletData.Damage, BulletData.StaminaDamage, gameObject);
 
         if(collision.gameObject.layer == LayerMask.NameToLayer("SolidObjects"))
         {
@@ -61,13 +61,12 @@ public class RegularBullet : Bullet
 
     private void HitEnemy(Collider2D collision)
     {
-        
+        Debug.Log(collision);
         var knockback = collision.GetComponent<Knockback>();
         if(knockback != null)
         {
             knockback.PlayFeedback(BulletData.KnockbackPower, transform.root.gameObject); 
         }
-        //knockback?.KnockBack(transform.right, BulletData.KnockbackPower, BulletData.KnockbackDelay);
         Vector2 randomOffset = Random.insideUnitCircle * 0.5f;
         Instantiate(BulletData.ImpactEnemyPrefab, collision.transform.position + (Vector3)randomOffset, Quaternion.identity);
     }

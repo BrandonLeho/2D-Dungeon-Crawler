@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5153032554085767693}
   - component: {fileID: 4661942620099624045}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: CollisionBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -410,7 +410,7 @@ MonoBehaviour:
   - {x: -0.019532338, y: 0.015540683, z: 0}
   m_ShapePathHash: -656085751
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1502
+  m_InstanceId: -1526
   m_LocalBounds:
     m_Center: {x: 0.0004149899, y: 0.096711226, z: 0}
     m_Extent: {x: 0.03831315, y: 0.12487221, z: 0}
@@ -1354,14 +1354,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ca1ff92d7eb58942812c59a701456bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetDetectionRange: 8
+  targetDetectionRange: 20
   obstaclesLayerMask:
     serializedVersion: 2
     m_Bits: 192
   playerLayerMask:
     serializedVersion: 2
     m_Bits: 64
-  showGizmos: 0
+  showGizmos: 1
 --- !u!1 &6206860127688408643
 GameObject:
   m_ObjectHideFlags: 0
@@ -2053,7 +2053,6 @@ MonoBehaviour:
   popupText: {fileID: 0}
   currentHealth: 1000
   maxHealth: 1000
-  parry: {fileID: 8930578476364145075}
   OnHitWithReference:
     m_PersistentCalls:
       m_Calls:
@@ -2073,7 +2072,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   isDead: 0
-  sprite: {fileID: 84297907513114573}
 --- !u!114 &8499129400945374001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2199,6 +2197,7 @@ MonoBehaviour:
   bars: {fileID: 6239094760207518546}
   following: 0
   isStunned: 0
+  isHit: 0
 --- !u!114 &8930578476364145075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2381,7 +2380,7 @@ MonoBehaviour:
   - {x: 0.21407127, y: -0.71981144, z: 0}
   m_ShapePathHash: -1537891931
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1482
+  m_InstanceId: -1506
   m_LocalBounds:
     m_Center: {x: -0.005508423, y: -0.06793177, z: 0}
     m_Extent: {x: 0.4928112, y: 0.65187967, z: 0}
@@ -2399,6 +2398,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <EnemyData>k__BackingField: {fileID: 11400000, guid: 67cad8f0be04c6d4286bc3a38487d351, type: 2}
   <Health>k__BackingField: 1000
+  <Stamina>k__BackingField: 1000
   <OnGetHit>k__BackingField:
     m_PersistentCalls:
       m_Calls:
@@ -2415,6 +2415,18 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 757814496258731363}
+        m_TargetAssemblyTypeName: FeedbackPlayer, Assembly-CSharp
+        m_MethodName: PlayFeedback
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6884024151763829153}
         m_TargetAssemblyTypeName: FeedbackPlayer, Assembly-CSharp
         m_MethodName: PlayFeedback
         m_Mode: 1
@@ -2457,6 +2469,43 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: FeedbackPlayer, Assembly-CSharp
         m_MethodName: PlayFeedback
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7572986137054320111}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8051346603166353069}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8450733718499999244}
+        m_TargetAssemblyTypeName: UnityEngine.Rendering.Universal.ShadowCaster2D,
+          Unity.RenderPipelines.Universal.Runtime
+        m_MethodName: set_castsShadows
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2520,7 +2569,7 @@ MonoBehaviour:
   agentMover: {fileID: 4690320701749086863}
   lungeDistance: 0.5
   lungeSpeed: 10
-  knockbackStrength: 100
+  knockBackStrength: 100
   canAttack: 0
   chainAttack: 0
   canLunge: 0

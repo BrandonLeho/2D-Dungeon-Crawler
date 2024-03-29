@@ -110,7 +110,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1480078905
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &8332218716830120224
@@ -133,7 +133,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Stance Break
+  m_text: BROKEN
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a1bd533c2a3269042a5148cfb142d9f5, type: 2}
   m_sharedMaterial: {fileID: 197170496456105380, guid: a1bd533c2a3269042a5148cfb142d9f5, type: 2}

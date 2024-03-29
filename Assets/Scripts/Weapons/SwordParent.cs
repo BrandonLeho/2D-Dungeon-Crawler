@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.Events;
 using Unity.VisualScripting;
+using Random = UnityEngine.Random;
 
 public class SwordParent : MonoBehaviour
 {
@@ -22,8 +23,9 @@ public class SwordParent : MonoBehaviour
     public float radius;
     [SerializeField] private Parry parry;
     [SerializeField] private AgentMover agentMover;
-    [SerializeField] private float lungeDistance = 20f;
-    [SerializeField] private float lungeSpeed = 100f;
+    [SerializeField] private float lungeDistance = 20f, lungeSpeed = 100f, knockBackStrength = 100f;
+
+    private Knockback knockback;
     
     public bool canAttack, chainAttack, canLunge;
     public int attackState = 0, damage = 50, staminaDamage = 75;
@@ -162,21 +164,17 @@ public class SwordParent : MonoBehaviour
     public void DetectColliders()
     {
         foreach (Collider2D collider in Physics2D.OverlapCircleAll(circleOrigin.position,radius))
-        {
-            //Debug.Log(collider.name);
-            Health health;
-            Stamina stamina;
-            if(health = collider.GetComponent<Health>())
+        {     
+            if(collider.name != transform.root.gameObject.name)
             {
-                health.GetHit(damage, transform.parent.gameObject, true);
+                var hittable = collider.GetComponent<IHittable>();
+                hittable?.GetHit(damage, staminaDamage, transform.root.gameObject);
 
-                if(stamina = collider.GetComponent<Stamina>())
+                if(knockback = collider.GetComponent<Knockback>())
                 {
-                        stamina.damageStamina(staminaDamage, transform.parent.gameObject);
+                    knockback.PlayFeedback(knockBackStrength, transform.root.gameObject); 
                 }
-                    
             }
         }
-        //FindAnyObjectByType<HitLag>().Stop(1f);
     }
 }

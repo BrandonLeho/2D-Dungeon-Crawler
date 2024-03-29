@@ -8,6 +8,7 @@ public class BulletDataSO : ScriptableObject
     [field: SerializeField] public GameObject bulletPrefab { get; set; }   
     [field: SerializeField] [field: Range(1, 1000)] public float BulletSpeed { get; internal set; } = 1;
     [field: SerializeField] [field: Range(1, 10000000)] public int Damage { get; set; } = 1;
+    [field: SerializeField] [field: Range(1, 10000000)] public int StaminaDamage { get; set; } = 1;
     [field: SerializeField] [field: Range(0f, 100f)]public float Friction { get; internal set; } = 0f;
     [field: SerializeField] public bool Ricochet { get; set; } = false;
     [field: SerializeField] public bool Pierce { get; set; } = false;

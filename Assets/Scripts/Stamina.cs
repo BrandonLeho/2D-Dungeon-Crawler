@@ -139,7 +139,7 @@ public class Stamina : MonoBehaviour
         StopCoroutine(regen);
         yield return new WaitForSeconds(0.25f);
         GameObject StanceTextInstance = Instantiate(stancePopup, gameObject.transform.position, Quaternion.identity);
-        StanceTextInstance.transform.GetChild(0).GetComponent<TextMeshPro>().SetText("Stance Break");
+        StanceTextInstance.transform.GetChild(0).GetComponent<TextMeshPro>().SetText("BROKEN");
         yield return new WaitForSeconds(3);
         isStunned = false;
         regen = StartCoroutine(RegenerateStamina());
