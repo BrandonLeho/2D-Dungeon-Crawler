@@ -69,9 +69,25 @@ PrefabInstance:
       value: BulletHitEnemyPrefab Variant
       objectReference: {fileID: 0}
     - target: {fileID: 4175946342941290561, guid: 7354b30998fdc0c4d8f9dff5f2d7d122, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4175946342941290561, guid: 7354b30998fdc0c4d8f9dff5f2d7d122, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4175946342941290561, guid: 7354b30998fdc0c4d8f9dff5f2d7d122, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4175946342941290561, guid: 7354b30998fdc0c4d8f9dff5f2d7d122, type: 3}
       propertyPath: m_SortingOrder
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 4175946342941290561, guid: 7354b30998fdc0c4d8f9dff5f2d7d122, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     m_RemovedComponents:
     - {fileID: 8923395205618304860, guid: 7354b30998fdc0c4d8f9dff5f2d7d122, type: 3}
     m_RemovedGameObjects: []

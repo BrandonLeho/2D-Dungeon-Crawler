@@ -11,30 +11,30 @@ public class Enemy : MonoBehaviour, IHittable
     [field: SerializeField] public UnityEvent OnGetHit { get; set; }
     [field: SerializeField] public UnityEvent OnDie { get; set; }
 
+    Health health;
     private void Start()
     {
         Health = EnemyData.MaxHealth;
+        health = gameObject.GetComponent<Health>();
+        health.InitializeHealth(Health);
     }
     public void GetHit(int damage, GameObject damageDealer)
     {
         Health -= damage;
         OnGetHit?.Invoke();
-        Health health;
         if(health = gameObject.GetComponent<Health>())
         {
-            health.GetHit(damage, gameObject);
+            health.GetHit(damage, gameObject, false);
         }
 
         if(Health <= 0)
         {
             OnDie?.Invoke();
-            StartCoroutine(WaitToDie());
         }
     }
 
-    IEnumerator WaitToDie()
+    public void Die()
     {
-        yield return new WaitForSeconds(.35f);
         Destroy(gameObject);
     }
 }

@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AgentMover : MonoBehaviour
@@ -24,6 +23,8 @@ public class AgentMover : MonoBehaviour
     private Vector2 direction;
 
     private Stamina stamina;
+
+    protected bool isKnockedBack = false;
 
     private void Awake()
     {
@@ -134,5 +135,35 @@ public class AgentMover : MonoBehaviour
         this.lungeDistance = lungeDistance;
         this.lungeSpeed = lungeSpeed;
         isLunging = true;
+    }
+
+    public void KnockBack(Vector2 direction, float power, float duration)
+    {
+        if(isKnockedBack == false)
+        {
+            isKnockedBack = true;
+            StartCoroutine(KnockBackCoroutine(direction, power, duration));
+        }
+    }
+
+    public void ResetKnockBack()
+    {
+        StopAllCoroutines();
+        StopCoroutine("KnockBackCoroutine");
+        ResetKnockBackParameters();
+    }
+
+    IEnumerator KnockBackCoroutine(Vector2 direction, float power, float duration)
+    {
+        rb2d.AddForce(direction.normalized * power, ForceMode2D.Impulse);
+        yield return new WaitForSeconds(duration);
+        ResetKnockBackParameters();
+    }
+
+    private void ResetKnockBackParameters()
+    {
+        currentSpeed = 0;
+        rb2d.velocity = Vector2.zero;
+        isKnockedBack = false;
     }
 }

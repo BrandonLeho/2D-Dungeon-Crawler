@@ -168,7 +168,7 @@ public class SwordParent : MonoBehaviour
             Stamina stamina;
             if(health = collider.GetComponent<Health>())
             {
-                health.GetHit(damage, transform.parent.gameObject);
+                health.GetHit(damage, transform.parent.gameObject, true);
 
                 if(stamina = collider.GetComponent<Stamina>())
                 {

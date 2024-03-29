@@ -23,12 +23,12 @@ public class KatanaParent : MonoBehaviour
     public float radius;
     [SerializeField] private Parry parry;
     [SerializeField] private AgentMover agentMover;
-    [SerializeField] private float lungeDistance = 20f, lungeSpeed = 100f, strength = 100f;
+    [SerializeField] private float lungeDistance = 20f, lungeSpeed = 100f, knockbackStrength = 100f;
     
     public bool canAttack, chainAttack, canLunge;
     public int attackState = 0, damage = 50, staminaDamage = 75;
 
-    [SerializeField] private Knockback knockback;
+    private Knockback knockback;
 
 
     private void Update() {
@@ -95,12 +95,12 @@ public class KatanaParent : MonoBehaviour
                 if(attackState == 3)
                 {
                     lungeDistance = 1f;
-                    strength = 150f;
+                    knockbackStrength = 150f;
                 }
                 else
                 {
                     lungeDistance = 0.5f;
-                    strength = 100f;
+                    knockbackStrength = 100f;
                 }
                 if(canLunge)
                 {
@@ -179,7 +179,7 @@ public class KatanaParent : MonoBehaviour
             Stamina stamina;
             if(health = collider.GetComponent<Health>())
             {
-                health.GetHit(Random.Range(20, 35), transform.parent.gameObject);
+                health.GetHit(Random.Range(20, 35), transform.parent.gameObject, true);
 
                 if(stamina = collider.GetComponent<Stamina>())
                 {
@@ -188,7 +188,7 @@ public class KatanaParent : MonoBehaviour
 
                 if(knockback = collider.GetComponent<Knockback>())
                 {
-                    knockback.PlayFeedback(strength, gameObject); 
+                    knockback.PlayFeedback(knockbackStrength, gameObject); 
                 }
                  
             }

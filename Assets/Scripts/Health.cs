@@ -23,12 +23,10 @@ public class Health : MonoBehaviour
     [SerializeField]
     private bool isDead = false;
 
-    private Color spriteColor, barColor;
-    [SerializeField] private SpriteRenderer sprite;
+    private Color barColor;
 
     private void Start()
     {
-        spriteColor = sprite.color;
         barColor = healthBar.GetComponentsInChildren<Image>()[3].color;
     }
     public void InitializeHealth(int healthValue)
@@ -38,11 +36,11 @@ public class Health : MonoBehaviour
         isDead = false;
     }
 
-    public void GetHit(int amount, GameObject sender)
+    public void GetHit(int amount, GameObject sender, bool isSender)
     {
         if(isDead)
             return;
-        if(sender.layer == gameObject.layer)
+        if(sender.layer == gameObject.layer && isSender)
             return;
 
         if(parry.GetParryState())
@@ -61,8 +59,6 @@ public class Health : MonoBehaviour
             
         currentHealth -= amount;
 
-        StartCoroutine(Flash());
-
         Vector3 randomPopup = new Vector3
         (character.transform.position.x + Random.Range(-0.75f, 0.75f), 
         character.transform.position.y + Random.Range(0.5f, 1.25f));
@@ -78,33 +74,6 @@ public class Health : MonoBehaviour
             OnDeathWithReference?.Invoke(sender);
             isDead = true;
             Destroy(gameObject);
-        }
-    }
-
-    IEnumerator Flash()
-    {
-        for (int n = 0; n < 2; n++)
-        {
-            SetSpriteColor(Color.red);
-            if(n == 0)
-                SetBarColor(Color.white);
-
-            yield return new WaitForSeconds(0.1f);
-
-            SetSpriteColor(spriteColor);
-            if(n == 0)
-                SetBarColor(barColor);
-                
-            yield return new WaitForSeconds(0.1f);
-        }
-    }
-
-    private void SetSpriteColor(Color color)
-    {
-        SpriteRenderer[] spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
-        for (int n = 0; n < spriteRenderers.Length; n++)
-        {
-            spriteRenderers[n].color = color;
         }
     }
 

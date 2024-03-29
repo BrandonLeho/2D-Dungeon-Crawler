@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Animations;
 
 public class RegularBullet : Bullet
 {
     protected Rigidbody2D rb2d;
+    private bool isDead = false;
+
+    private Knockback Knockback;
 
     public override BulletDataSO BulletData { 
         get => base.BulletData; 
@@ -29,6 +33,9 @@ public class RegularBullet : Bullet
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if(isDead)
+            return;
+        isDead = true;
         var hittable = collision.GetComponent<IHittable>();
         hittable?.GetHit(BulletData.Damage, gameObject);
 
@@ -54,6 +61,13 @@ public class RegularBullet : Bullet
 
     private void HitEnemy(Collider2D collision)
     {
+        
+        var knockback = collision.GetComponent<Knockback>();
+        if(knockback != null)
+        {
+            knockback.PlayFeedback(BulletData.KnockbackPower, transform.root.gameObject); 
+        }
+        //knockback?.KnockBack(transform.right, BulletData.KnockbackPower, BulletData.KnockbackDelay);
         Vector2 randomOffset = Random.insideUnitCircle * 0.5f;
         Instantiate(BulletData.ImpactEnemyPrefab, collision.transform.position + (Vector3)randomOffset, Quaternion.identity);
     }

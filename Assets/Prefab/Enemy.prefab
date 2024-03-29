@@ -410,7 +410,7 @@ MonoBehaviour:
   - {x: -0.019532338, y: 0.015540683, z: 0}
   m_ShapePathHash: -656085751
   m_Mesh: {fileID: 0}
-  m_InstanceId: 91110
+  m_InstanceId: -1502
   m_LocalBounds:
     m_Center: {x: 0.0004149899, y: 0.096711226, z: 0}
     m_Extent: {x: 0.03831315, y: 0.12487221, z: 0}
@@ -767,6 +767,85 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &4292538705998371648
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4201685649107920194}
+  - component: {fileID: 757814496258731363}
+  - component: {fileID: 3935719924631916067}
+  - component: {fileID: 2462997373775997480}
+  m_Layer: 10
+  m_Name: FeedbackHit
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4201685649107920194
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4292538705998371648}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6493194441136819145}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &757814496258731363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4292538705998371648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fca0b2a45c3abea4783e8aea451f8f56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  feedbackToPlay:
+  - {fileID: 3935719924631916067}
+  - {fileID: 2462997373775997480}
+--- !u!114 &3935719924631916067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4292538705998371648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e02dce5c5232404ead0e7455f5ffcf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 84297907513114573}
+  flashTime: 0.1
+  flashMaterial: {fileID: 2100000, guid: a771dd7db04670b4999bcc161936f836, type: 2}
+--- !u!114 &2462997373775997480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4292538705998371648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0e8e41d0d6b2a4498ceaba68630819a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  freezeTimeDelay: 0.001
+  unfreezeTimeDelay: 0.02
+  timeFreezeValue: 0.1
 --- !u!1 &4379251379770176364
 GameObject:
   m_ObjectHideFlags: 0
@@ -1275,14 +1354,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ca1ff92d7eb58942812c59a701456bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetDetectionRange: 12
+  targetDetectionRange: 8
   obstaclesLayerMask:
     serializedVersion: 2
     m_Bits: 192
   playerLayerMask:
     serializedVersion: 2
     m_Bits: 64
-  showGizmos: 1
+  showGizmos: 0
 --- !u!1 &6206860127688408643
 GameObject:
   m_ObjectHideFlags: 0
@@ -1706,6 +1785,8 @@ Transform:
   - {fileID: 8638688853482257561}
   - {fileID: 5153032554085767693}
   - {fileID: 8114772481445660118}
+  - {fileID: 4201685649107920194}
+  - {fileID: 7356310024019094632}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &84297907513114573
@@ -1728,7 +1809,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 04a37b1249f198f4fab0b117bcc38637, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1897,7 +1978,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb2d: {fileID: 286957855868106648}
-  delay: 0.15
+  delay: 0.1
   OnBegin:
     m_PersistentCalls:
       m_Calls:
@@ -2008,7 +2089,7 @@ MonoBehaviour:
   staminaBar: {fileID: 4530143403179742202}
   staminaBarFalloff: {fileID: 2262768567531206949}
   lerpSpeed: 0.05
-  stancePopup: {fileID: 0}
+  stancePopup: {fileID: 2566027894002449597, guid: 530f8f8a8cbbbeb44aac50a92735b311, type: 3}
   currentStamina: 1000
   maxStamina: 1000
   dashCost: 150
@@ -2017,7 +2098,7 @@ MonoBehaviour:
   cam: {fileID: 0}
   finalZoom: 0
   zoom: 6
-  targetZoom: 3
+  targetZoom: 1
   minZoom: 1
   maxZoom: 20
   velocity: 0.25
@@ -2067,7 +2148,7 @@ MonoBehaviour:
   detectionDelay: 0.05
   aiUpdateDelay: 0.06
   attackDelay: 0.5
-  attackDistance: 0.85
+  attackDistance: 1
   OnAttackPressed:
     m_PersistentCalls:
       m_Calls:
@@ -2300,7 +2381,7 @@ MonoBehaviour:
   - {x: 0.21407127, y: -0.71981144, z: 0}
   m_ShapePathHash: -1537891931
   m_Mesh: {fileID: 0}
-  m_InstanceId: 91096
+  m_InstanceId: -1482
   m_LocalBounds:
     m_Center: {x: -0.005508423, y: -0.06793177, z: 0}
     m_Extent: {x: 0.4928112, y: 0.65187967, z: 0}
@@ -2324,6 +2405,18 @@ MonoBehaviour:
       - m_Target: {fileID: 8788983514805416455}
         m_TargetAssemblyTypeName: AgentSounds, Assembly-CSharp
         m_MethodName: PlayHitSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 757814496258731363}
+        m_TargetAssemblyTypeName: FeedbackPlayer, Assembly-CSharp
+        m_MethodName: PlayFeedback
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2360,10 +2453,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 84297907513114573}
-        m_TargetAssemblyTypeName: UnityEngine.Renderer, UnityEngine
-        m_MethodName: set_enabled
-        m_Mode: 6
+      - m_Target: {fileID: 3942869057066745349}
+        m_TargetAssemblyTypeName: FeedbackPlayer, Assembly-CSharp
+        m_MethodName: PlayFeedback
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2427,14 +2520,13 @@ MonoBehaviour:
   agentMover: {fileID: 4690320701749086863}
   lungeDistance: 0.5
   lungeSpeed: 10
-  strength: 100
+  knockbackStrength: 100
   canAttack: 0
   chainAttack: 0
   canLunge: 0
   attackState: 0
   damage: 50
   staminaDamage: 75
-  knockback: {fileID: 0}
 --- !u!1 &7713209116291838963
 GameObject:
   m_ObjectHideFlags: 0
@@ -2616,3 +2708,79 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &8638427802747863741
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7356310024019094632}
+  - component: {fileID: 3942869057066745349}
+  - component: {fileID: 3960483792463508316}
+  m_Layer: 10
+  m_Name: FeedbackDeath
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7356310024019094632
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8638427802747863741}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6493194441136819145}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3942869057066745349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8638427802747863741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fca0b2a45c3abea4783e8aea451f8f56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  feedbackToPlay:
+  - {fileID: 3960483792463508316}
+--- !u!114 &3960483792463508316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8638427802747863741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3699d105d957cd4381b52ef6a270645, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 84297907513114573}
+  duration: 0.7
+  <DeathCallback>k__BackingField:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5199013529459019573}
+        m_TargetAssemblyTypeName: Enemy, Assembly-CSharp
+        m_MethodName: Die
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

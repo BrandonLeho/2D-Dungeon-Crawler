@@ -8,8 +8,7 @@ public class Knockback : MonoBehaviour
     [SerializeField]
     private Rigidbody2D rb2d;
 
-    [SerializeField]
-    private float delay = 0.15f;    
+    [field: SerializeField] [field: Range(0f, 1f)] private float delay = 0.1f;    
     public UnityEvent OnBegin, OnDone;
 
     public void PlayFeedback( float strength, GameObject sender)
