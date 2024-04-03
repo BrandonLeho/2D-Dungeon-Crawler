@@ -104,3 +104,40 @@ Changes Since Last Update:
 
 The compression kinda ruined the lighting for the torches, but it looks better in-game, trust
 
+_________________________________________________________________________
+(March 29, 2024)
+
+RAAAAAHHHHH MERICA BAAAABY!!!!! THE LORD SAID WE HAVE THE RIGHT TO BEAR ARMS!!!!!!! GOD BLESS AMERICA CUZ THE GUN UPDATE IS HERE!!!!!
+
+Changes Since Last Update:
+
+Front End
+
+-Added AK47 (Guns have been added and are set with these features that can all be customized: bullet speed, bullet damage, stamina damage, friction, ricochet WIP, pierce WIP, raycast WIP, knockback power, knockback delay)
+
+-Added More Feedback Events (This includes new VFX and SFX to charcters and weapons.)
+
+-Added Enemy Death Animation (Enemies will now dissolve into nothingness once they are killed.)
+
+-Tweaked Damage Taken Animation (Sprites will now flash white instead of red when taking damage.)
+
+-Updated Lighting (Made global lighting more visiable and tweaked casted shadows. It was too damn dark last time.)
+
+-Camera Tweaks (Added bloom for post processing effects. Added slight camera shaking to invoke intensity.)
+
+-Changed Text Popup (Changed "Stance Break" popup to "Broken" to reduce text on screen & damage number popup has new popup animation.)
+
+Back End
+
+-Added More Unity Events (Events are more accessable in the inspector and no longer need to be set in scripts.)
+
+-Data Overhaul (Each enemy, character, weapon, etc. will have their own specific data instead of hardcoded stats. Enemies, guns, and bullets all have their data that can be customized within unity.)
+
+-Updated Sprite Materials (Basic charcter sprite now uses shader graphs to update in-game sprites.)
+
+-Added DOTween Library (This lib helps out with animations within scripts.)
+
+![2024-03-2823-56-19-ezgif com-optimize](https://github.com/BrandonLeho/2D-Dungeon-Crawler/assets/89223038/89891a47-91a0-46d7-9567-88f58fe1798b)
+
+
+
