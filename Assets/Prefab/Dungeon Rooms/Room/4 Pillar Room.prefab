@@ -6075,7 +6075,7 @@ PrefabInstance:
     - target: {fileID: 8750147974962966061, guid: f4725da3e59eb2948b86015203db4c58, type: 3}
       propertyPath: socket
       value: 
-      objectReference: {fileID: -3078376168931966861, guid: 8db4b694037396a42b4c4b80bd21b63f, type: 2}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8516,7 +8516,7 @@ PrefabInstance:
     - target: {fileID: 8750147974962966061, guid: f4725da3e59eb2948b86015203db4c58, type: 3}
       propertyPath: socket
       value: 
-      objectReference: {fileID: 7319271268272526702, guid: 8db4b694037396a42b4c4b80bd21b63f, type: 2}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

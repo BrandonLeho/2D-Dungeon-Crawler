@@ -143,7 +143,7 @@ public class KatanaParent : MonoBehaviour
         }
         else
         {
-            if(gameObject != null)
+            if(gameObject.activeInHierarchy == true)
             {
                 StartCoroutine(DelayAttack());
                 canAttack = true;

@@ -348,7 +348,7 @@ MonoBehaviour:
   - {x: -0.372472, y: -0.26408067, z: 0}
   m_ShapePathHash: -152439852
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1406
+  m_InstanceId: -2328
   m_LocalBounds:
     m_Center: {x: -0.003244996, y: -0.011263937, z: 0}
     m_Extent: {x: 0.9486277, y: 0.3237637, z: 0}
@@ -919,6 +919,7 @@ MonoBehaviour:
   acceleration: 50
   deacceleration: 100
   finalMaxSpeed: 0
+  shootingSpeed: 5
   currentSpeed: 0
   dashSpeed: 30
   dashLength: 0.1
@@ -926,6 +927,7 @@ MonoBehaviour:
   dashCounter: 0
   dashCoolCounter: 0
   isDashing: 0
+  canDash: 0
   isLunging: 0
   isBlocking: 0
   lungeDistance: 0
@@ -959,7 +961,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
   OnDone:
     m_PersistentCalls:
@@ -1033,7 +1035,6 @@ MonoBehaviour:
   popupText: {fileID: 0}
   currentHealth: 1000
   maxHealth: 1000
-  parry: {fileID: 6522508975828979058}
   OnHitWithReference:
     m_PersistentCalls:
       m_Calls:
@@ -1369,7 +1370,7 @@ MonoBehaviour:
   - {x: -0.284034, y: -0.7060578, z: 0}
   m_ShapePathHash: -588815223
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1332
+  m_InstanceId: -2252
   m_LocalBounds:
     m_Center: {x: -0.014490902, y: -0.056125283, z: 0}
     m_Extent: {x: 0.4971575, y: 0.6518613, z: 0}
@@ -1964,7 +1965,7 @@ MonoBehaviour:
   - {x: 0.020423597, y: -0.026998552, z: 0}
   m_ShapePathHash: 962890806
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1366
+  m_InstanceId: -2288
   m_LocalBounds:
     m_Center: {x: 0.0008010231, y: 0.09360409, z: 0}
     m_Extent: {x: 0.038016483, y: 0.123315945, z: 0}
@@ -2329,7 +2330,7 @@ MonoBehaviour:
   - {x: 0.016051916, y: -0.029050384, z: 0}
   m_ShapePathHash: 1244408975
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1388
+  m_InstanceId: -2310
   m_LocalBounds:
     m_Center: {x: 0.001935944, y: 0.05989304, z: 0}
     m_Extent: {x: 0.038471222, y: 0.0894048, z: 0}

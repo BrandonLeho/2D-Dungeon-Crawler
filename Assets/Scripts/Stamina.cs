@@ -93,7 +93,7 @@ public class Stamina : MonoBehaviour
 
             while(timer >= 0)
             {
-                vcam.m_Lens.FieldOfView = zoom;
+                //vcam.m_Lens.FieldOfView = zoom;
                 //cam.orthographicSize = Mathf.SmoothDamp(cam.orthographicSize, targetZoom, ref velocity, smoothTime);
                 timer -= Time.unscaledDeltaTime;
             }
@@ -150,7 +150,7 @@ public class Stamina : MonoBehaviour
 
     private void Update()
     {
-        vcam.m_Lens.FieldOfView = zoom;
+        //vcam.m_Lens.FieldOfView = zoom;
         //cam.orthographicSize = Mathf.SmoothDamp(cam.orthographicSize, zoom, ref velocity, smoothTime);
 
         if(staminaBar.value != currentStamina)
@@ -171,7 +171,7 @@ public class Stamina : MonoBehaviour
 
     public void Start()
     {
-        finalZoom = cam.orthographicSize;
-        zoom = Mathf.Clamp(finalZoom, minZoom, maxZoom);
+        //finalZoom = cam.orthographicSize;
+        //zoom = Mathf.Clamp(finalZoom, minZoom, maxZoom);
     }
 }

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <bulletPrefab>k__BackingField: {fileID: 2217666590910319113, guid: cceefcdcebc84bd4b9c680fa53a21fb2, type: 3}
   <BulletSpeed>k__BackingField: 75
-  <Damage>k__BackingField: 1
+  <Damage>k__BackingField: 100
   <StaminaDamage>k__BackingField: 10
   <Friction>k__BackingField: 0.1
   <Ricochet>k__BackingField: 0

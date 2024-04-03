@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7141861314092957082}
   - component: {fileID: 5148053105400676782}
   - component: {fileID: 6804221435751061959}
+  - component: {fileID: 7313786510459244737}
   m_Layer: 11
   m_Name: Bullet
   m_TagString: Untagged
@@ -185,6 +186,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <BulletData>k__BackingField: {fileID: 0}
+--- !u!114 &7313786510459244737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2217666590910319113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 000000002b5215a89f7f2fc4055fe7f039363858
+  m_ShapePath:
+  - {x: -0.93749994, y: -0.25, z: 0}
+  - {x: -0.93749994, y: 0.25, z: 0}
+  - {x: 0.8204045, y: 0.2475087, z: 0}
+  - {x: 0.94626766, y: 0.120039016, z: 0}
+  - {x: 0.9437762, y: -0.12162682, z: 0}
+  - {x: 0.8069623, y: -0.25776383, z: 0}
+  m_ShapePathHash: 1313979412
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -26798
+  m_LocalBounds:
+    m_Center: {x: 0.004383862, y: -0.0038819015, z: 0}
+    m_Extent: {x: 0.9418838, y: 0.25388193, z: 0}
 --- !u!1 &3422346277962925684
 GameObject:
   m_ObjectHideFlags: 0

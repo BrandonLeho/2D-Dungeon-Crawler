@@ -7,7 +7,7 @@ public class AgentMover : MonoBehaviour
     private Rigidbody2D rb2d;
 
     [SerializeField]
-    private float maxSpeed, acceleration, deacceleration, finalMaxSpeed;
+    private float maxSpeed, acceleration, deacceleration, finalMaxSpeed, shootingSpeed;
     [SerializeField]
     private float currentSpeed = 0;
     private Vector2 oldMovementInput;
@@ -17,7 +17,7 @@ public class AgentMover : MonoBehaviour
     public float dashLength = 0.5f, dashCooldown = 1f;
     public float dashCounter;
     public float dashCoolCounter;
-    public bool isDashing, isLunging, isBlocking;
+    public bool isDashing, canDash, isLunging, isBlocking;
 
     public float lungeDistance, lungeSpeed, lungeTime, startTime;
     private Vector2 direction;
@@ -31,6 +31,7 @@ public class AgentMover : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
         finalMaxSpeed = maxSpeed;
         stamina = GetComponent<Stamina>();
+        canDash = true;
     }
 
     private void FixedUpdate()
@@ -39,19 +40,17 @@ public class AgentMover : MonoBehaviour
         {
             if(dashCounter > 0)
             {
-                dashCounter -= Time.deltaTime;
-                 rb2d.velocity = oldMovementInput * currentSpeed;
+                StartCoroutine(Dashing());
+                /* dashCounter -= Time.deltaTime;
+                rb2d.velocity = oldMovementInput * currentSpeed;
 
                 if(dashCounter <= 0)
                 {
                     currentSpeed = maxSpeed;
                     dashCoolCounter = dashCooldown;
                     isDashing = false;
-                }
-                
+                } */
             }
-
-            
         }
         else if(isLunging)
         {
@@ -93,7 +92,7 @@ public class AgentMover : MonoBehaviour
 
     public void Dash()
     {
-        if(!isBlocking)
+        if(!isBlocking && canDash)
         {
             if(dashCoolCounter <= 0 && dashCounter <= 0 && stamina.GetCurrentStamina() > 0)
             {
@@ -103,7 +102,34 @@ public class AgentMover : MonoBehaviour
                 stamina.UseStamina(150);
             }
         }
-        
+    }
+
+    IEnumerator Dashing()
+    {
+        while(dashCounter > 0)
+        {
+            dashCounter -= Time.deltaTime;
+            rb2d.velocity = oldMovementInput * currentSpeed;
+            if(dashCounter <= 0)
+            {
+                currentSpeed = maxSpeed;
+                dashCoolCounter = dashCooldown;
+                isDashing = false;
+            }
+            yield return null;
+        }
+    }
+
+    public void canDashOnShoot()
+    {
+        canDash = false;
+        maxSpeed = shootingSpeed;
+    }
+
+    public void canDashOffShoot()
+    {
+        canDash = true;
+        maxSpeed = finalMaxSpeed;
     }
 
     public void Blocking(bool playerIsBlocking, bool playerIsParrying)

@@ -33,7 +33,7 @@ public class Agent : MonoBehaviour
         if(aK47Parent.gameObject.activeInHierarchy)
         {
             aK47Parent.Shoot();
-            
+            agentMover.canDashOnShoot();
         }
     }
 
@@ -42,6 +42,7 @@ public class Agent : MonoBehaviour
         if(aK47Parent.gameObject.activeInHierarchy)
         {
             aK47Parent.StopShoot();
+            agentMover.canDashOffShoot();
         }
         
     }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.Design.Serialization;
 using UnityEngine;
 using UnityEngine.Events;
 using Random = UnityEngine.Random;
@@ -63,6 +64,7 @@ public class AK47Parent : MonoBehaviour
                 {
                     ShootBullet();
                 }
+                Recoil();
             }
             else
             {
@@ -71,6 +73,15 @@ public class AK47Parent : MonoBehaviour
                 return;
             }
             FinishShooting();
+        }
+    }
+
+    private void Recoil()
+    {
+        var knockback = transform.root.gameObject.GetComponent<Knockback>();
+        if(knockback != null)
+        {
+            knockback.PlayFeedbackV2(weaponData.Recoil, PointerPosition); 
         }
     }
 

@@ -61,7 +61,6 @@ public class RegularBullet : Bullet
 
     private void HitEnemy(Collider2D collision)
     {
-        Debug.Log(collision);
         var knockback = collision.GetComponent<Knockback>();
         if(knockback != null)
         {

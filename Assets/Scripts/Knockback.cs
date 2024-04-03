@@ -20,6 +20,15 @@ public class Knockback : MonoBehaviour
         StartCoroutine(Reset());
     }
 
+    public void PlayFeedbackV2( float strength, Vector2 sender)
+    {
+        StopAllCoroutines();
+        OnBegin?.Invoke();
+        Vector2 direction = ((Vector2)transform.position - sender).normalized;
+        rb2d.AddForce(direction * strength, ForceMode2D.Impulse);
+        StartCoroutine(Reset());
+    }
+
     private IEnumerator Reset()
     {
         yield return new WaitForSeconds(delay);
