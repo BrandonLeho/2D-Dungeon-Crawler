@@ -164,9 +164,11 @@ Shotgun Gameplay
 
 ![2024-04-0601-15-08-ezgif com-optimize](https://github.com/BrandonLeho/2D-Dungeon-Crawler/assets/89223038/f715049d-e6d3-4d18-b364-1de20f13c57d)
 
+
 Sniper Gameplay
 
 ![2024-04-0601-00-11-ezgif com-optimize](https://github.com/BrandonLeho/2D-Dungeon-Crawler/assets/89223038/68c4a842-9357-4dd1-a475-2c92f508e7da)
+
 
 RPG Gameplay
 
