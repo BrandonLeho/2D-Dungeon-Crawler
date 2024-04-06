@@ -139,5 +139,32 @@ Back End
 
 ![2024-03-2823-56-19-ezgif com-optimize](https://github.com/BrandonLeho/2D-Dungeon-Crawler/assets/89223038/89891a47-91a0-46d7-9567-88f58fe1798b)
 
+_________________________________________________________________________
+(April 6, 2024)
 
+BOOOOOOOM!!!!! MOAR GUNS JUST DROPPED!! BRRRRRRRRRRRRR!!!! BLASTING YOU WITH A NEW UPDATE RIGHT HERE!!
 
+Changes Since Last Update:
+
+-Added 3 New Guns!! (Shotgun, Sniper, RPG)
+
+-Added New Gun/Bullet Data Modifiers (Piercing: Shoot through multiple enemies with one bullet, Explosion: On impact, make a customized aoe that damages anything within, Ricochet: Bullets bounce off of walls WIP)
+
+-Added Healing Mechanic (Player can regen health by picking up health packs WIP)
+
+-Enemy Drops (Enemies now have a chance to drop items such as ammo or health WIP)
+
+-Enemy Spawn (Enemies can now have a dedicated spawn location inside a room WIP)
+
+-Tweaked Health and Stamina Handlers (Health and Stamina can now be dynamically changed throughout the game aka no longer hard coded) 
+
+Dev Note: A lot of things this update are WIP, but the main mechanics for these features are working. More progress for the game is needed in order for these features to be "complete".
+
+Shotgun Gameplay
+![2024-04-0601-15-08-ezgif com-optimize](https://github.com/BrandonLeho/2D-Dungeon-Crawler/assets/89223038/f715049d-e6d3-4d18-b364-1de20f13c57d)
+
+Sniper Gameplay
+![2024-04-0601-00-11-ezgif com-optimize](https://github.com/BrandonLeho/2D-Dungeon-Crawler/assets/89223038/68c4a842-9357-4dd1-a475-2c92f508e7da)
+
+RPG Gameplay
+![2024-04-0601-00-56-ezgif com-optimize](https://github.com/BrandonLeho/2D-Dungeon-Crawler/assets/89223038/c57b3e40-1a8f-4ab9-8948-28425f720391)
