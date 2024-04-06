@@ -161,10 +161,13 @@ Changes Since Last Update:
 Dev Note: A lot of things this update are WIP, but the main mechanics for these features are working. More progress for the game is needed in order for these features to be "complete".
 
 Shotgun Gameplay
+
 ![2024-04-0601-15-08-ezgif com-optimize](https://github.com/BrandonLeho/2D-Dungeon-Crawler/assets/89223038/f715049d-e6d3-4d18-b364-1de20f13c57d)
 
 Sniper Gameplay
+
 ![2024-04-0601-00-11-ezgif com-optimize](https://github.com/BrandonLeho/2D-Dungeon-Crawler/assets/89223038/68c4a842-9357-4dd1-a475-2c92f508e7da)
 
 RPG Gameplay
+
 ![2024-04-0601-00-56-ezgif com-optimize](https://github.com/BrandonLeho/2D-Dungeon-Crawler/assets/89223038/c57b3e40-1a8f-4ab9-8948-28425f720391)
