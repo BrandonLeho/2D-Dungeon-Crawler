@@ -33,6 +33,7 @@ public class Stamina : MonoBehaviour
         currentStamina = staminaValue;
         staminaBar.maxValue = maxStamina;
         staminaBar.value = maxStamina;
+        staminaBarFalloff.maxValue = maxStamina;
     }
 
     public void UseStamina(int amount)

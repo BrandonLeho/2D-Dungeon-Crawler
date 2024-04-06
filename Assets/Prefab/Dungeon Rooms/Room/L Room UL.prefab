@@ -1694,6 +1694,10 @@ PrefabInstance:
       value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 7049217440622611948, guid: ef8f9f345a0cc3740aae0819863c10f1, type: 3}
+      propertyPath: m_Origin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7049217440622611948, guid: ef8f9f345a0cc3740aae0819863c10f1, type: 3}
       propertyPath: m_Origin.y
       value: -6
       objectReference: {fileID: 0}

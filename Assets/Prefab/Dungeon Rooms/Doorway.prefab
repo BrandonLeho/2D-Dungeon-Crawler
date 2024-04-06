@@ -58,7 +58,7 @@ MonoBehaviour:
   socketGroup_obsolete: -1
   doorPrefabs_obsolete: []
   blockerPrefabs_obsolete: []
-  socket: {fileID: -3078376168931966861, guid: 8db4b694037396a42b4c4b80bd21b63f, type: 2}
+  socket: {fileID: 11400000, guid: b14bea3d872194f408062ed166ff72bb, type: 2}
   doorPrefabInstance: {fileID: 0}
   doorComponent: {fileID: 0}
   tile: {fileID: 0}

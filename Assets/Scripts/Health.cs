@@ -10,7 +10,7 @@ public class Health : MonoBehaviour
     public Slider healthBar;
     public Slider healthBarFalloff;
     public float lerpSpeed = 0.05f;
-    public GameObject damagePopup, character;
+    public GameObject damagePopup, healingPopup, character;
     public TMP_Text popupText;
 
     [SerializeField]
@@ -32,11 +32,13 @@ public class Health : MonoBehaviour
         currentHealth = healthValue;
         maxHealth = healthValue;
         isDead = false;
+        healthBar.maxValue = maxHealth;
+        healthBarFalloff.maxValue = maxHealth;
     }
 
     public void GetHit(int amount, GameObject sender)
     {
-        if(isDead)
+        if(isDead || amount <= 0)
             return;
         if(sender.layer == gameObject.layer)
             return;
@@ -60,6 +62,24 @@ public class Health : MonoBehaviour
         }
     }
 
+    public void Heal(int amount)
+    {
+        currentHealth += amount;
+        if(currentHealth > maxHealth)
+            currentHealth = maxHealth;
+        
+        Vector3 randomPopup = new Vector3
+        (character.transform.position.x + Random.Range(-0.75f, 0.75f), 
+        character.transform.position.y + Random.Range(0.5f, 1.25f));
+
+        GameObject HealingTextInstance = Instantiate(healingPopup, randomPopup, Quaternion.identity);
+        HealingTextInstance.transform.GetChild(0).GetComponent<TextMeshPro>().SetText(amount.ToString());
+    }
+
+    public void SendHeals(int amount, GameObject sender)
+    {
+        GetHit(-amount, sender);
+    }
     private void Update()
     {
         if(healthBar.value != currentHealth)

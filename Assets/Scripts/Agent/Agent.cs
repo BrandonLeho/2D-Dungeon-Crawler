@@ -18,6 +18,8 @@ public class Agent : MonoBehaviour
     private SwordParent swordParent;
     private KatanaParent katanaParent;
     private AK47Parent aK47Parent;
+    private ShotgunParent shotgunParent;
+    private RPGParent rpgParent;
 
     public void PerformAttack()
     {
@@ -35,6 +37,16 @@ public class Agent : MonoBehaviour
             aK47Parent.Shoot();
             agentMover.canDashOnShoot();
         }
+        if(shotgunParent.gameObject.activeInHierarchy)
+        {
+            shotgunParent.Shoot();
+            agentMover.canDashOnShoot();
+        }
+        if(rpgParent.gameObject.activeInHierarchy)
+        {
+            rpgParent.Shoot();
+            agentMover.canDashOnShoot();
+        }
     }
 
     public void PerformedFire()
@@ -44,7 +56,16 @@ public class Agent : MonoBehaviour
             aK47Parent.StopShoot();
             agentMover.canDashOffShoot();
         }
-        
+        if(shotgunParent.gameObject.activeInHierarchy)
+        {
+            shotgunParent.StopShoot();
+            agentMover.canDashOffShoot();
+        }
+        if(rpgParent.gameObject.activeInHierarchy)
+        {
+            rpgParent.StopShoot();
+            agentMover.canDashOffShoot();
+        }
     }
 
     public void PerformDash()
@@ -72,6 +93,8 @@ public class Agent : MonoBehaviour
         swordParent.PointerPosition = pointerInput;
         katanaParent.PointerPosition = pointerInput;
         aK47Parent.PointerPosition = pointerInput;
+        shotgunParent.PointerPosition = pointerInput;
+        rpgParent.PointerPosition = pointerInput;
 
         AnimateCharacter();
     }
@@ -82,6 +105,8 @@ public class Agent : MonoBehaviour
         swordParent = GetComponentInChildren<SwordParent>();
         katanaParent = GetComponentInChildren<KatanaParent>();
         aK47Parent = GetComponentInChildren<AK47Parent>();
+        shotgunParent = GetComponentInChildren<ShotgunParent>();
+        rpgParent = GetComponentInChildren<RPGParent>();
         agentMover = GetComponent<AgentMover>();
         parry = GetComponent<Parry>();
     }

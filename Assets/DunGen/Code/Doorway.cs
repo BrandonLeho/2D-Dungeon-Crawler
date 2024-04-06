@@ -168,7 +168,12 @@ namespace DunGen
 
 		internal void DebugDraw()
 		{
-			Vector2 size = Socket.Size;
+			Vector2 size = Vector2.zero;
+			
+			if(socket!= null)
+			{
+				size = socket.Size;
+			}
 			Vector2 halfSize = size * 0.5f;
 
 			bool isValidPlacement = true;

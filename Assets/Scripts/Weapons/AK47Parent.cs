@@ -37,6 +37,14 @@ public class AK47Parent : MonoBehaviour
         Ammo = weaponData.AmmoCapacity;
     }
 
+    private void OnDisable()
+    {
+        reloadCoroutine = false;
+        StopAllCoroutines();
+        StopShoot();
+        gameObject.GetComponentInChildren<FeedbackPlayer>().FinishFeedback();
+    }
+
     public void Shoot()
     {
         isShooting = true;
@@ -137,5 +145,10 @@ public class AK47Parent : MonoBehaviour
             weaponRenderer.sortingOrder = characterRenderer.sortingOrder + 1;
         else
             weaponRenderer.sortingOrder = characterRenderer.sortingOrder - 1;
+    }
+
+    internal void AddAmmo(int ammoAmount)
+    {
+        ammo += ammoAmount;
     }
 }
