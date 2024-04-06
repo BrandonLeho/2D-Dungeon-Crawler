@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WeaponAudio : AudioPlayer
 {
-    [SerializeField] private AudioClip shootBulletClip = null, outOfBulletsClip = null;
+    [SerializeField] private AudioClip shootBulletClip = null, outOfBulletsClip = null, reloadClip = null;
 
     public void PlayShootSound()
     {
@@ -14,6 +14,11 @@ public class WeaponAudio : AudioPlayer
     public void PlayNoBulletsSound()
     {
         PlayClip(outOfBulletsClip);
+    }
+
+    public void PlayReloadSound()
+    {
+        PlayClip(reloadClip);
     }
 
 }

@@ -10,22 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 942a012a96201324596af325e7723512, type: 3}
-  m_Name: Rocket
+  m_Name: SniperBullet
   m_EditorClassIdentifier: 
-  <bulletPrefab>k__BackingField: {fileID: 349048942516502608, guid: d140a7e43b3486e4d99abf41c5601b1a, type: 3}
-  <BulletSpeed>k__BackingField: 50
+  <bulletPrefab>k__BackingField: {fileID: 7059909235835206236, guid: 1180f5dcfdfbd154597b95461521aa5f, type: 3}
+  <BulletSpeed>k__BackingField: 100
   <Damage>k__BackingField: 1000
-  <StaminaDamage>k__BackingField: 500
-  <Friction>k__BackingField: 50
+  <StaminaDamage>k__BackingField: 50
+  <Friction>k__BackingField: 0.5
   <Ricochet>k__BackingField: 0
-  <Pierce>k__BackingField: 0
+  <Pierce>k__BackingField: 1
   <RayCast>k__BackingField: 0
-  <Explosion>k__BackingField: 1
+  <Explosion>k__BackingField: 0
   <ExplosionRadius>k__BackingField: 5
-  <ExplosionFalloff>k__BackingField: 0.5
-  <ImpactObsticlePrefab>k__BackingField: {fileID: 6421196662159398763, guid: 892dde2d6947b19458c1b138f614b46c, type: 3}
-  <ImpactEnemyPrefab>k__BackingField: {fileID: 6421196662159398763, guid: 892dde2d6947b19458c1b138f614b46c, type: 3}
-  <KnockbackPower>k__BackingField: 500
+  <ExplosionFalloff>k__BackingField: 1
+  <ImpactObsticlePrefab>k__BackingField: {fileID: 4041243997726790478, guid: 7354b30998fdc0c4d8f9dff5f2d7d122, type: 3}
+  <ImpactEnemyPrefab>k__BackingField: {fileID: 2174332403008852841, guid: 6619bd51d44911147894e5aa1f8c67fa, type: 3}
+  <KnockbackPower>k__BackingField: 50
   <KnockbackDelay>k__BackingField: 0.1
   <BulletLayerMask>k__BackingField:
     serializedVersion: 2

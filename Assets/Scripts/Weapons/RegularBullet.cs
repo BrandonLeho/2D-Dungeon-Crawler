@@ -13,6 +13,7 @@ public class RegularBullet : Bullet
     private bool isDestroyed = false;
     private Knockback Knockback;
     private new Collider2D collider;
+    private int pierceCount = 0;
     public override BulletDataSO BulletData { 
         get => base.BulletData; 
         set 
@@ -41,8 +42,6 @@ public class RegularBullet : Bullet
     {
         if(isDestroyed)
             return;
-
-        Debug.Log(collision.gameObject.name);
         
         if(collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
@@ -58,6 +57,7 @@ public class RegularBullet : Bullet
             Destroy(gameObject);
             isDestroyed = true;
         }
+        pierceCount++;
     }
 
     private void HitObsticle(Collider2D collision)
@@ -89,7 +89,7 @@ public class RegularBullet : Bullet
         else
         {
             var hittable = collision.GetComponent<IHittable>();
-            hittable?.GetHit(BulletData.Damage, BulletData.StaminaDamage, gameObject);
+            hittable?.GetHit((int)(BulletData.Damage * (1 - (0.05f * pierceCount))), (int)(BulletData.StaminaDamage * (1 - (0.05f * pierceCount))), gameObject);
             var knockback = collision.GetComponent<Knockback>();
             if(knockback != null)
             {

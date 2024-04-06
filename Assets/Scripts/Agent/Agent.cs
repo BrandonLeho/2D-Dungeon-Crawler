@@ -20,6 +20,7 @@ public class Agent : MonoBehaviour
     private AK47Parent aK47Parent;
     private ShotgunParent shotgunParent;
     private RPGParent rpgParent;
+    private SniperParent sniperParent;
 
     public void PerformAttack()
     {
@@ -47,6 +48,11 @@ public class Agent : MonoBehaviour
             rpgParent.Shoot();
             agentMover.canDashOnShoot();
         }
+        if(sniperParent.gameObject.activeInHierarchy)
+        {
+            sniperParent.Shoot();
+            agentMover.canDashOnShoot();
+        }
     }
 
     public void PerformedFire()
@@ -64,6 +70,11 @@ public class Agent : MonoBehaviour
         if(rpgParent.gameObject.activeInHierarchy)
         {
             rpgParent.StopShoot();
+            agentMover.canDashOffShoot();
+        }
+        if(sniperParent.gameObject.activeInHierarchy)
+        {
+            sniperParent.StopShoot();
             agentMover.canDashOffShoot();
         }
     }
@@ -95,6 +106,7 @@ public class Agent : MonoBehaviour
         aK47Parent.PointerPosition = pointerInput;
         shotgunParent.PointerPosition = pointerInput;
         rpgParent.PointerPosition = pointerInput;
+        sniperParent.PointerPosition = pointerInput;
 
         AnimateCharacter();
     }
@@ -107,6 +119,8 @@ public class Agent : MonoBehaviour
         aK47Parent = GetComponentInChildren<AK47Parent>();
         shotgunParent = GetComponentInChildren<ShotgunParent>();
         rpgParent = GetComponentInChildren<RPGParent>();
+        sniperParent = GetComponentInChildren<SniperParent>();
+        
         agentMover = GetComponent<AgentMover>();
         parry = GetComponent<Parry>();
     }
