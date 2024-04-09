@@ -1032,7 +1032,7 @@ MonoBehaviour:
   - {x: -0.372472, y: -0.26408067, z: 0}
   m_ShapePathHash: -152439852
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1630
+  m_InstanceId: -1394
   m_LocalBounds:
     m_Center: {x: -0.003244996, y: -0.011263937, z: 0}
     m_Extent: {x: 0.9486277, y: 0.3237637, z: 0}
@@ -2469,7 +2469,7 @@ MonoBehaviour:
   - {x: -0.284034, y: -0.7060578, z: 0}
   m_ShapePathHash: -588815223
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1554
+  m_InstanceId: -1318
   m_LocalBounds:
     m_Center: {x: -0.014490902, y: -0.056125283, z: 0}
     m_Extent: {x: 0.4971575, y: 0.6518613, z: 0}
@@ -2487,7 +2487,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Health>k__BackingField: 10000
   <maxHealth>k__BackingField: 10000
-  <Stamina>k__BackingField: 1000
+  <Stamina>k__BackingField: 10000
   <OnDie>k__BackingField:
     m_PersistentCalls:
       m_Calls: []
@@ -3065,7 +3065,7 @@ MonoBehaviour:
   - {x: 0.020423597, y: -0.026998552, z: 0}
   m_ShapePathHash: 962890806
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1590
+  m_InstanceId: -1354
   m_LocalBounds:
     m_Center: {x: 0.0008010231, y: 0.09360409, z: 0}
     m_Extent: {x: 0.038016483, y: 0.123315945, z: 0}
@@ -3114,23 +3114,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d428d2c564c9e7f40a3bccb259708b31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  meleeData: {fileID: 11400000, guid: 7cd2404fdb1ba484ca63f64185bc35d4, type: 2}
   characterRenderer: {fileID: 7392603489346231293}
   weaponRenderer: {fileID: 4033039343713072386}
-  delay: 0.2
   animator: {fileID: 6155843919241161417}
   circleOrigin: {fileID: 1003938611057288381}
-  radius: 1.1
   parry: {fileID: 6522508975828979058}
   agentMover: {fileID: 2258279374989249880}
-  lungeDistance: 0.5
-  lungeSpeed: 10
-  knockBackStrength: 100
   canAttack: 0
   chainAttack: 0
   canLunge: 0
   attackState: 0
-  damage: 50
-  staminaDamage: 150
 --- !u!1 &6756063018950412371
 GameObject:
   m_ObjectHideFlags: 0
@@ -3406,7 +3400,7 @@ MonoBehaviour:
   - {x: -0.301083, y: -0.12415852, z: 0}
   m_ShapePathHash: -396711739
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1676
+  m_InstanceId: -1440
   m_LocalBounds:
     m_Center: {x: -0.035493493, y: -0.026727527, z: 0}
     m_Extent: {x: 0.9808762, y: 0.3392273, z: 0}
@@ -3643,7 +3637,7 @@ MonoBehaviour:
   - {x: -0.6836021, y: -0.458537, z: 0}
   m_ShapePathHash: -1064608668
   m_Mesh: {fileID: 0}
-  m_InstanceId: -333366
+  m_InstanceId: -1522
   m_LocalBounds:
     m_Center: {x: 0.014419913, y: -0.005604893, z: 0}
     m_Extent: {x: 1.4934846, y: 0.45293212, z: 0}
@@ -3844,7 +3838,7 @@ MonoBehaviour:
   - {x: 0.016051916, y: -0.029050384, z: 0}
   m_ShapePathHash: 1244408975
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1612
+  m_InstanceId: -1376
   m_LocalBounds:
     m_Center: {x: 0.001935944, y: 0.05989304, z: 0}
     m_Extent: {x: 0.038471222, y: 0.0894048, z: 0}
@@ -4006,7 +4000,7 @@ MonoBehaviour:
   - {x: -0.08460533, y: -0.1731724, z: 0}
   m_ShapePathHash: 1349290562
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1722
+  m_InstanceId: -1486
   m_LocalBounds:
     m_Center: {x: -0.14696538, y: -0.0011249483, z: 0}
     m_Extent: {x: 0.9306718, y: 0.47226697, z: 0}

@@ -10,23 +10,17 @@ using Random = UnityEngine.Random;
 
 public class KatanaParent : MonoBehaviour
 {
+    [SerializeField] protected MeleeData meleeData;
     public SpriteRenderer characterRenderer, weaponRenderer;
     public Vector2 PointerPosition { get; set; }
-    public float delay = 0.3f;
     public Animator animator;
-    private AnimationEventHelper animationEventHelper;
-    
     public bool IsAttacking { get; private set; }
     public Transform circleOrigin;
-
-    [SerializeField]
-    public float radius;
     [SerializeField] private Parry parry;
     [SerializeField] private AgentMover agentMover;
-    [SerializeField] private float lungeDistance = 20f, lungeSpeed = 100f, knockBackStrength = 100f;
     
     public bool canAttack, chainAttack, canLunge;
-    public int attackState = 0, damage = 50, staminaDamage = 75;
+    public int attackState = 0;
 
     private Knockback knockback;
 
@@ -82,8 +76,6 @@ public class KatanaParent : MonoBehaviour
             
     }
 
-    
-
     public void Attack()
     {
         //Debug.Log(attackState);
@@ -94,19 +86,19 @@ public class KatanaParent : MonoBehaviour
             {
                 if(attackState == 3)
                 {
-                    lungeDistance = 1f;
-                    knockBackStrength = 150f;
+                    meleeData.LungeDistance = 1f;
+                    meleeData.KnockbackPower = 200f;
                 }
                 else
                 {
-                    lungeDistance = 0.5f;
-                    knockBackStrength = 100f;
+                    meleeData.LungeDistance = 0.5f;
+                    meleeData.KnockbackPower = 100f;
                 }
                 if(canLunge)
                 {
                     Vector2 direction = (PointerPosition - (Vector2)transform.position).normalized;
                     //Debug.Log(direction);
-                    agentMover.Lunge(direction, lungeDistance, lungeSpeed); // Lunge towards the pointer position
+                    agentMover.Lunge(direction, meleeData.LungeDistance, meleeData.LungeSpeed); // Lunge towards the pointer position
                 }
                 attackState++;
                 canAttack = false;
@@ -155,7 +147,7 @@ public class KatanaParent : MonoBehaviour
 
      private IEnumerator DelayAttack()
     {
-        yield return new WaitForSeconds(delay);
+        yield return new WaitForSeconds(meleeData.AttackDelay);
         canLunge = true;
     }
     
@@ -169,21 +161,21 @@ public class KatanaParent : MonoBehaviour
     {
         Gizmos.color = Color.blue;
         Vector3 position = circleOrigin == null ? Vector3.zero : circleOrigin.position;
-        Gizmos.DrawWireSphere(position, radius);
+        Gizmos.DrawWireSphere(position, meleeData.MeleeHitRadius);
     }
 
     public void DetectColliders()
     {
-        foreach (Collider2D collider in Physics2D.OverlapCircleAll(circleOrigin.position,radius))
+        foreach (Collider2D collider in Physics2D.OverlapCircleAll(circleOrigin.position,meleeData.MeleeHitRadius))
         {
             if(collider.name != transform.root.gameObject.name)
             {
                 var hittable = collider.GetComponent<IHittable>();
-                hittable?.GetHit(Random.Range(20, 35), staminaDamage, transform.root.gameObject);
+                hittable?.GetHit(meleeData.Damage, meleeData.StaminaDamage, transform.root.gameObject);
 
                 if(knockback = collider.GetComponent<Knockback>())
                 {
-                    knockback.PlayFeedback(knockBackStrength, transform.root.gameObject); 
+                    knockback.PlayFeedback(meleeData.KnockbackPower, transform.root.gameObject); 
                 }
             }
         }

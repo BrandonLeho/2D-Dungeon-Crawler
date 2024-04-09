@@ -460,7 +460,7 @@ MonoBehaviour:
   - {x: -0.019532338, y: 0.015540683, z: 0}
   m_ShapePathHash: -656085751
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1342
+  m_InstanceId: -1640
   m_LocalBounds:
     m_Center: {x: 0.0004149899, y: 0.096711226, z: 0}
     m_Extent: {x: 0.03831315, y: 0.12487221, z: 0}
@@ -2410,7 +2410,7 @@ MonoBehaviour:
   - {x: 0.21407127, y: -0.71981144, z: 0}
   m_ShapePathHash: -1537891931
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1322
+  m_InstanceId: -1620
   m_LocalBounds:
     m_Center: {x: -0.005508423, y: -0.06793177, z: 0}
     m_Extent: {x: 0.4928112, y: 0.65187967, z: 0}
@@ -2601,23 +2601,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d428d2c564c9e7f40a3bccb259708b31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  meleeData: {fileID: 11400000, guid: 7cd2404fdb1ba484ca63f64185bc35d4, type: 2}
   characterRenderer: {fileID: 84297907513114573}
   weaponRenderer: {fileID: 4178571252915469800}
-  delay: 0.2
   animator: {fileID: 163156455812419646}
   circleOrigin: {fileID: 5432802283213185313}
-  radius: 1.1
   parry: {fileID: 8930578476364145075}
   agentMover: {fileID: 4690320701749086863}
-  lungeDistance: 0.5
-  lungeSpeed: 10
-  knockBackStrength: 100
   canAttack: 0
   chainAttack: 0
   canLunge: 0
   attackState: 0
-  damage: 50
-  staminaDamage: 75
 --- !u!1 &7713209116291838963
 GameObject:
   m_ObjectHideFlags: 0
