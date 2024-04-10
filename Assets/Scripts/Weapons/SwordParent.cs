@@ -10,25 +10,19 @@ using Random = UnityEngine.Random;
 
 public class SwordParent : MonoBehaviour
 {
+    [SerializeField] protected MeleeData meleeData;
     public SpriteRenderer characterRenderer, weaponRenderer;
     public Vector2 PointerPosition { get; set; }
-    public float delay = 0.3f;
     public Animator animator;
-    private AnimationEventHelper animationEventHelper;
-    
     public bool IsAttacking { get; private set; }
     public Transform circleOrigin;
-
-    [SerializeField]
-    public float radius;
     [SerializeField] private Parry parry;
     [SerializeField] private AgentMover agentMover;
-    [SerializeField] private float lungeDistance = 20f, lungeSpeed = 100f, knockBackStrength = 100f;
-
-    private Knockback knockback;
     
     public bool canAttack, chainAttack, canLunge;
-    public int attackState = 0, damage = 50, staminaDamage = 75;
+    public int attackState = 0;
+
+    private Knockback knockback;
 
 
     private void Update() {
@@ -44,12 +38,12 @@ public class SwordParent : MonoBehaviour
             scale.y = 1;
         transform.localScale = scale;
 
-        if(transform.eulerAngles.z > 0 && transform.eulerAngles.z < 180)
+        if(transform.eulerAngles.z > 90 && transform.eulerAngles.z < 270)
             weaponRenderer.sortingOrder = characterRenderer.sortingOrder + 1;
         else
             weaponRenderer.sortingOrder = characterRenderer.sortingOrder - 1;
 
-        if(attackState >= 3)
+        if(attackState >= 4)
         {
             attackState = 0;
             animator.SetInteger("AttackState", attackState);
@@ -82,8 +76,6 @@ public class SwordParent : MonoBehaviour
             
     }
 
-    
-
     public void Attack()
     {
         //Debug.Log(attackState);
@@ -92,13 +84,22 @@ public class SwordParent : MonoBehaviour
         {
             if(attackState < 3)
             {
+                if(attackState == 2)
+                {
+                    meleeData.LungeDistance = 1f;
+                    meleeData.KnockbackPower = 200f;
+                }
+                else
+                {
+                    meleeData.LungeDistance = 0.5f;
+                    meleeData.KnockbackPower = 100f;
+                }
                 if(canLunge)
                 {
                     Vector2 direction = (PointerPosition - (Vector2)transform.position).normalized;
                     //Debug.Log(direction);
-                    agentMover.Lunge(direction, lungeDistance, lungeSpeed); // Lunge towards the pointer position
+                    agentMover.Lunge(direction, meleeData.LungeDistance, meleeData.LungeSpeed); // Lunge towards the pointer position
                 }
-
                 attackState++;
                 canAttack = false;
                 IsAttacking = true;
@@ -134,17 +135,19 @@ public class SwordParent : MonoBehaviour
         }
         else
         {
-            StartCoroutine(DelayAttack());
-            canAttack = true;
-            attackState = 0;
-            animator.SetInteger("AttackState", attackState);
-            
+            if(gameObject.activeInHierarchy == true)
+            {
+                StartCoroutine(DelayAttack());
+                canAttack = true;
+                attackState = 0;
+                animator.SetInteger("AttackState", attackState);
+            }
         }
     }
 
      private IEnumerator DelayAttack()
     {
-        yield return new WaitForSeconds(delay);
+        yield return new WaitForSeconds(meleeData.AttackDelay);
         canLunge = true;
     }
     
@@ -158,21 +161,21 @@ public class SwordParent : MonoBehaviour
     {
         Gizmos.color = Color.blue;
         Vector3 position = circleOrigin == null ? Vector3.zero : circleOrigin.position;
-        Gizmos.DrawWireSphere(position, radius);
+        Gizmos.DrawWireSphere(position, meleeData.MeleeHitRadius);
     }
 
     public void DetectColliders()
     {
-        foreach (Collider2D collider in Physics2D.OverlapCircleAll(circleOrigin.position,radius))
-        {     
+        foreach (Collider2D collider in Physics2D.OverlapCircleAll(circleOrigin.position,meleeData.MeleeHitRadius))
+        {
             if(collider.name != transform.root.gameObject.name)
             {
                 var hittable = collider.GetComponent<IHittable>();
-                hittable?.GetHit(damage, staminaDamage, transform.root.gameObject);
+                hittable?.GetHit(meleeData.Damage, meleeData.StaminaDamage, transform.root.gameObject);
 
                 if(knockback = collider.GetComponent<Knockback>())
                 {
-                    knockback.PlayFeedback(knockBackStrength, transform.root.gameObject); 
+                    knockback.PlayFeedback(meleeData.KnockbackPower, transform.root.gameObject); 
                 }
             }
         }

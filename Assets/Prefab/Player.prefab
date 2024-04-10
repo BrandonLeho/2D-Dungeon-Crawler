@@ -210,7 +210,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6025367312816645210}
-  - component: {fileID: 2275210706804521186}
+  - component: {fileID: 7352171377669224685}
+  - component: {fileID: 6061044163684974161}
   m_Layer: 6
   m_Name: ' SniperParent'
   m_TagString: Untagged
@@ -234,7 +235,79 @@ Transform:
   - {fileID: 1314534110900722263}
   m_Father: {fileID: 1904400930862568038}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2275210706804521186
+--- !u!114 &7352171377669224685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 321398981620038441}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 003598ed84a0e6e4f992aeecf52ed26b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterRenderer: {fileID: 7392603489346231293}
+  weaponRenderer: {fileID: 3255922528081548758}
+  muzzle: {fileID: 1128087407126753538}
+  ammo: 30
+  weaponData: {fileID: 11400000, guid: 69daf2af5b348dd45924be1265cd022d, type: 2}
+  reloadCoroutine: 0
+  <OnShoot>k__BackingField:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1062618474211931748}
+        m_TargetAssemblyTypeName: WeaponAudio, Assembly-CSharp
+        m_MethodName: PlayShootSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5597898330986472808}
+        m_TargetAssemblyTypeName: FeedbackPlayer, Assembly-CSharp
+        m_MethodName: PlayFeedback
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4642699218619856865}
+        m_TargetAssemblyTypeName: BulletShellGenerator, Assembly-CSharp
+        m_MethodName: SpawnBulletShell
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  <OnShootNoAmmo>k__BackingField:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1062618474211931748}
+        m_TargetAssemblyTypeName: WeaponAudio, Assembly-CSharp
+        m_MethodName: PlayNoBulletsSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &6061044163684974161
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -640,7 +713,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1206344976181355024}
-  - component: {fileID: 7473461236917308339}
+  - component: {fileID: 1653215363684910061}
+  - component: {fileID: 7706025004807071544}
   m_Layer: 6
   m_Name: ShotgunParent
   m_TagString: Untagged
@@ -664,7 +738,79 @@ Transform:
   - {fileID: 1638980481057395559}
   m_Father: {fileID: 1904400930862568038}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7473461236917308339
+--- !u!114 &1653215363684910061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2078345250624063731}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 003598ed84a0e6e4f992aeecf52ed26b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterRenderer: {fileID: 7392603489346231293}
+  weaponRenderer: {fileID: 7469364923195290107}
+  muzzle: {fileID: 1766427895281383565}
+  ammo: 30
+  weaponData: {fileID: 11400000, guid: 09bf1ddb9bf1810438890fa00e146c94, type: 2}
+  reloadCoroutine: 0
+  <OnShoot>k__BackingField:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 712025315976100846}
+        m_TargetAssemblyTypeName: WeaponAudio, Assembly-CSharp
+        m_MethodName: PlayShootSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4095347618734001850}
+        m_TargetAssemblyTypeName: FeedbackPlayer, Assembly-CSharp
+        m_MethodName: PlayFeedback
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2301934571019517238}
+        m_TargetAssemblyTypeName: BulletShellGenerator, Assembly-CSharp
+        m_MethodName: SpawnBulletShell
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  <OnShootNoAmmo>k__BackingField:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 712025315976100846}
+        m_TargetAssemblyTypeName: WeaponAudio, Assembly-CSharp
+        m_MethodName: PlayNoBulletsSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &7706025004807071544
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1032,7 +1178,7 @@ MonoBehaviour:
   - {x: -0.372472, y: -0.26408067, z: 0}
   m_ShapePathHash: -152439852
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1394
+  m_InstanceId: -1646
   m_LocalBounds:
     m_Center: {x: -0.003244996, y: -0.011263937, z: 0}
     m_Extent: {x: 0.9486277, y: 0.3237637, z: 0}
@@ -2469,7 +2615,7 @@ MonoBehaviour:
   - {x: -0.284034, y: -0.7060578, z: 0}
   m_ShapePathHash: -588815223
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1318
+  m_InstanceId: -1570
   m_LocalBounds:
     m_Center: {x: -0.014490902, y: -0.056125283, z: 0}
     m_Extent: {x: 0.4971575, y: 0.6518613, z: 0}
@@ -2741,7 +2887,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4972064568912657756}
-  - component: {fileID: 1812194014493582097}
+  - component: {fileID: 7203810656670428040}
+  - component: {fileID: 2795121680726644195}
   m_Layer: 6
   m_Name: AK47Parent
   m_TagString: Untagged
@@ -2765,7 +2912,79 @@ Transform:
   - {fileID: 8175403396482314173}
   m_Father: {fileID: 1904400930862568038}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1812194014493582097
+--- !u!114 &7203810656670428040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5937395819768022421}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 003598ed84a0e6e4f992aeecf52ed26b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterRenderer: {fileID: 7392603489346231293}
+  weaponRenderer: {fileID: 5020192866835763313}
+  muzzle: {fileID: 5528991234656303919}
+  ammo: 30
+  weaponData: {fileID: 11400000, guid: b13726f2ca74d324b9f9db13f8d0456d, type: 2}
+  reloadCoroutine: 0
+  <OnShoot>k__BackingField:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6247739609391266480}
+        m_TargetAssemblyTypeName: WeaponAudio, Assembly-CSharp
+        m_MethodName: PlayShootSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5414964261311135019}
+        m_TargetAssemblyTypeName: FeedbackPlayer, Assembly-CSharp
+        m_MethodName: PlayFeedback
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6700257776357206062}
+        m_TargetAssemblyTypeName: BulletShellGenerator, Assembly-CSharp
+        m_MethodName: SpawnBulletShell
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  <OnShootNoAmmo>k__BackingField:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6247739609391266480}
+        m_TargetAssemblyTypeName: WeaponAudio, Assembly-CSharp
+        m_MethodName: PlayNoBulletsSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2795121680726644195
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3065,7 +3284,7 @@ MonoBehaviour:
   - {x: 0.020423597, y: -0.026998552, z: 0}
   m_ShapePathHash: 962890806
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1354
+  m_InstanceId: -1606
   m_LocalBounds:
     m_Center: {x: 0.0008010231, y: 0.09360409, z: 0}
     m_Extent: {x: 0.038016483, y: 0.123315945, z: 0}
@@ -3400,7 +3619,7 @@ MonoBehaviour:
   - {x: -0.301083, y: -0.12415852, z: 0}
   m_ShapePathHash: -396711739
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1440
+  m_InstanceId: -1692
   m_LocalBounds:
     m_Center: {x: -0.035493493, y: -0.026727527, z: 0}
     m_Extent: {x: 0.9808762, y: 0.3392273, z: 0}
@@ -3637,7 +3856,7 @@ MonoBehaviour:
   - {x: -0.6836021, y: -0.458537, z: 0}
   m_ShapePathHash: -1064608668
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1522
+  m_InstanceId: -1774
   m_LocalBounds:
     m_Center: {x: 0.014419913, y: -0.005604893, z: 0}
     m_Extent: {x: 1.4934846, y: 0.45293212, z: 0}
@@ -3838,7 +4057,7 @@ MonoBehaviour:
   - {x: 0.016051916, y: -0.029050384, z: 0}
   m_ShapePathHash: 1244408975
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1376
+  m_InstanceId: -1628
   m_LocalBounds:
     m_Center: {x: 0.001935944, y: 0.05989304, z: 0}
     m_Extent: {x: 0.038471222, y: 0.0894048, z: 0}
@@ -4000,7 +4219,7 @@ MonoBehaviour:
   - {x: -0.08460533, y: -0.1731724, z: 0}
   m_ShapePathHash: 1349290562
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1486
+  m_InstanceId: -1738
   m_LocalBounds:
     m_Center: {x: -0.14696538, y: -0.0011249483, z: 0}
     m_Extent: {x: 0.9306718, y: 0.47226697, z: 0}
@@ -4013,7 +4232,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6397435834400520267}
-  - component: {fileID: 3336404374969013868}
+  - component: {fileID: 1325969982467632259}
+  - component: {fileID: 1536281597616829437}
   m_Layer: 6
   m_Name: RPGParent
   m_TagString: Untagged
@@ -4037,7 +4257,67 @@ Transform:
   - {fileID: 7610103282711706334}
   m_Father: {fileID: 1904400930862568038}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3336404374969013868
+--- !u!114 &1325969982467632259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8654939978068090066}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 003598ed84a0e6e4f992aeecf52ed26b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterRenderer: {fileID: 7392603489346231293}
+  weaponRenderer: {fileID: 1741606867481086039}
+  muzzle: {fileID: 3417810984489951409}
+  ammo: 30
+  weaponData: {fileID: 11400000, guid: 6ca60aa392e1a68479c1b27d801047d8, type: 2}
+  reloadCoroutine: 0
+  <OnShoot>k__BackingField:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1833687853918835488}
+        m_TargetAssemblyTypeName: WeaponAudio, Assembly-CSharp
+        m_MethodName: PlayShootSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 9062533662354629732}
+        m_TargetAssemblyTypeName: FeedbackPlayer, Assembly-CSharp
+        m_MethodName: PlayFeedback
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  <OnShootNoAmmo>k__BackingField:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1833687853918835488}
+        m_TargetAssemblyTypeName: WeaponAudio, Assembly-CSharp
+        m_MethodName: PlayNoBulletsSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1536281597616829437
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

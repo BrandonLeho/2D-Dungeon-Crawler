@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c3795baed4d45a4e98c4c9639f14206, type: 3}
+  m_Name: SwordData
+  m_EditorClassIdentifier: 
+  <Damage>k__BackingField: 250
+  <StaminaDamage>k__BackingField: 150
+  <AttackDelay>k__BackingField: 0.2
+  <LungeDistance>k__BackingField: 0.5
+  <LungeSpeed>k__BackingField: 10
+  <CanParry>k__BackingField: 0
+  <ParryDuration>k__BackingField: 0.5
+  <ImpactObsticlePrefab>k__BackingField: {fileID: 0}
+  <ImpactEnemyPrefab>k__BackingField: {fileID: 0}
+  <KnockbackPower>k__BackingField: 5
+  <KnockbackDelay>k__BackingField: 0.1
+  <MeleeHitRadius>k__BackingField: 1.1
+  <MeleeLayerMask>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 1216
