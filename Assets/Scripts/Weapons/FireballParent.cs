@@ -1,12 +1,11 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel.Design.Serialization;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
-public class AK47Parent : MonoBehaviour
+public class FireballParent : MonoBehaviour
 {
     protected float desiredAngle;
 
@@ -14,27 +13,16 @@ public class AK47Parent : MonoBehaviour
     public Vector2 PointerPosition { get; set; }
 
     [SerializeField] protected GameObject muzzle;
-
-    [SerializeField] protected int ammo = 30;
-    [SerializeField] protected WeaponDataSO weaponData;
-
-    public int Ammo
-    {
-        get { return ammo; }
-        set { 
-            ammo = Mathf.Clamp(value, 0, weaponData.AmmoCapacity); 
-            }
-    }
-
-    public bool AmmoFull { get => ammo >= weaponData.AmmoCapacity; }
+    [SerializeField] protected SpellDataSO spellData;
     protected bool isShooting = false;
     [SerializeField] protected bool reloadCoroutine = false;
+    private Mana mana;
     [field: SerializeField] public UnityEvent OnShoot { get; set; }
-    [field: SerializeField] public UnityEvent OnShootNoAmmo { get; set; }
+    [field: SerializeField] public UnityEvent OnShootNoMana { get; set; }
 
     private void Start()
     {
-        Ammo = weaponData.AmmoCapacity;
+        mana = GetComponentInParent<Mana>();
     }
 
     private void OnDisable()
@@ -55,20 +43,15 @@ public class AK47Parent : MonoBehaviour
         isShooting = false;
     }
 
-    public void Reload(int ammo)
-    {
-        Ammo += ammo;
-    }
-
     private void UseWeapon()
     {
         if(isShooting && reloadCoroutine == false)
         {
-            if(Ammo > 0)
+            if(mana.GetMana() > 0 && spellData.Mana <= mana.GetMana())
             {
-                Ammo--;
+                mana.DrainMana(spellData.Mana);
                 OnShoot?.Invoke();
-                for(int i = 0; i < weaponData.GetBulletCountToSpawn(); i++)
+                for(int i = 0; i < spellData.GetBulletCountToSpawn(); i++)
                 {
                     ShootBullet();
                 }
@@ -77,7 +60,7 @@ public class AK47Parent : MonoBehaviour
             else
             {
                 isShooting = false;
-                OnShootNoAmmo?.Invoke();
+                OnShootNoMana?.Invoke();
                 return;
             }
             FinishShooting();
@@ -86,20 +69,20 @@ public class AK47Parent : MonoBehaviour
 
     private void Recoil()
     {
-        if(weaponData.Recoil == 0)
+        if(spellData.Recoil == 0)
             return;
         
         var knockback = transform.root.gameObject.GetComponent<Knockback>();
         if(knockback != null)
         {
-            knockback.PlayFeedbackV2(weaponData.Recoil, PointerPosition); 
+            knockback.PlayFeedbackV2(spellData.Recoil, PointerPosition); 
         }
     }
 
     private void FinishShooting()
     {
         StartCoroutine(DelayNextShootCoroutine());
-        if(weaponData.AutomaticFire == false)
+        if(spellData.AutomaticFire == false)
         {
             isShooting = false;
         }
@@ -108,7 +91,7 @@ public class AK47Parent : MonoBehaviour
     protected IEnumerator DelayNextShootCoroutine()
     {
         reloadCoroutine = true;
-        yield return new WaitForSeconds(weaponData.WeaponDelay);
+        yield return new WaitForSeconds(spellData.WeaponDelay);
         reloadCoroutine = false;
     }
 
@@ -119,13 +102,13 @@ public class AK47Parent : MonoBehaviour
 
     private void SpawnBullet(Vector3 position, Quaternion rotation)
     {
-        var bulletPrefab = Instantiate(weaponData.BulletData.bulletPrefab, position, rotation);
-        bulletPrefab.GetComponent<Bullet>().BulletData = weaponData.BulletData;
+        var bulletPrefab = Instantiate(spellData.BulletData.bulletPrefab, position, rotation);
+        bulletPrefab.GetComponent<Bullet>().BulletData = spellData.BulletData;
     }
 
     private Quaternion CalculateAngle(GameObject muzzle)
     {
-        float spread = Random.Range(-weaponData.SpreadAngle, weaponData.SpreadAngle);
+        float spread = Random.Range(-spellData.SpreadAngle, spellData.SpreadAngle);
         Quaternion bulletSpreadRotation = Quaternion.Euler(new Vector3(0, 0, spread));
         return muzzle.transform.rotation * bulletSpreadRotation;
     }
@@ -148,10 +131,5 @@ public class AK47Parent : MonoBehaviour
             weaponRenderer.sortingOrder = characterRenderer.sortingOrder + 1;
         else
             weaponRenderer.sortingOrder = characterRenderer.sortingOrder - 1;
-    }
-
-    internal void AddAmmo(int ammoAmount)
-    {
-        ammo += ammoAmount;
     }
 }

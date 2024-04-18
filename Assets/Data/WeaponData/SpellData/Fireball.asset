@@ -9,14 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b0af2438cf2dba479a8bb22dd28ea0b, type: 3}
-  m_Name: RPGData
+  m_Script: {fileID: 11500000, guid: 378c7715a0dcc0344a1d3157a1abf119, type: 3}
+  m_Name: Fireball
   m_EditorClassIdentifier: 
-  <BulletData>k__BackingField: {fileID: 11400000, guid: 62b6b02a589e828438d0f4d9b8bb6072, type: 2}
+  <BulletData>k__BackingField: {fileID: 11400000, guid: ce2f50f2b5c16454499d08e0332ddbaf, type: 2}
   <AutomaticFire>k__BackingField: 0
-  <AmmoCapacity>k__BackingField: 10000
-  <WeaponDelay>k__BackingField: 1
-  <Recoil>k__BackingField: 5
+  <Mana>k__BackingField: 100
+  <WeaponDelay>k__BackingField: 0.1
+  <Recoil>k__BackingField: 50
   <SpreadAngle>k__BackingField: 5
   multiBulletShot: 0
-  bulletCount: 1
+  bulletCount: 0

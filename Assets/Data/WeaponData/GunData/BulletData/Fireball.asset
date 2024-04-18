@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 942a012a96201324596af325e7723512, type: 3}
+  m_Name: Fireball
+  m_EditorClassIdentifier: 
+  <bulletPrefab>k__BackingField: {fileID: 2987469271269391588, guid: 37903f3c05d49d04b951c769533288d2, type: 3}
+  <BulletSpeed>k__BackingField: 50
+  <Damage>k__BackingField: 500
+  <StaminaDamage>k__BackingField: 250
+  <Friction>k__BackingField: 10
+  <Ricochet>k__BackingField: 0
+  <Pierce>k__BackingField: 0
+  <RayCast>k__BackingField: 0
+  <Explosion>k__BackingField: 1
+  <ExplosionRadius>k__BackingField: 5
+  <ExplosionFeedbackRadius>k__BackingField: 1
+  <ImpactObsticlePrefab>k__BackingField: {fileID: 3476315520753515744, guid: cc19ecabaac923d41a54d262edbd582e, type: 3}
+  <ImpactEnemyPrefab>k__BackingField: {fileID: 3476315520753515744, guid: cc19ecabaac923d41a54d262edbd582e, type: 3}
+  <KnockbackPower>k__BackingField: 50
+  <KnockbackDelay>k__BackingField: 0.1
+  <BulletLayerMask>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 1216

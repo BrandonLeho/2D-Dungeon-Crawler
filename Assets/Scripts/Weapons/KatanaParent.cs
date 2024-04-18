@@ -18,6 +18,7 @@ public class KatanaParent : MonoBehaviour
     public Transform circleOrigin;
     [SerializeField] private Parry parry;
     [SerializeField] private AgentMover agentMover;
+    [field: SerializeField] public UnityEvent OnHit { get; set; }
     
     public bool canAttack, chainAttack, canLunge;
     public int attackState = 0;
@@ -170,6 +171,7 @@ public class KatanaParent : MonoBehaviour
         {
             if(collider.name != transform.root.gameObject.name)
             {
+                OnHit?.Invoke();
                 var hittable = collider.GetComponent<IHittable>();
                 hittable?.GetHit(meleeData.Damage, meleeData.StaminaDamage, transform.root.gameObject);
 

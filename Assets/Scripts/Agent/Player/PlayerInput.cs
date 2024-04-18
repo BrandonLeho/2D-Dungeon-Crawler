@@ -7,10 +7,10 @@ using UnityEngine.InputSystem;
 public class PlayerInput : MonoBehaviour
 {
     public UnityEvent<Vector2> OnMovementInput, OnPointerInput;
-    public UnityEvent OnAttack, OnDash, OnParry, OnPerformedParry, OnFire, OnPerformedFire;
+    public UnityEvent OnAttack, OnDash, OnParry, OnPerformedParry, OnFire, OnPerformedFire, OnInteract;
 
     [SerializeField]
-    private InputActionReference movement, attack, pointerPosition, dash, parry, fire;
+    private InputActionReference movement, attack, pointerPosition, dash, parry, fire, interact;
 
     private void Update()
     {
@@ -33,6 +33,7 @@ public class PlayerInput : MonoBehaviour
         parry.action.canceled += PerformedParry;
         fire.action.started += PerformFire;
         fire.action.canceled += PerformedFire;
+        interact.action.started += PerformInteract;
     }
 
     private void OnDisable() 
@@ -43,6 +44,7 @@ public class PlayerInput : MonoBehaviour
         parry.action.canceled-= PerformedParry;
         fire.action.started -= PerformFire;
         fire.action.canceled -= PerformedFire;
+        interact.action.started -= PerformInteract;
     }
 
     private void PerformAttack(InputAction.CallbackContext obj)
@@ -73,6 +75,11 @@ public class PlayerInput : MonoBehaviour
     private void PerformedFire(InputAction.CallbackContext obj)
     {
         OnPerformedFire?.Invoke();
+    }
+
+    private void PerformInteract(InputAction.CallbackContext obj)
+    {
+        OnInteract?.Invoke();
     }
 
 }

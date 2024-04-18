@@ -21,6 +21,8 @@ public class Agent : MonoBehaviour
     private ShotgunParent shotgunParent;
     private RPGParent rpgParent;
     private SniperParent sniperParent;
+    private FireballParent fireballParent;
+    private PlayerInteract playerInteract;
 
     public void PerformAttack()
     {
@@ -53,6 +55,11 @@ public class Agent : MonoBehaviour
             sniperParent.Shoot();
             agentMover.canDashOnShoot();
         }
+        if(fireballParent.gameObject.activeInHierarchy)
+        {
+            fireballParent.Shoot();
+            agentMover.canDashOnShoot();
+        }
     }
 
     public void PerformedFire()
@@ -77,6 +84,11 @@ public class Agent : MonoBehaviour
             sniperParent.StopShoot();
             agentMover.canDashOffShoot();
         }
+        if(fireballParent.gameObject.activeInHierarchy)
+        {
+            fireballParent.StopShoot();
+            agentMover.canDashOffShoot();
+        }
     }
 
     public void PerformDash()
@@ -98,6 +110,11 @@ public class Agent : MonoBehaviour
         parry.EndBlockAndParry();
     }
 
+    public void Interact()
+    {
+        playerInteract.Interact();
+    }
+
     private void Update()
     {
         agentMover.MovementInput = movementInput;
@@ -107,6 +124,7 @@ public class Agent : MonoBehaviour
         shotgunParent.PointerPosition = pointerInput;
         rpgParent.PointerPosition = pointerInput;
         sniperParent.PointerPosition = pointerInput;
+        fireballParent.PointerPosition = pointerInput;
 
         AnimateCharacter();
     }
@@ -114,12 +132,14 @@ public class Agent : MonoBehaviour
     private void Awake()
     {
         agentAnimations = GetComponentInChildren<AgentAnimations>();
+        playerInteract = GetComponent<PlayerInteract>();
         swordParent = GetComponentInChildren<SwordParent>();
         katanaParent = GetComponentInChildren<KatanaParent>();
         aK47Parent = GetComponentInChildren<AK47Parent>();
         shotgunParent = GetComponentInChildren<ShotgunParent>();
         rpgParent = GetComponentInChildren<RPGParent>();
         sniperParent = GetComponentInChildren<SniperParent>();
+        fireballParent = GetComponentInChildren<FireballParent>();
         
         agentMover = GetComponent<AgentMover>();
         parry = GetComponent<Parry>();

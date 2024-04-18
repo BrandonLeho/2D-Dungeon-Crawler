@@ -9,6 +9,8 @@ public class Player : MonoBehaviour, IHittable
     [field: SerializeField] public int Health { get; set; }
     [field: SerializeField] public int maxHealth { get; set; }
     [field: SerializeField] public int Stamina { get; set; }
+    [field: SerializeField] public int Mana { get; set; }
+    [field: SerializeField] public int ManaRegenOnMelee = 0;
     [field: SerializeField] public UnityEvent OnDie { get; set; }
     [field: SerializeField] public UnityEvent OnGetHit { get; set; }
     private bool dead = false;
@@ -17,6 +19,7 @@ public class Player : MonoBehaviour, IHittable
     Parry parry;
     Health health;
     Stamina stamina;
+    Mana mana;
 
     private void Awake()
     {
@@ -32,6 +35,9 @@ public class Player : MonoBehaviour, IHittable
 
         stamina = gameObject.GetComponent<Stamina>();
         stamina.InitializeStamina(Stamina);
+
+        mana = gameObject.GetComponent<Mana>();
+        mana.InitializeMana(Mana);
     }
 
     public void GetHit(int damage, int staminaDamage, GameObject damageDealer)
@@ -69,6 +75,14 @@ public class Player : MonoBehaviour, IHittable
                 OnDie?.Invoke();
                 Destroy(gameObject);
             }
+        }
+    }
+
+    public void RegenManaOnMelee()
+    {
+        if(mana = gameObject.GetComponent<Mana>())
+        {
+            mana.RestoreMana(ManaRegenOnMelee);
         }
     }
 

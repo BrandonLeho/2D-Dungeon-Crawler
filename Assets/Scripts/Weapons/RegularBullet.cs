@@ -5,6 +5,7 @@ using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Animations;
+using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
 public class RegularBullet : Bullet
@@ -111,18 +112,17 @@ public class RegularBullet : Bullet
             int adjustedDamage = (int)(-(BulletData.Damage / BulletData.ExplosionRadius / BulletData.ExplosionRadius) * Math.Pow(dist, 2)) + BulletData.Damage;
             int adjustedStaminaDamage = (int)(-(BulletData.StaminaDamage / BulletData.ExplosionRadius / BulletData.ExplosionRadius) * Math.Pow(dist, 2)) + BulletData.StaminaDamage;
 
+            int adjustedKnockbackPower = (int)((-(BulletData.KnockbackPower / BulletData.ExplosionRadius / BulletData.ExplosionRadius) * Math.Pow(dist, 2)) + BulletData.KnockbackPower);
+
             if(directCollision.gameObject == collider.gameObject)
                 adjustedDamage = (int)(adjustedDamage * 1.5f);
 
             hittable?.GetHit(adjustedDamage, adjustedStaminaDamage, gameObject);
-            if(collider.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+            
+            var knockback = collider.GetComponent<Knockback>();
+            if(knockback != null)
             {
-                
-                var knockback = collider.GetComponent<Knockback>();
-                if(knockback != null)
-                {
-                    knockback.PlayFeedback(BulletData.KnockbackPower, gameObject);
-                }
+                knockback.PlayFeedback(adjustedKnockbackPower, gameObject);
             }
         }
     }
