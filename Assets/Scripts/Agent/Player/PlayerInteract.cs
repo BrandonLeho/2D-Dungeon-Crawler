@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerInteract : MonoBehaviour
 {
     private Interactables interactables;
+    public bool canInteract;
+    public GameObject npc;
 
     private void Awake()
     {
@@ -12,12 +14,27 @@ public class PlayerInteract : MonoBehaviour
     }
     public void Interact()
     {
-        Debug.Log("Interact");
-        if(interactables.playerIsClose && interactables.isTyping == false)
-            interactables.isTyping = true;
-        else
+        if(canInteract)
         {
-            interactables.NextLine();
+            npc.GetComponent<TimeReset>().Reset();
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "NPC")
+        {
+            canInteract = true;
+            npc = collision.gameObject;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "NPC")
+        {
+            canInteract = false;
+            npc = null;
         }
     }
 }

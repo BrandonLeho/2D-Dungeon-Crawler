@@ -17,38 +17,19 @@ public class Interactables : MonoBehaviour
     {
         if(isTyping)
         {
-            if(dialogPanel.activeInHierarchy)
-            {
-                RemoveText();
-            }
-            else
-            {
                 dialogPanel.SetActive(true);
                 StartCoroutine(Typing());
-            }
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.gameObject.tag == "Player")
-        {
-            playerIsClose = true;
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if(collision.gameObject.tag == "Player")
-        {
-            playerIsClose = false;
-            RemoveText();
         }
     }
 
     public void StartDialog()
     {
         isTyping = true;
+    }
+
+    public void StopDialog()
+    {
+        isTyping = false;
     }
 
     public void RemoveText()
