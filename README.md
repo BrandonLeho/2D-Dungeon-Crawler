@@ -1,3 +1,5 @@
+Game Title: Dreadnauts
+_________________________________________________________________________
 Gameplay Mechanics
 
 Time-Based Gameplay: A timer constantly counts down from one minute. Players must strategically navigate the dungeon to reset the timer by reaching certain locations, using gold/currency. Resetting the timer becomes progressively more expensive.
