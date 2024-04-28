@@ -26,7 +26,7 @@ public class Countdown : MonoBehaviour
 
             timerText.text = string.Format("{0:00}:{1:00}.{2:000}", minutes, seconds, milliseconds);
         }
-        else if(remainingTime <0)
+        else if(remainingTime < 0)
         {
             remainingTime = 0;
             timerText.text = "00:00.000";
