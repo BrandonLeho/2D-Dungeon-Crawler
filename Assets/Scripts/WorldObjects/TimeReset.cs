@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class TimeReset : MonoBehaviour
 {
-    [SerializeField] private Countdown countdown;
     public void Reset()
     {
-        countdown.TimeReset();
+        TimeManager.instance.ResetTime();
     }
 }

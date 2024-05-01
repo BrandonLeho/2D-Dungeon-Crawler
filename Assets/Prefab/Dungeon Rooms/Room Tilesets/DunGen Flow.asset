@@ -53,7 +53,7 @@ MonoBehaviour:
     TileSets:
     - {fileID: 11400000, guid: c4c7bb19697e50d48b94797e60c235e0, type: 2}
     NodeType: 0
-    Position: 0.26434425
+    Position: 0.15641026
     Label: New Node
     Keys: []
     Locks: []
@@ -62,7 +62,7 @@ MonoBehaviour:
     TileSets:
     - {fileID: 11400000, guid: c4c7bb19697e50d48b94797e60c235e0, type: 2}
     NodeType: 0
-    Position: 0.58606565
+    Position: 0.31538463
     Label: New Node
     Keys: []
     Locks: []
@@ -71,7 +71,34 @@ MonoBehaviour:
     TileSets:
     - {fileID: 11400000, guid: c4c7bb19697e50d48b94797e60c235e0, type: 2}
     NodeType: 0
-    Position: 0.92622954
+    Position: 0.9205128
+    Label: New Node
+    Keys: []
+    Locks: []
+    LockPlacement: 0
+  - Graph: {fileID: 11400000}
+    TileSets:
+    - {fileID: 11400000, guid: c4c7bb19697e50d48b94797e60c235e0, type: 2}
+    NodeType: 0
+    Position: 0.47435898
+    Label: New Node
+    Keys: []
+    Locks: []
+    LockPlacement: 0
+  - Graph: {fileID: 11400000}
+    TileSets:
+    - {fileID: 11400000, guid: c4c7bb19697e50d48b94797e60c235e0, type: 2}
+    NodeType: 0
+    Position: 0.63076925
+    Label: New Node
+    Keys: []
+    Locks: []
+    LockPlacement: 0
+  - Graph: {fileID: 11400000}
+    TileSets:
+    - {fileID: 11400000, guid: c4c7bb19697e50d48b94797e60c235e0, type: 2}
+    NodeType: 0
+    Position: 0.7897436
     Label: New Node
     Keys: []
     Locks: []
