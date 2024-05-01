@@ -978,8 +978,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2457584489172057661}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1246,7 +1246,7 @@ MonoBehaviour:
   - {x: -0.372472, y: -0.26408067, z: 0}
   m_ShapePathHash: -152439852
   m_Mesh: {fileID: 0}
-  m_InstanceId: -3798
+  m_InstanceId: -1700
   m_LocalBounds:
     m_Center: {x: -0.003244996, y: -0.011263937, z: 0}
     m_Extent: {x: 0.9486277, y: 0.3237637, z: 0}
@@ -1833,7 +1833,7 @@ MonoBehaviour:
   - {x: -0.08460533, y: -0.1731724, z: 0}
   m_ShapePathHash: 1349290562
   m_Mesh: {fileID: 0}
-  m_InstanceId: -3980
+  m_InstanceId: -1882
   m_LocalBounds:
     m_Center: {x: -0.14696538, y: -0.0011249483, z: 0}
     m_Extent: {x: 0.9306718, y: 0.47226697, z: 0}
@@ -2507,25 +2507,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eee73378513bf844db3d781f94fa0a99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 8
-  acceleration: 50
-  deacceleration: 100
-  finalMaxSpeed: 0
-  shootingSpeed: 5
   currentSpeed: 0
   dashSpeed: 30
   dashLength: 0.1
   dashCooldown: 0.3
   dashCounter: 0
   dashCoolCounter: 0
-  isDashing: 0
-  canDash: 0
-  isLunging: 0
-  isBlocking: 0
+  sprintSpeed: 12
+  maxSpeed: 8
+  acceleration: 50
+  deacceleration: 100
+  finalMaxSpeed: 0
+  shootingSpeed: 5
   lungeDistance: 0
   lungeSpeed: 0
   lungeTime: 0
   startTime: 0
+  isDashing: 0
+  canDash: 0
+  isLunging: 0
+  isBlocking: 0
+  isSprinting: 0
 --- !u!114 &6558754717651403222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2823,6 +2825,36 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnSprint:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5825642249079211311}
+        m_TargetAssemblyTypeName: Agent, Assembly-CSharp
+        m_MethodName: PerformSprint
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnSprinted:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5825642249079211311}
+        m_TargetAssemblyTypeName: Agent, Assembly-CSharp
+        m_MethodName: PerformedSprint
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   movement: {fileID: 421168985744500162, guid: 4cbd6f251bd3d614ab6355d8c043c295, type: 3}
   attack: {fileID: 6792376721719885646, guid: 4cbd6f251bd3d614ab6355d8c043c295, type: 3}
   pointerPosition: {fileID: 6974337385416790007, guid: 4cbd6f251bd3d614ab6355d8c043c295, type: 3}
@@ -2830,6 +2862,7 @@ MonoBehaviour:
   parry: {fileID: -7025999032421690164, guid: 4cbd6f251bd3d614ab6355d8c043c295, type: 3}
   fire: {fileID: -4482389955688968869, guid: 4cbd6f251bd3d614ab6355d8c043c295, type: 3}
   interact: {fileID: 167546957585398405, guid: 4cbd6f251bd3d614ab6355d8c043c295, type: 3}
+  sprint: {fileID: -6655652002761281202, guid: 4cbd6f251bd3d614ab6355d8c043c295, type: 3}
 --- !u!114 &6522508975828979058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2996,7 +3029,7 @@ MonoBehaviour:
   - {x: -0.284034, y: -0.7060578, z: 0}
   m_ShapePathHash: -588815223
   m_Mesh: {fileID: 0}
-  m_InstanceId: -3716
+  m_InstanceId: -1620
   m_LocalBounds:
     m_Center: {x: -0.014490902, y: -0.056125283, z: 0}
     m_Extent: {x: 0.4971575, y: 0.6518613, z: 0}
@@ -3838,7 +3871,7 @@ MonoBehaviour:
   - {x: 0.020423597, y: -0.026998552, z: 0}
   m_ShapePathHash: 962890806
   m_Mesh: {fileID: 0}
-  m_InstanceId: -3756
+  m_InstanceId: -1658
   m_LocalBounds:
     m_Center: {x: 0.0008010231, y: 0.09360409, z: 0}
     m_Extent: {x: 0.038016483, y: 0.123315945, z: 0}
@@ -4188,7 +4221,7 @@ MonoBehaviour:
   - {x: -0.301083, y: -0.12415852, z: 0}
   m_ShapePathHash: -396711739
   m_Mesh: {fileID: 0}
-  m_InstanceId: -3846
+  m_InstanceId: -1748
   m_LocalBounds:
     m_Center: {x: -0.035493493, y: -0.026727527, z: 0}
     m_Extent: {x: 0.9808762, y: 0.3392273, z: 0}
@@ -4425,7 +4458,7 @@ MonoBehaviour:
   - {x: -0.6836021, y: -0.458537, z: 0}
   m_ShapePathHash: -1064608668
   m_Mesh: {fileID: 0}
-  m_InstanceId: -3932
+  m_InstanceId: -1834
   m_LocalBounds:
     m_Center: {x: 0.014419913, y: -0.005604893, z: 0}
     m_Extent: {x: 1.4934846, y: 0.45293212, z: 0}
@@ -4710,7 +4743,7 @@ MonoBehaviour:
   - {x: 0.016051916, y: -0.029050384, z: 0}
   m_ShapePathHash: 1244408975
   m_Mesh: {fileID: 0}
-  m_InstanceId: -3778
+  m_InstanceId: -1680
   m_LocalBounds:
     m_Center: {x: 0.001935944, y: 0.05989304, z: 0}
     m_Extent: {x: 0.038471222, y: 0.0894048, z: 0}
@@ -4872,7 +4905,7 @@ MonoBehaviour:
   - {x: -0.08460533, y: -0.1731724, z: 0}
   m_ShapePathHash: 1349290562
   m_Mesh: {fileID: 0}
-  m_InstanceId: -3894
+  m_InstanceId: -1796
   m_LocalBounds:
     m_Center: {x: -0.14696538, y: -0.0011249483, z: 0}
     m_Extent: {x: 0.9306718, y: 0.47226697, z: 0}

@@ -26,36 +26,36 @@ public class Agent : MonoBehaviour
 
     public void PerformAttack()
     {
-        if(swordParent.gameObject.activeInHierarchy)
+        if (swordParent.gameObject.activeInHierarchy)
             swordParent.Attack();
-        if(katanaParent.gameObject.activeInHierarchy)
+        if (katanaParent.gameObject.activeInHierarchy)
             katanaParent.Attack();
-        
+
     }
 
     public void PerformFire()
     {
-        if(aK47Parent.gameObject.activeInHierarchy)
+        if (aK47Parent.gameObject.activeInHierarchy)
         {
             aK47Parent.Shoot();
             agentMover.canDashOnShoot();
         }
-        if(shotgunParent.gameObject.activeInHierarchy)
+        if (shotgunParent.gameObject.activeInHierarchy)
         {
             shotgunParent.Shoot();
             agentMover.canDashOnShoot();
         }
-        if(rpgParent.gameObject.activeInHierarchy)
+        if (rpgParent.gameObject.activeInHierarchy)
         {
             rpgParent.Shoot();
             agentMover.canDashOnShoot();
         }
-        if(sniperParent.gameObject.activeInHierarchy)
+        if (sniperParent.gameObject.activeInHierarchy)
         {
             sniperParent.Shoot();
             agentMover.canDashOnShoot();
         }
-        if(fireballParent.gameObject.activeInHierarchy)
+        if (fireballParent.gameObject.activeInHierarchy)
         {
             fireballParent.Shoot();
             agentMover.canDashOnShoot();
@@ -64,27 +64,27 @@ public class Agent : MonoBehaviour
 
     public void PerformedFire()
     {
-        if(aK47Parent.gameObject.activeInHierarchy)
+        if (aK47Parent.gameObject.activeInHierarchy)
         {
             aK47Parent.StopShoot();
             agentMover.canDashOffShoot();
         }
-        if(shotgunParent.gameObject.activeInHierarchy)
+        if (shotgunParent.gameObject.activeInHierarchy)
         {
             shotgunParent.StopShoot();
             agentMover.canDashOffShoot();
         }
-        if(rpgParent.gameObject.activeInHierarchy)
+        if (rpgParent.gameObject.activeInHierarchy)
         {
             rpgParent.StopShoot();
             agentMover.canDashOffShoot();
         }
-        if(sniperParent.gameObject.activeInHierarchy)
+        if (sniperParent.gameObject.activeInHierarchy)
         {
             sniperParent.StopShoot();
             agentMover.canDashOffShoot();
         }
-        if(fireballParent.gameObject.activeInHierarchy)
+        if (fireballParent.gameObject.activeInHierarchy)
         {
             fireballParent.StopShoot();
             agentMover.canDashOffShoot();
@@ -96,13 +96,23 @@ public class Agent : MonoBehaviour
         agentMover.Dash();
     }
 
+    public void PerformSprint()
+    {
+        agentMover.Sprint();
+    }
+
+    public void PerformedSprint()
+    {
+        agentMover.StopSprint();
+    }
+
     public void PerformParry()
     {
-        if(!aK47Parent.gameObject.activeInHierarchy)
+        if (!aK47Parent.gameObject.activeInHierarchy)
         {
             parry.StartBlockAndParry();
         }
-        
+
     }
 
     public void PerformedParry()
@@ -140,7 +150,7 @@ public class Agent : MonoBehaviour
         rpgParent = GetComponentInChildren<RPGParent>();
         sniperParent = GetComponentInChildren<SniperParent>();
         fireballParent = GetComponentInChildren<FireballParent>();
-        
+
         agentMover = GetComponent<AgentMover>();
         parry = GetComponent<Parry>();
     }

@@ -11,12 +11,12 @@ public class Health : MonoBehaviour
     public Slider healthBarFalloff;
     public float lerpSpeed = 0.05f;
     public GameObject damagePopup, healingPopup, character;
-    public TMP_Text popupText;
+    public TMP_Text popupText, healthText;
 
     [SerializeField]
     private int currentHealth, maxHealth;
 
-    public UnityEvent<GameObject> OnHitWithReference, OnDeathWithReference;    
+    public UnityEvent<GameObject> OnHitWithReference, OnDeathWithReference;
 
     [SerializeField]
     private bool isDead = false;
@@ -25,6 +25,8 @@ public class Health : MonoBehaviour
 
     private void Start()
     {
+        if (gameObject.layer == LayerMask.NameToLayer("Player"))
+            healthText = healthBar.GetComponentsInChildren<TextMeshProUGUI>()[0];
         barColor = healthBar.GetComponentsInChildren<Image>()[3].color;
     }
     public void InitializeHealth(int healthValue)
@@ -34,26 +36,31 @@ public class Health : MonoBehaviour
         isDead = false;
         healthBar.maxValue = maxHealth;
         healthBarFalloff.maxValue = maxHealth;
+        if (gameObject.layer == LayerMask.NameToLayer("Player"))
+            healthText.text = currentHealth.ToString();
     }
 
     public void GetHit(int amount, GameObject sender)
     {
-        if(isDead || amount <= 0)
+        if (isDead || amount <= 0)
             return;
-        if(sender.layer == gameObject.layer)
+        if (sender.layer == gameObject.layer)
             return;
-            
+
         currentHealth -= amount;
 
+        if (gameObject.layer == LayerMask.NameToLayer("Player"))
+            healthText.text = currentHealth.ToString();
+
         Vector3 randomPopup = new Vector3
-        (character.transform.position.x + Random.Range(-0.75f, 0.75f), 
+        (character.transform.position.x + Random.Range(-0.75f, 0.75f),
         character.transform.position.y + Random.Range(0.5f, 1.25f));
 
         GameObject DamageTextInstance = Instantiate(damagePopup, randomPopup, Quaternion.identity);
         DamageTextInstance.transform.GetChild(0).GetComponent<TextMeshPro>().SetText(amount.ToString());
 
 
-        if(currentHealth > 0)
+        if (currentHealth > 0)
             OnHitWithReference?.Invoke(sender);
         else
         {
@@ -65,11 +72,14 @@ public class Health : MonoBehaviour
     public void Heal(int amount)
     {
         currentHealth += amount;
-        if(currentHealth > maxHealth)
+        if (currentHealth > maxHealth)
             currentHealth = maxHealth;
-        
+
+        if (gameObject.layer == LayerMask.NameToLayer("Player"))
+            healthText.text = currentHealth.ToString();
+
         Vector3 randomPopup = new Vector3
-        (character.transform.position.x + Random.Range(-0.75f, 0.75f), 
+        (character.transform.position.x + Random.Range(-0.75f, 0.75f),
         character.transform.position.y + Random.Range(0.5f, 1.25f));
 
         GameObject HealingTextInstance = Instantiate(healingPopup, randomPopup, Quaternion.identity);
@@ -82,12 +92,12 @@ public class Health : MonoBehaviour
     }
     private void Update()
     {
-        if(healthBar.value != currentHealth)
+        if (healthBar.value != currentHealth)
         {
             healthBar.value = currentHealth;
         }
 
-        if(healthBar.value != healthBarFalloff.value)
+        if (healthBar.value != healthBarFalloff.value)
         {
             healthBarFalloff.value = Mathf.Lerp(healthBarFalloff.value, currentHealth, lerpSpeed);
         }

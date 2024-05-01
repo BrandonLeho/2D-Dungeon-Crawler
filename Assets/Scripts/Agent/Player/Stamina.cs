@@ -14,8 +14,8 @@ public class Stamina : MonoBehaviour
     public Slider staminaBarFalloff;
     public float lerpSpeed = 0.05f;
     public GameObject stancePopup;
-    [SerializeField]private int currentStamina, maxStamina;
-    [SerializeField]public int dashCost;
+    [SerializeField] private int currentStamina, maxStamina;
+    [SerializeField] public int dashCost;
     [SerializeField] private Parry parry;
     [SerializeField] private CinemachineVirtualCamera vcam;
     [SerializeField] private Camera cam;
@@ -25,7 +25,9 @@ public class Stamina : MonoBehaviour
     public UnityEvent<GameObject> OnStaminaWithReference, OnRecoverWithReference;
     Animator animator;
 
-    
+    public TMP_Text staminaText;
+
+
 
     public void InitializeStamina(int staminaValue)
     {
@@ -34,11 +36,19 @@ public class Stamina : MonoBehaviour
         staminaBar.maxValue = maxStamina;
         staminaBar.value = maxStamina;
         staminaBarFalloff.maxValue = maxStamina;
+        if (gameObject.layer == LayerMask.NameToLayer("Player"))
+            staminaText = staminaBar.GetComponentsInChildren<TextMeshProUGUI>()[0];
     }
 
     public void UseStamina(int amount)
-    {   
+    {
         currentStamina -= amount;
+
+        if (currentStamina <= 0)
+            currentStamina = 0;
+
+        if (gameObject.layer == LayerMask.NameToLayer("Player"))
+            staminaText.text = currentStamina.ToString();
 
         if (regen != null)
         {
@@ -48,29 +58,29 @@ public class Stamina : MonoBehaviour
         regen = StartCoroutine(RegenerateStamina());
     }
 
-    
+
 
     public void damageStamina(int amount, GameObject sender)
     {
-        if(isStunned)
+        if (isStunned)
         {
             return;
         }
 
         int enemy = LayerMask.NameToLayer("Enemy");
 
-        if(sender.layer == gameObject.layer)
+        if (sender.layer == gameObject.layer)
             return;
-        
-        if(sender.layer == enemy)
+
+        if (sender.layer == enemy)
         {
             currentStamina -= 0;
         }
-        if(gameObject.GetComponent<Parry>().GetParryState())
+        if (gameObject.GetComponent<Parry>().GetParryState())
         {
             return;
         }
-        else if(gameObject.GetComponent<Parry>().GetBlockState())
+        else if (gameObject.GetComponent<Parry>().GetBlockState())
         {
             amount /= 2;
             currentStamina -= amount;
@@ -80,10 +90,16 @@ public class Stamina : MonoBehaviour
             currentStamina -= amount;
         }
 
-        if(currentStamina <= 0)
+        if (currentStamina <= 0)
+            currentStamina = 0;
+
+        if (gameObject.layer == LayerMask.NameToLayer("Player"))
+            staminaText.text = currentStamina.ToString();
+
+        if (currentStamina <= 0)
         {
-            gameObject.GetComponent<Knockback>().PlayFeedback(200, sender); 
-            if(gameObject.layer == enemy)
+            gameObject.GetComponent<Knockback>().PlayFeedback(200, sender);
+            if (gameObject.layer == enemy)
             {
                 isStunned = true;
                 gameObject.GetComponent<AIEnemy>().Stunned(isStunned);
@@ -92,7 +108,7 @@ public class Stamina : MonoBehaviour
             float timer = 0.25f;
             FindObjectOfType<HitLag>().Stop(timer);
 
-            while(timer >= 0)
+            while (timer >= 0)
             {
                 //vcam.m_Lens.FieldOfView = zoom;
                 //cam.orthographicSize = Mathf.SmoothDamp(cam.orthographicSize, targetZoom, ref velocity, smoothTime);
@@ -104,7 +120,7 @@ public class Stamina : MonoBehaviour
             StartCoroutine(Stunned());
             return;
         }
-        
+
 
         if (regen != null)
         {
@@ -115,23 +131,33 @@ public class Stamina : MonoBehaviour
     }
 
     private IEnumerator RegenerateStamina()
-    {   
+    {
         yield return new WaitForSeconds(1);
- 
-        while(currentStamina < maxStamina)
+
+        while (currentStamina < maxStamina)
         {
-            if(parry.GetParryState())
+            if (parry.GetParryState())
             {
                 currentStamina += 0;
             }
-            else if(parry.GetBlockState())
+            else if (parry.GetBlockState())
                 currentStamina += maxStamina / 100 / 2;
             else
                 currentStamina += maxStamina / 100;
 
             staminaBar.value = currentStamina;
+
+            if (gameObject.layer == LayerMask.NameToLayer("Player"))
+                staminaText.text = currentStamina.ToString();
+
             yield return new WaitForSeconds(0.1f);
         }
+        if (currentStamina > maxStamina)
+        {
+            currentStamina = maxStamina;
+        }
+        if (gameObject.layer == LayerMask.NameToLayer("Player"))
+            staminaText.text = currentStamina.ToString();
         regen = null;
     }
 
@@ -145,7 +171,11 @@ public class Stamina : MonoBehaviour
         isStunned = false;
         regen = StartCoroutine(RegenerateStamina());
         currentStamina += (int)(maxStamina / 1.33);
-        if(gameObject.layer == LayerMask.NameToLayer("Enemy"))
+
+        if (gameObject.layer == LayerMask.NameToLayer("Player"))
+            staminaText.text = currentStamina.ToString();
+
+        if (gameObject.layer == LayerMask.NameToLayer("Enemy"))
             gameObject.GetComponent<AIEnemy>().Stunned(isStunned);
     }
 
@@ -154,12 +184,12 @@ public class Stamina : MonoBehaviour
         //vcam.m_Lens.FieldOfView = zoom;
         //cam.orthographicSize = Mathf.SmoothDamp(cam.orthographicSize, zoom, ref velocity, smoothTime);
 
-        if(staminaBar.value != currentStamina)
+        if (staminaBar.value != currentStamina)
         {
             staminaBar.value = currentStamina;
         }
 
-        if(staminaBar.value != staminaBarFalloff.value)
+        if (staminaBar.value != staminaBarFalloff.value)
         {
             staminaBarFalloff.value = Mathf.Lerp(staminaBarFalloff.value, currentStamina, lerpSpeed);
         }
@@ -172,6 +202,8 @@ public class Stamina : MonoBehaviour
 
     public void Start()
     {
+        if (gameObject.layer == LayerMask.NameToLayer("Player"))
+            staminaText.text = currentStamina.ToString();
         //finalZoom = cam.orthographicSize;
         //zoom = Mathf.Clamp(finalZoom, minZoom, maxZoom);
     }

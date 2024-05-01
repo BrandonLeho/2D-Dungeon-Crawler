@@ -21,4 +21,5 @@ public class AgentAnimations : MonoBehaviour
     {
         animator.SetBool("isMoving", movementInput.magnitude > 0);
     }
+
 }

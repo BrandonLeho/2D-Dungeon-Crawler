@@ -7,10 +7,10 @@ using UnityEngine.InputSystem;
 public class PlayerInput : MonoBehaviour
 {
     public UnityEvent<Vector2> OnMovementInput, OnPointerInput;
-    public UnityEvent OnAttack, OnDash, OnParry, OnPerformedParry, OnFire, OnPerformedFire, OnInteract;
+    public UnityEvent OnAttack, OnDash, OnParry, OnPerformedParry, OnFire, OnPerformedFire, OnInteract, OnSprint, OnSprinted;
 
     [SerializeField]
-    private InputActionReference movement, attack, pointerPosition, dash, parry, fire, interact;
+    private InputActionReference movement, attack, pointerPosition, dash, parry, fire, interact, sprint;
 
     private void Update()
     {
@@ -25,7 +25,7 @@ public class PlayerInput : MonoBehaviour
         return Camera.main.ScreenToWorldPoint(mousePos);
     }
 
-    private void OnEnable() 
+    private void OnEnable()
     {
         attack.action.canceled += PerformAttack;
         dash.action.performed += PerformDash;
@@ -34,17 +34,21 @@ public class PlayerInput : MonoBehaviour
         fire.action.started += PerformFire;
         fire.action.canceled += PerformedFire;
         interact.action.started += PerformInteract;
+        sprint.action.started += PerformSprint;
+        sprint.action.canceled += PerformedSprint;
     }
 
-    private void OnDisable() 
+    private void OnDisable()
     {
         attack.action.canceled -= PerformAttack;
         dash.action.performed -= PerformDash;
         parry.action.started -= PerformParry;
-        parry.action.canceled-= PerformedParry;
+        parry.action.canceled -= PerformedParry;
         fire.action.started -= PerformFire;
         fire.action.canceled -= PerformedFire;
         interact.action.started -= PerformInteract;
+        sprint.action.started -= PerformSprint;
+        sprint.action.canceled -= PerformedSprint;
     }
 
     private void PerformAttack(InputAction.CallbackContext obj)
@@ -82,4 +86,13 @@ public class PlayerInput : MonoBehaviour
         OnInteract?.Invoke();
     }
 
+    private void PerformSprint(InputAction.CallbackContext obj)
+    {
+        OnSprint?.Invoke();
+    }
+
+    private void PerformedSprint(InputAction.CallbackContext obj)
+    {
+        OnSprinted?.Invoke();
+    }
 }

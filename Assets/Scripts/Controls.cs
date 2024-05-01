@@ -98,6 +98,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Sprint"",
+                    ""type"": ""Button"",
+                    ""id"": ""51ea5226-c94c-43aa-9cbb-376f9ccc158a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -232,6 +241,17 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d8f9490c-84cd-48ca-862b-ece8ef62fd01"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Sprint"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -276,6 +296,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_PlayerInput_WeaponSwitching = m_PlayerInput.FindAction("WeaponSwitching", throwIfNotFound: true);
         m_PlayerInput_Fire = m_PlayerInput.FindAction("Fire", throwIfNotFound: true);
         m_PlayerInput_Interact = m_PlayerInput.FindAction("Interact", throwIfNotFound: true);
+        m_PlayerInput_Sprint = m_PlayerInput.FindAction("Sprint", throwIfNotFound: true);
         // PauseMenu
         m_PauseMenu = asset.FindActionMap("PauseMenu", throwIfNotFound: true);
         m_PauseMenu_Newaction = m_PauseMenu.FindAction("New action", throwIfNotFound: true);
@@ -348,6 +369,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerInput_WeaponSwitching;
     private readonly InputAction m_PlayerInput_Fire;
     private readonly InputAction m_PlayerInput_Interact;
+    private readonly InputAction m_PlayerInput_Sprint;
     public struct PlayerInputActions
     {
         private @Controls m_Wrapper;
@@ -360,6 +382,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @WeaponSwitching => m_Wrapper.m_PlayerInput_WeaponSwitching;
         public InputAction @Fire => m_Wrapper.m_PlayerInput_Fire;
         public InputAction @Interact => m_Wrapper.m_PlayerInput_Interact;
+        public InputAction @Sprint => m_Wrapper.m_PlayerInput_Sprint;
         public InputActionMap Get() { return m_Wrapper.m_PlayerInput; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -393,6 +416,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Interact.started += instance.OnInteract;
             @Interact.performed += instance.OnInteract;
             @Interact.canceled += instance.OnInteract;
+            @Sprint.started += instance.OnSprint;
+            @Sprint.performed += instance.OnSprint;
+            @Sprint.canceled += instance.OnSprint;
         }
 
         private void UnregisterCallbacks(IPlayerInputActions instance)
@@ -421,6 +447,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Interact.started -= instance.OnInteract;
             @Interact.performed -= instance.OnInteract;
             @Interact.canceled -= instance.OnInteract;
+            @Sprint.started -= instance.OnSprint;
+            @Sprint.performed -= instance.OnSprint;
+            @Sprint.canceled -= instance.OnSprint;
         }
 
         public void RemoveCallbacks(IPlayerInputActions instance)
@@ -494,6 +523,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnWeaponSwitching(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+        void OnSprint(InputAction.CallbackContext context);
     }
     public interface IPauseMenuActions
     {

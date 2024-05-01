@@ -4,22 +4,18 @@ using UnityEngine;
 
 public class AgentMover : MonoBehaviour
 {
+    Animator animator;
     private Rigidbody2D rb2d;
-
-    [SerializeField]
-    private float maxSpeed, acceleration, deacceleration, finalMaxSpeed, shootingSpeed;
-    [SerializeField]
-    private float currentSpeed = 0;
     private Vector2 oldMovementInput;
     public Vector2 MovementInput { get; set; }
 
-    public float dashSpeed;
-    public float dashLength = 0.5f, dashCooldown = 1f;
-    public float dashCounter;
-    public float dashCoolCounter;
-    public bool isDashing, canDash, isLunging, isBlocking;
+    [SerializeField]
+    public float currentSpeed = 0, dashSpeed, dashLength = 0.5f,
+                dashCooldown = 1f, dashCounter, dashCoolCounter, sprintSpeed,
+                maxSpeed, acceleration, deacceleration, finalMaxSpeed, shootingSpeed,
+                lungeDistance, lungeSpeed, lungeTime, startTime;
 
-    public float lungeDistance, lungeSpeed, lungeTime, startTime;
+    public bool isDashing, canDash, isLunging, isBlocking, isSprinting;
     private Vector2 direction;
 
     private Stamina stamina;
@@ -32,13 +28,14 @@ public class AgentMover : MonoBehaviour
         finalMaxSpeed = maxSpeed;
         stamina = GetComponent<Stamina>();
         canDash = true;
+        animator = GetComponent<Animator>();
     }
 
     private void FixedUpdate()
     {
-        if(isDashing)
+        if (isDashing)
         {
-            if(dashCounter > 0)
+            if (dashCounter > 0)
             {
                 StartCoroutine(Dashing());
                 /* dashCounter -= Time.deltaTime;
@@ -52,13 +49,13 @@ public class AgentMover : MonoBehaviour
                 } */
             }
         }
-        else if(isLunging)
+        else if (isLunging)
         {
 
             lungeTime = lungeDistance / lungeSpeed;
             startTime += Time.deltaTime;
 
-            if(startTime <= lungeTime)
+            if (startTime <= lungeTime)
             {
                 rb2d.velocity = direction.normalized * lungeSpeed;
             }
@@ -66,10 +63,15 @@ public class AgentMover : MonoBehaviour
             {
                 isLunging = false;
             }
-            
+
         }
         else
         {
+            if (stamina.GetCurrentStamina() <= 0)
+            {
+                StopSprint();
+            }
+
             if (MovementInput.magnitude > 0 && currentSpeed >= 0)
             {
                 oldMovementInput = MovementInput;
@@ -79,22 +81,33 @@ public class AgentMover : MonoBehaviour
             {
                 currentSpeed -= deacceleration * maxSpeed * Time.deltaTime;
             }
-            currentSpeed = Mathf.Clamp(currentSpeed, 0, maxSpeed);
+            if (isSprinting && MovementInput.magnitude > 0 && currentSpeed >= 0)
+            {
+                currentSpeed = sprintSpeed;
+                stamina.UseStamina(3);
+                animator.SetBool("isSprinting", true);
+            }
+            else
+            {
+                currentSpeed = Mathf.Clamp(currentSpeed, 0, maxSpeed);
+                animator.SetBool("isSprinting", false);
+            }
+
             rb2d.velocity = oldMovementInput * currentSpeed;
-            
-            if(dashCoolCounter > 0)
+
+            if (dashCoolCounter > 0)
             {
                 dashCoolCounter -= Time.deltaTime;
             }
             startTime = 0;
-        }        
+        }
     }
 
     public void Dash()
     {
-        if(!isBlocking && canDash)
+        if (!isBlocking && canDash)
         {
-            if(dashCoolCounter <= 0 && dashCounter <= 0 && stamina.GetCurrentStamina() > 0)
+            if (dashCoolCounter <= 0 && dashCounter <= 0 && stamina.GetCurrentStamina() > 0)
             {
                 currentSpeed = dashSpeed;
                 dashCounter = dashLength;
@@ -106,11 +119,11 @@ public class AgentMover : MonoBehaviour
 
     IEnumerator Dashing()
     {
-        while(dashCounter > 0)
+        while (dashCounter > 0)
         {
             dashCounter -= Time.deltaTime;
             rb2d.velocity = oldMovementInput * currentSpeed;
-            if(dashCounter <= 0)
+            if (dashCounter <= 0)
             {
                 currentSpeed = maxSpeed;
                 dashCoolCounter = dashCooldown;
@@ -118,6 +131,25 @@ public class AgentMover : MonoBehaviour
             }
             yield return null;
         }
+    }
+
+    public void Sprint()
+    {
+        if (stamina.GetCurrentStamina() > 0)
+        {
+            currentSpeed = sprintSpeed;
+            isSprinting = true;
+        }
+        else if (stamina.GetCurrentStamina() <= 0)
+        {
+            StopSprint();
+        }
+    }
+
+    public void StopSprint()
+    {
+        currentSpeed = maxSpeed;
+        isSprinting = false;
     }
 
     public void canDashOnShoot()
@@ -134,13 +166,13 @@ public class AgentMover : MonoBehaviour
 
     public void Blocking(bool playerIsBlocking, bool playerIsParrying)
     {
-        if(!playerIsBlocking && playerIsParrying)
+        if (!playerIsBlocking && playerIsParrying)
         {
             //Debug.Log("Parry");
             isBlocking = true;
-            maxSpeed = finalMaxSpeed/5;
+            maxSpeed = finalMaxSpeed / 5;
         }
-        else if(playerIsBlocking && !playerIsParrying)
+        else if (playerIsBlocking && !playerIsParrying)
         {
             //Debug.Log("Block");
             isBlocking = true;
@@ -165,7 +197,7 @@ public class AgentMover : MonoBehaviour
 
     public void KnockBack(Vector2 direction, float power, float duration)
     {
-        if(isKnockedBack == false)
+        if (isKnockedBack == false)
         {
             isKnockedBack = true;
             StartCoroutine(KnockBackCoroutine(direction, power, duration));
