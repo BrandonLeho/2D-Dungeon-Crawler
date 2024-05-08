@@ -179,7 +179,7 @@ RPG Gameplay
 _________________________________________________________________________
 (May 7, 2024)
 
-It's been a while since the last log; that's mainly because I've been working on my AI Boyfriend project. Here's the repo if you wanna check it out (https://github.com/AI-Boyfriend/Full-Stack). I got very addicted to working on that project that I put this game on the side for the time being. But now that I'm done with that project, I can put some more time into this game. But will I finish it? That is a very good question. Here's the new Update!
+It's been a while since the last log; that's mainly because I've been working on my AI Boyfriend project. Here's the repo if you wanna check it out (https://github.com/AI-Boyfriend/Full-Stack). I got so addicted to working on that project that I put this game on the side for the time being. But now that I'm done with that project, I can put some more time into this game. But will I finish it? That is a very good question. Here's the new Update!
 
 Added so much stuff that I'm just gonna call this the VARIETY UPDATE!
 
@@ -208,6 +208,9 @@ Currently Working On:
 
 -Hub Area (The area before players set foot into dungeons, the hub is the safe place for players to stay at. They can upgrade their gear, buy items, learn spells, gamble their gold, and visit the local "healer" to gain extra temporary hp.)
 
+Very Basic Main Menu w/Title
+
+![image](https://github.com/BrandonLeho/2D-Dungeon-Crawler/assets/89223038/74fadb41-730b-4888-8ed2-9f09155e4c32)
 
 Reseting The Timer Using The Clock
 
