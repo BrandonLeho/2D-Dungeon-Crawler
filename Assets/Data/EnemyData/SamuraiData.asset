@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: SamuraiData
   m_EditorClassIdentifier: 
   <MaxHealth>k__BackingField: 1000
+  <MaxStamina>k__BackingField: 1000
   <Damage>k__BackingField: 100
