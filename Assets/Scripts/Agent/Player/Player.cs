@@ -11,6 +11,7 @@ public class Player : MonoBehaviour, IHittable
     [field: SerializeField] public int Stamina { get; set; }
     [field: SerializeField] public int Mana { get; set; }
     [field: SerializeField] public int ManaRegenOnMelee = 0;
+    [field: SerializeField] public int goldTotal = 0;
     [field: SerializeField] public UnityEvent OnDie { get; set; }
     [field: SerializeField] public UnityEvent OnGetHit { get; set; }
     private bool dead = false;
@@ -20,6 +21,7 @@ public class Player : MonoBehaviour, IHittable
     Health health;
     Stamina stamina;
     Mana mana;
+    GoldManager gold;
 
     private void Awake()
     {
@@ -29,7 +31,7 @@ public class Player : MonoBehaviour, IHittable
     private void Start()
     {
         parry = gameObject.GetComponent<Parry>();
-        
+
         health = gameObject.GetComponent<Health>();
         health.InitializeHealth(Health);
 
@@ -38,34 +40,36 @@ public class Player : MonoBehaviour, IHittable
 
         mana = gameObject.GetComponent<Mana>();
         mana.InitializeMana(Mana);
+
+        gold = gameObject.GetComponent<GoldManager>();
     }
 
     public void GetHit(int damage, int staminaDamage, GameObject damageDealer)
     {
-        if(dead == false)
+        if (dead == false)
         {
-            if(parry.GetParryState())
+            if (parry.GetParryState())
             {
-                if(damageDealer.GetComponent<Stamina>() != null)
+                if (damageDealer.GetComponent<Stamina>() != null)
                     damageDealer.GetComponent<Stamina>().UseStamina(150);
                 return;
             }
-            else if(parry.GetBlockState())
+            else if (parry.GetBlockState())
             {
                 damage /= 2;
             }
-            
-            if(gameObject.GetComponent<Stamina>().GetCurrentStamina() <= 0)
+
+            if (gameObject.GetComponent<Stamina>().GetCurrentStamina() <= 0)
                 damage *= 2;
 
             Health -= damage;
             OnGetHit?.Invoke();
-            if(health = gameObject.GetComponent<Health>())
+            if (health = gameObject.GetComponent<Health>())
             {
                 health.GetHit(damage, damageDealer);
             }
 
-            if(stamina = gameObject.GetComponent<Stamina>())
+            if (stamina = gameObject.GetComponent<Stamina>())
             {
                 stamina.damageStamina(staminaDamage, damageDealer);
             }
@@ -80,7 +84,7 @@ public class Player : MonoBehaviour, IHittable
 
     public void RegenManaOnMelee()
     {
-        if(mana = gameObject.GetComponent<Mana>())
+        if (mana = gameObject.GetComponent<Mana>())
         {
             mana.RestoreMana(ManaRegenOnMelee);
         }
@@ -88,33 +92,39 @@ public class Player : MonoBehaviour, IHittable
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.layer == LayerMask.NameToLayer("Resource"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Resource"))
         {
             var resource = collision.gameObject.GetComponent<Resource>();
-            if(resource!= null)
+            if (resource != null)
             {
-                switch(resource.ResourceData.ResourceType)
+                switch (resource.ResourceData.ResourceType)
                 {
                     case ResourceTypeEnum.Health:
-                        if(Health >= maxHealth)
+                        if (Health >= maxHealth)
                         {
                             return;
                         }
                         int heal = resource.ResourceData.GetAmount();
                         Health += heal;
                         health.Heal(heal);
-                        if(Health > maxHealth)
+                        if (Health > maxHealth)
                         {
                             Health = maxHealth;
                         }
                         resource.PickUpResource();
                         break;
                     case ResourceTypeEnum.Ammo:
-                        if(ak47.AmmoFull)
+                        if (ak47.AmmoFull)
                         {
                             return;
                         }
                         ak47.AddAmmo(resource.ResourceData.GetAmount());
+                        resource.PickUpResource();
+                        break;
+                    case ResourceTypeEnum.Gold:
+                        int goldAmount = resource.ResourceData.GetAmount();
+                        goldTotal += goldAmount;
+                        gold.AddGold(goldTotal);
                         resource.PickUpResource();
                         break;
                     default:

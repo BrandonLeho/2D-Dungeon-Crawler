@@ -168,6 +168,54 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &741905231170484756
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5773420777786618096}
+  - component: {fileID: 1367988230889808221}
+  m_Layer: 10
+  m_Name: GoldDropper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5773420777786618096
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 741905231170484756}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6493194441136819145}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1367988230889808221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 741905231170484756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81bad2781cd551a46baa3ab3d5f5beb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemsToDrop:
+  - rate: 1
+    itemPrefab: {fileID: 3170470801320857413, guid: 8f755df31a964b447b1f94d4660b602f, type: 3}
+  dropChance: 1
 --- !u!1 &751888326017115424
 GameObject:
   m_ObjectHideFlags: 0
@@ -460,7 +508,7 @@ MonoBehaviour:
   - {x: -0.019532338, y: 0.015540683, z: 0}
   m_ShapePathHash: -656085751
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1640
+  m_InstanceId: -4328
   m_LocalBounds:
     m_Center: {x: 0.0004149899, y: 0.096711226, z: 0}
     m_Extent: {x: 0.03831315, y: 0.12487221, z: 0}
@@ -1838,6 +1886,7 @@ Transform:
   - {fileID: 4201685649107920194}
   - {fileID: 7356310024019094632}
   - {fileID: 8614685703231510765}
+  - {fileID: 5773420777786618096}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &84297907513114573
@@ -1999,25 +2048,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eee73378513bf844db3d781f94fa0a99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 5
-  acceleration: 50
-  deacceleration: 100
-  finalMaxSpeed: 0
-  shootingSpeed: 0
   currentSpeed: 0
   dashSpeed: 30
   dashLength: 0.1
   dashCooldown: 0.3
   dashCounter: 0
   dashCoolCounter: 0
-  isDashing: 0
-  canDash: 0
-  isLunging: 0
-  isBlocking: 0
+  sprintSpeed: 0
+  maxSpeed: 5
+  acceleration: 50
+  deacceleration: 100
+  finalMaxSpeed: 0
+  shootingSpeed: 0
   lungeDistance: 0
   lungeSpeed: 0
   lungeTime: 0
   startTime: 0
+  isDashing: 0
+  canDash: 0
+  isLunging: 0
+  isBlocking: 0
+  isSprinting: 0
 --- !u!114 &3157981882832236181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2081,6 +2132,7 @@ MonoBehaviour:
   healingPopup: {fileID: 0}
   character: {fileID: 6884024151763829153}
   popupText: {fileID: 0}
+  healthText: {fileID: 0}
   currentHealth: 1000
   maxHealth: 1000
   OnHitWithReference:
@@ -2139,6 +2191,7 @@ MonoBehaviour:
   OnRecoverWithReference:
     m_PersistentCalls:
       m_Calls: []
+  staminaText: {fileID: 0}
 --- !u!114 &6080154711205197099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2410,7 +2463,7 @@ MonoBehaviour:
   - {x: 0.21407127, y: -0.71981144, z: 0}
   m_ShapePathHash: -1537891931
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1620
+  m_InstanceId: -4308
   m_LocalBounds:
     m_Center: {x: -0.005508423, y: -0.06793177, z: 0}
     m_Extent: {x: 0.4928112, y: 0.65187967, z: 0}
@@ -2556,6 +2609,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1367988230889808221}
+        m_TargetAssemblyTypeName: ItemDropper, Assembly-CSharp
+        m_MethodName: DropItem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7572986137054320111
 GameObject:
   m_ObjectHideFlags: 0
@@ -2608,6 +2673,9 @@ MonoBehaviour:
   circleOrigin: {fileID: 5432802283213185313}
   parry: {fileID: 8930578476364145075}
   agentMover: {fileID: 4690320701749086863}
+  <OnHit>k__BackingField:
+    m_PersistentCalls:
+      m_Calls: []
   canAttack: 0
   chainAttack: 0
   canLunge: 0

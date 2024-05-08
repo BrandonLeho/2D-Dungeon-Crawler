@@ -1246,7 +1246,7 @@ MonoBehaviour:
   - {x: -0.372472, y: -0.26408067, z: 0}
   m_ShapePathHash: -152439852
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1700
+  m_InstanceId: -4658
   m_LocalBounds:
     m_Center: {x: -0.003244996, y: -0.011263937, z: 0}
     m_Extent: {x: 0.9486277, y: 0.3237637, z: 0}
@@ -1833,7 +1833,7 @@ MonoBehaviour:
   - {x: -0.08460533, y: -0.1731724, z: 0}
   m_ShapePathHash: 1349290562
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1882
+  m_InstanceId: -4840
   m_LocalBounds:
     m_Center: {x: -0.14696538, y: -0.0011249483, z: 0}
     m_Extent: {x: 0.9306718, y: 0.47226697, z: 0}
@@ -2311,6 +2311,7 @@ GameObject:
   - component: {fileID: 8057798552688525663}
   - component: {fileID: 7879786976317406109}
   - component: {fileID: 4828415575604937962}
+  - component: {fileID: 2471649922408125562}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -2609,6 +2610,7 @@ MonoBehaviour:
   OnRecoverWithReference:
     m_PersistentCalls:
       m_Calls: []
+  staminaText: {fileID: 0}
 --- !u!114 &9007420928895434137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2628,6 +2630,7 @@ MonoBehaviour:
   healingPopup: {fileID: 6352812445343950911, guid: 2cd08242dba4fea43b6b08ec9a3e3acf, type: 3}
   character: {fileID: 5433083863269606360}
   popupText: {fileID: 0}
+  healthText: {fileID: 0}
   currentHealth: 10000
   maxHealth: 10000
   OnHitWithReference:
@@ -2666,6 +2669,7 @@ MonoBehaviour:
   lerpSpeed: 0.01
   currentMana: 0
   maxMana: 0
+  manaText: {fileID: 0}
 --- !u!114 &5825642249079211311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3029,7 +3033,7 @@ MonoBehaviour:
   - {x: -0.284034, y: -0.7060578, z: 0}
   m_ShapePathHash: -588815223
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1620
+  m_InstanceId: -4578
   m_LocalBounds:
     m_Center: {x: -0.014490902, y: -0.056125283, z: 0}
     m_Extent: {x: 0.4971575, y: 0.6518613, z: 0}
@@ -3045,11 +3049,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45e1a89d710753d41a36bd47d6c84fa3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Health>k__BackingField: 10000
-  <maxHealth>k__BackingField: 10000
-  <Stamina>k__BackingField: 1000
+  <Health>k__BackingField: 1000000
+  <maxHealth>k__BackingField: 1000000
+  <Stamina>k__BackingField: 1000000
   <Mana>k__BackingField: 1000
   ManaRegenOnMelee: 10
+  goldTotal: 0
   <OnDie>k__BackingField:
     m_PersistentCalls:
       m_Calls: []
@@ -3082,6 +3087,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canInteract: 0
   npc: {fileID: 0}
+  resetTimeText: {fileID: 0}
+--- !u!114 &2471649922408125562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5433083863269606360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b13b0d5571c6e6b49890236c125ed97b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goldText: {fileID: 0}
 --- !u!1 &5528991234656303919
 GameObject:
   m_ObjectHideFlags: 0
@@ -3750,7 +3769,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1003520097
   m_SortingLayer: 4
-  m_SortingOrder: 2
+  m_SortingOrder: 1
   m_Sprite: {fileID: 133128500, guid: d86ed4a75119c6c49997cdebe9679509, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3871,7 +3890,7 @@ MonoBehaviour:
   - {x: 0.020423597, y: -0.026998552, z: 0}
   m_ShapePathHash: 962890806
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1658
+  m_InstanceId: -4616
   m_LocalBounds:
     m_Center: {x: 0.0008010231, y: 0.09360409, z: 0}
     m_Extent: {x: 0.038016483, y: 0.123315945, z: 0}
@@ -4221,7 +4240,7 @@ MonoBehaviour:
   - {x: -0.301083, y: -0.12415852, z: 0}
   m_ShapePathHash: -396711739
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1748
+  m_InstanceId: -4706
   m_LocalBounds:
     m_Center: {x: -0.035493493, y: -0.026727527, z: 0}
     m_Extent: {x: 0.9808762, y: 0.3392273, z: 0}
@@ -4458,7 +4477,7 @@ MonoBehaviour:
   - {x: -0.6836021, y: -0.458537, z: 0}
   m_ShapePathHash: -1064608668
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1834
+  m_InstanceId: -4792
   m_LocalBounds:
     m_Center: {x: 0.014419913, y: -0.005604893, z: 0}
     m_Extent: {x: 1.4934846, y: 0.45293212, z: 0}
@@ -4743,7 +4762,7 @@ MonoBehaviour:
   - {x: 0.016051916, y: -0.029050384, z: 0}
   m_ShapePathHash: 1244408975
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1680
+  m_InstanceId: -4638
   m_LocalBounds:
     m_Center: {x: 0.001935944, y: 0.05989304, z: 0}
     m_Extent: {x: 0.038471222, y: 0.0894048, z: 0}
@@ -4905,7 +4924,7 @@ MonoBehaviour:
   - {x: -0.08460533, y: -0.1731724, z: 0}
   m_ShapePathHash: 1349290562
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1796
+  m_InstanceId: -4754
   m_LocalBounds:
     m_Center: {x: -0.14696538, y: -0.0011249483, z: 0}
     m_Extent: {x: 0.9306718, y: 0.47226697, z: 0}

@@ -6,8 +6,8 @@ using UnityEngine;
 public class ResourceDataSO : ScriptableObject
 {
     [field: SerializeField] public ResourceTypeEnum ResourceType { get; set; }
-    [field: SerializeField] private int minAmount = 1, maxAmount = 5;
-    
+    [field: SerializeField] private int minAmount = 1, maxAmount = 100000;
+
     public int GetAmount()
     {
         return Random.Range(minAmount, maxAmount + 1);
@@ -18,5 +18,6 @@ public enum ResourceTypeEnum
 {
     None,
     Health,
-    Ammo
+    Ammo,
+    Gold
 }
