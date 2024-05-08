@@ -175,3 +175,44 @@ Sniper Gameplay
 RPG Gameplay
 
 ![2024-04-0601-00-56-ezgif com-optimize](https://github.com/BrandonLeho/2D-Dungeon-Crawler/assets/89223038/c57b3e40-1a8f-4ab9-8948-28425f720391)
+
+_________________________________________________________________________
+(May 7, 2024)
+
+It's been a while since the last log; that's mainly because I've been working on my AI Boyfriend project. Here's the repo if you wanna check it out (https://github.com/AI-Boyfriend/Full-Stack). I got very addicted to working on that project that I put this game on the side for the time being. But now that I'm done with that project, I can put some more time into this game. But will I finish it? That is a very good question. Here's the new Update!
+
+Added so much stuff that I'm just gonna call this the VARIETY UPDATE!
+
+Changes Since Last Update That Was 5 Billion Years Ago:
+
+-Added Fireball Spell (Player can cast a fireball as spell. Fireball is a projectile and upon impoact will cause an explosion that has an AOE. This will use up some of the player's mana. Players can use mmelee attacks on enemies to replenish lost mana. This should encourage the player to adapt to an aggresive playstyle, by always attacking the enemy.)
+
+-Added Sprinting (Players can now go through the dungeon faster with sprinting. Sprinting uses up stamina overtime, but will give the player a decent speed boost that is worth the stamina loss.)
+
+-Changed Item Drops (Items dropped from enemies now have a limited time to be picked up by the player. The items will start to blink when they are about to despawn. This reduces lags since the world scene will not be cluttered from dropped items that were not picked up by the player.)
+
+-Added Gold (Gold drops after every enemy kill. Picking up the gold will give you a random amount of gold in a set range.)
+
+-Added Clock World Object (Players can find clocks within the dungeon and reset the timer back to 60 seconds for a price. The price has a low base amount and will increase after every reset. This will encourage the player keep the aggresive playstyle by killing and looting more enemies to keep the timer from reaching 0 seconds.)
+
+-Added Basic Main Menu Screen (Works good enough to launch the main game scene, quit the game, and shows title design)
+
+-Added Enemy Spawn Locations In Procedurally Generated Rooms (All of the rooms are now populated with enemies. Each room has a set amount of enemies that will spawn in that room. The spawn rate allows for a steady flow of enemies.)
+
+-Updated HUD (Player health, stamina, and mana bars now have numbers to show the amount of each bar has. The player no longer has to guess their player status.)
+
+
+Currently Working On:
+
+-Improving Overall World Design (Rooms will no longer have the basic and barebones design. They will be more fleshed out and will be overall nicer to look at, at least I hope that's the case.)
+
+-Hub Area (The area before players set foot into dungeons, the hub is the safe place for players to stay at. They can upgrade their gear, buy items, learn spells, gamble their gold, and visit the local "healer" to gain extra temporary hp.)
+
+
+Reseting The Timer Using The Clock
+
+![2024-05-0722-49-55-ezgif com-optimize](https://github.com/BrandonLeho/2D-Dungeon-Crawler/assets/89223038/d1629bc7-5d65-4f4f-9239-8516a25d02ae)
+
+Fireball Spell
+
+![2024-05-0722-53-40-ezgif com-video-to-gif-converter](https://github.com/BrandonLeho/2D-Dungeon-Crawler/assets/89223038/313528c5-006f-418b-9048-e6fbbef9e677)
