@@ -208,14 +208,16 @@ Currently Working On:
 
 -Hub Area (The area before players set foot into dungeons, the hub is the safe place for players to stay at. They can upgrade their gear, buy items, learn spells, gamble their gold, and visit the local "healer" to gain extra temporary hp.)
 
-Very Basic Main Menu w/Title
-
-![image](https://github.com/BrandonLeho/2D-Dungeon-Crawler/assets/89223038/74fadb41-730b-4888-8ed2-9f09155e4c32)
-
-Reseting The Timer Using The Clock
-
-![2024-05-0722-49-55-ezgif com-optimize](https://github.com/BrandonLeho/2D-Dungeon-Crawler/assets/89223038/d1629bc7-5d65-4f4f-9239-8516a25d02ae)
+GIF GAMEPLAY SECTION!!!!!
 
 Fireball Spell
 
+![2024-05-0722-49-55-ezgif com-optimize](https://github.com/BrandonLeho/2D-Dungeon-Crawler/assets/89223038/d1629bc7-5d65-4f4f-9239-8516a25d02ae)
+
+Resetting The Timer Using The Clock
+
 ![2024-05-0722-53-40-ezgif com-video-to-gif-converter](https://github.com/BrandonLeho/2D-Dungeon-Crawler/assets/89223038/313528c5-006f-418b-9048-e6fbbef9e677)
+
+Very Basic Main Menu w/Title
+
+![image](https://github.com/BrandonLeho/2D-Dungeon-Crawler/assets/89223038/74fadb41-730b-4888-8ed2-9f09155e4c32)
