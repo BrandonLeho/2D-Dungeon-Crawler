@@ -447,7 +447,7 @@ MonoBehaviour:
   m_Intensity: 40
   m_LightVolumeIntensity: 0.01
   m_LightVolumeIntensityEnabled: 1
-  m_ApplyToSortingLayers: 000000002b5215a89f7f2fc4055fe7f039363858
+  m_ApplyToSortingLayers: 000000002b5215a89f7f2fc4055fe7f039363858fd9b636b33d614a8076a043df9145fb2
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -529,7 +529,7 @@ MonoBehaviour:
   m_Intensity: 40
   m_LightVolumeIntensity: 0.01
   m_LightVolumeIntensityEnabled: 1
-  m_ApplyToSortingLayers: 000000002b5215a89f7f2fc4055fe7f039363858
+  m_ApplyToSortingLayers: 000000002b5215a89f7f2fc4055fe7f039363858fd9b636b33d614a8076a043df9145fb2
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -1246,7 +1246,7 @@ MonoBehaviour:
   - {x: -0.372472, y: -0.26408067, z: 0}
   m_ShapePathHash: -152439852
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1746
+  m_InstanceId: -1888
   m_LocalBounds:
     m_Center: {x: -0.003244996, y: -0.011263937, z: 0}
     m_Extent: {x: 0.9486277, y: 0.3237637, z: 0}
@@ -1833,7 +1833,7 @@ MonoBehaviour:
   - {x: -0.08460533, y: -0.1731724, z: 0}
   m_ShapePathHash: 1349290562
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1928
+  m_InstanceId: -2070
   m_LocalBounds:
     m_Center: {x: -0.14696538, y: -0.0011249483, z: 0}
     m_Extent: {x: 0.9306718, y: 0.47226697, z: 0}
@@ -3017,26 +3017,20 @@ MonoBehaviour:
   m_UseRendererSilhouette: 1
   m_CastsShadows: 1
   m_SelfShadows: 0
-  m_ApplyToSortingLayers: 000000002b5215a89f7f2fc4055fe7f039363858
+  m_ApplyToSortingLayers: 2b5215a89f7f2fc439363858fd9b636b
   m_ShapePath:
-  - {x: -0.39079523, y: -0.54027057, z: 0}
-  - {x: -0.5116484, y: -0.3626399, z: 0}
-  - {x: -0.4277904, y: -0.11905265, z: 0}
-  - {x: -0.43072748, y: 0.44842649, z: 0}
-  - {x: -0.20416951, y: 0.595736, z: 0}
-  - {x: 0.21511996, y: 0.595736, z: 0}
-  - {x: 0.41076148, y: 0.4204737, z: 0}
-  - {x: 0.39880872, y: -0.1350255, z: 0}
-  - {x: 0.4826666, y: -0.38260603, z: 0}
-  - {x: 0.34689665, y: -0.5263624, z: 0}
-  - {x: 0.27099824, y: -0.7079866, z: 0}
-  - {x: -0.284034, y: -0.7060578, z: 0}
-  m_ShapePathHash: -588815223
+  - {x: -0.2473371, y: 0.40138197, z: 0}
+  - {x: -0.13039708, y: 0.53800106, z: 0}
+  - {x: 0.16326618, y: 0.5369296, z: 0}
+  - {x: 0.25520313, y: 0.40234935, z: 0}
+  - {x: 0.24108124, y: -0.61228085, z: 0}
+  - {x: -0.24236226, y: -0.6082089, z: 0}
+  m_ShapePathHash: -1770947199
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1664
+  m_InstanceId: -1806
   m_LocalBounds:
-    m_Center: {x: -0.014490902, y: -0.056125283, z: 0}
-    m_Extent: {x: 0.4971575, y: 0.6518613, z: 0}
+    m_Center: {x: 0.0039330125, y: -0.037139893, z: 0}
+    m_Extent: {x: 0.25127012, y: 0.57514095, z: 0}
 --- !u!114 &7879786976317406109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3049,8 +3043,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45e1a89d710753d41a36bd47d6c84fa3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Health>k__BackingField: 1000
-  <maxHealth>k__BackingField: 1000
+  <Health>k__BackingField: 10000
+  <maxHealth>k__BackingField: 10000
   <Stamina>k__BackingField: 1000
   <Mana>k__BackingField: 1000
   ManaRegenOnMelee: 10
@@ -3153,7 +3147,7 @@ MonoBehaviour:
   m_Intensity: 40
   m_LightVolumeIntensity: 0.01
   m_LightVolumeIntensityEnabled: 1
-  m_ApplyToSortingLayers: 000000002b5215a89f7f2fc4055fe7f039363858
+  m_ApplyToSortingLayers: 000000002b5215a89f7f2fc4055fe7f03936385833d614a8fd9b636b076a043df9145fb2
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -3337,7 +3331,7 @@ MonoBehaviour:
   m_Intensity: 0.35
   m_LightVolumeIntensity: 0
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 00000000fd9b636b2b5215a89f7f2fc4055fe7f039363858
+  m_ApplyToSortingLayers: 00000000fd9b636b2b5215a89f7f2fc4055fe7f03936385833d614a8076a043df9145fb2
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 1
@@ -3890,7 +3884,7 @@ MonoBehaviour:
   - {x: 0.020423597, y: -0.026998552, z: 0}
   m_ShapePathHash: 962890806
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1704
+  m_InstanceId: -1846
   m_LocalBounds:
     m_Center: {x: 0.0008010231, y: 0.09360409, z: 0}
     m_Extent: {x: 0.038016483, y: 0.123315945, z: 0}
@@ -4240,7 +4234,7 @@ MonoBehaviour:
   - {x: -0.301083, y: -0.12415852, z: 0}
   m_ShapePathHash: -396711739
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1794
+  m_InstanceId: -1936
   m_LocalBounds:
     m_Center: {x: -0.035493493, y: -0.026727527, z: 0}
     m_Extent: {x: 0.9808762, y: 0.3392273, z: 0}
@@ -4477,7 +4471,7 @@ MonoBehaviour:
   - {x: -0.6836021, y: -0.458537, z: 0}
   m_ShapePathHash: -1064608668
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1880
+  m_InstanceId: -2022
   m_LocalBounds:
     m_Center: {x: 0.014419913, y: -0.005604893, z: 0}
     m_Extent: {x: 1.4934846, y: 0.45293212, z: 0}
@@ -4762,7 +4756,7 @@ MonoBehaviour:
   - {x: 0.016051916, y: -0.029050384, z: 0}
   m_ShapePathHash: 1244408975
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1726
+  m_InstanceId: -1868
   m_LocalBounds:
     m_Center: {x: 0.001935944, y: 0.05989304, z: 0}
     m_Extent: {x: 0.038471222, y: 0.0894048, z: 0}
@@ -4924,7 +4918,7 @@ MonoBehaviour:
   - {x: -0.08460533, y: -0.1731724, z: 0}
   m_ShapePathHash: 1349290562
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1842
+  m_InstanceId: -1984
   m_LocalBounds:
     m_Center: {x: -0.14696538, y: -0.0011249483, z: 0}
     m_Extent: {x: 0.9306718, y: 0.47226697, z: 0}
