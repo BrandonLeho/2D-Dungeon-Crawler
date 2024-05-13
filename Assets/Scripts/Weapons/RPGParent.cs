@@ -18,9 +18,10 @@ public class RPGParent : MonoBehaviour
     public int Ammo
     {
         get { return ammo; }
-        set { 
-            ammo = Mathf.Clamp(value, 0, weaponData.AmmoCapacity); 
-            }
+        set
+        {
+            ammo = Mathf.Clamp(value, 0, weaponData.AmmoCapacity);
+        }
     }
 
     public bool AmmoFull { get => ammo >= weaponData.AmmoCapacity; }
@@ -59,13 +60,13 @@ public class RPGParent : MonoBehaviour
 
     private void UseWeapon()
     {
-        if(isShooting && reloadCoroutine == false)
+        if (isShooting && reloadCoroutine == false)
         {
-            if(Ammo > 0)
+            if (Ammo > 0)
             {
                 Ammo--;
                 OnShoot?.Invoke();
-                for(int i = 0; i < weaponData.GetBulletCountToSpawn(); i++)
+                for (int i = 0; i < weaponData.GetBulletCountToSpawn(); i++)
                 {
                     ShootBullet();
                 }
@@ -84,16 +85,16 @@ public class RPGParent : MonoBehaviour
     private void Recoil()
     {
         var knockback = transform.root.gameObject.GetComponent<Knockback>();
-        if(knockback != null)
+        if (knockback != null)
         {
-            knockback.PlayFeedbackV2(weaponData.Recoil, PointerPosition); 
+            knockback.PlayFeedbackV2(weaponData.Recoil, PointerPosition);
         }
     }
 
     private void FinishShooting()
     {
         StartCoroutine(DelayNextShootCoroutine());
-        if(weaponData.AutomaticFire == false)
+        if (weaponData.AutomaticFire == false)
         {
             isShooting = false;
         }
@@ -128,17 +129,17 @@ public class RPGParent : MonoBehaviour
     {
         UseWeapon();
 
-        Vector2 direction = (PointerPosition-(Vector2)transform.position).normalized;
+        Vector2 direction = (PointerPosition - (Vector2)transform.position).normalized;
         transform.right = direction;
 
         Vector2 scale = transform.localScale;
-        if(direction.x < 0)
+        if (direction.x < 0)
             scale.y = -1;
-        else if(direction.x > 0)
+        else if (direction.x > 0)
             scale.y = 1;
         transform.localScale = scale;
 
-        if(transform.eulerAngles.z > 90 && transform.eulerAngles.z < 270)
+        if (transform.eulerAngles.z > 90 && transform.eulerAngles.z < 270)
             weaponRenderer.sortingOrder = characterRenderer.sortingOrder + 1;
         else
             weaponRenderer.sortingOrder = characterRenderer.sortingOrder - 1;

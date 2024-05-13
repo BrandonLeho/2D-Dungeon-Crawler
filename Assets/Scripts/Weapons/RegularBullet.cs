@@ -15,9 +15,10 @@ public class RegularBullet : Bullet
     private Knockback Knockback;
     private new Collider2D collider;
     private int pierceCount = 0;
-    public override BulletDataSO BulletData { 
-        get => base.BulletData; 
-        set 
+    public override BulletDataSO BulletData
+    {
+        get => base.BulletData;
+        set
         {
             base.BulletData = value;
             rb2d = GetComponent<Rigidbody2D>();
@@ -33,7 +34,7 @@ public class RegularBullet : Bullet
 
     private void FixedUpdate()
     {
-        if(rb2d != null && BulletData != null)
+        if (rb2d != null && BulletData != null)
         {
             rb2d.MovePosition(transform.position + BulletData.BulletSpeed * transform.right * Time.fixedDeltaTime);
         }
@@ -41,19 +42,19 @@ public class RegularBullet : Bullet
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(isDestroyed)
+        if (isDestroyed)
             return;
-        
-        if(collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
             HitEnemy(collision);
         }
-        if(collision.gameObject.layer == LayerMask.NameToLayer("SolidObjects"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("SolidObjects"))
         {
             HitObsticle(collision);
         }
 
-        if(!BulletData.Pierce)
+        if (!BulletData.Pierce)
         {
             Destroy(gameObject);
             isDestroyed = true;
@@ -63,11 +64,11 @@ public class RegularBullet : Bullet
 
     private void HitObsticle(Collider2D collision)
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, 1, BulletData.BulletLayerMask);
-        if(hit.collider != null)
+        //RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, 1, BulletData.BulletLayerMask);
+        if (collision != null)
         {
-            Instantiate(BulletData.ImpactObsticlePrefab, hit.point, Quaternion.identity);
-            if(BulletData.Explosion)
+            Instantiate(BulletData.ImpactObsticlePrefab, gameObject.transform.position, Quaternion.identity);
+            if (BulletData.Explosion)
             {
                 Explosion(collision);
             }
@@ -83,7 +84,7 @@ public class RegularBullet : Bullet
 
     private void HitEnemy(Collider2D collision)
     {
-        if(BulletData.Explosion)
+        if (BulletData.Explosion)
         {
             Explosion(collision);
         }
@@ -92,9 +93,9 @@ public class RegularBullet : Bullet
             var hittable = collision.GetComponent<IHittable>();
             hittable?.GetHit((int)(BulletData.Damage * (1 - (0.05f * pierceCount))), (int)(BulletData.StaminaDamage * (1 - (0.05f * pierceCount))), gameObject);
             var knockback = collision.GetComponent<Knockback>();
-            if(knockback != null)
+            if (knockback != null)
             {
-                knockback.PlayFeedback(BulletData.KnockbackPower, transform.root.gameObject); 
+                knockback.PlayFeedback(BulletData.KnockbackPower, transform.root.gameObject);
             }
         }
         Vector2 randomOffset = Random.insideUnitCircle * 0.5f;
@@ -104,7 +105,7 @@ public class RegularBullet : Bullet
     private void Explosion(Collider2D directCollision)
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, BulletData.ExplosionRadius, BulletData.BulletLayerMask);
-        foreach(var collider in colliders)
+        foreach (var collider in colliders)
         {
             float dist = Vector3.Distance(collider.transform.position, transform.position);
             var hittable = collider.GetComponent<IHittable>();
@@ -114,13 +115,13 @@ public class RegularBullet : Bullet
 
             int adjustedKnockbackPower = (int)((-(BulletData.KnockbackPower / BulletData.ExplosionRadius / BulletData.ExplosionRadius) * Math.Pow(dist, 2)) + BulletData.KnockbackPower);
 
-            if(directCollision.gameObject == collider.gameObject)
+            if (directCollision.gameObject == collider.gameObject)
                 adjustedDamage = (int)(adjustedDamage * 1.5f);
 
             hittable?.GetHit(adjustedDamage, adjustedStaminaDamage, gameObject);
-            
+
             var knockback = collider.GetComponent<Knockback>();
-            if(knockback != null)
+            if (knockback != null)
             {
                 knockback.PlayFeedback(adjustedKnockbackPower, gameObject);
             }
