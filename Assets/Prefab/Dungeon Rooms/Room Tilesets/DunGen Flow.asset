@@ -62,7 +62,7 @@ MonoBehaviour:
     TileSets:
     - {fileID: 11400000, guid: c4c7bb19697e50d48b94797e60c235e0, type: 2}
     NodeType: 0
-    Position: 0.31538463
+    Position: 0.35641026
     Label: New Node
     Keys: []
     Locks: []

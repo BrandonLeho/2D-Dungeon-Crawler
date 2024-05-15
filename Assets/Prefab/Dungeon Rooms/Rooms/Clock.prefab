@@ -251,6 +251,7 @@ GameObject:
   - component: {fileID: 3053678023448924932}
   - component: {fileID: 2631492540578433394}
   - component: {fileID: 4974492969033967354}
+  - component: {fileID: 5332893637527501827}
   m_Layer: 9
   m_Name: Clock
   m_TagString: NPC
@@ -471,3 +472,52 @@ MonoBehaviour:
   goldCostIncrease: 50
   currentGoldCost: 0
   costText: {fileID: 2802621925360314114}
+--- !u!114 &5332893637527501827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6966325245935265821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 00000000fd9b636b33d614a82b5215a89f7f2fc4076a043df9145fb2c7752df2055fe7f0
+  m_ShapePath:
+  - {x: -0.79592896, y: -0.58754873, z: 0}
+  - {x: -0.7986226, y: -0.01913476, z: 0}
+  - {x: -0.71955156, y: -0.0050148964, z: 0}
+  - {x: -0.6263604, y: 0.34233356, z: 0}
+  - {x: -0.6224413, y: 2.231697, z: 0}
+  - {x: -0.77593327, y: 2.5956967, z: 0}
+  - {x: -0.8504875, y: 2.5869255, z: 0}
+  - {x: -0.8530724, y: 2.8821185, z: 0}
+  - {x: -0.6312108, y: 2.9114554, z: 0}
+  - {x: -0.01723528, y: 3.3149247, z: 0}
+  - {x: 0.6250243, y: 2.9084318, z: 0}
+  - {x: 0.8774142, y: 2.8982987, z: 0}
+  - {x: 0.8774142, y: 2.6044676, z: 0}
+  - {x: 0.76777554, y: 2.6000822, z: 0}
+  - {x: 0.6186681, y: 2.2404687, z: 0}
+  - {x: 0.6230545, y: 0.3371458, z: 0}
+  - {x: 0.7019944, y: -0.018082857, z: 0}
+  - {x: 0.78093386, y: -0.013697147, z: 0}
+  - {x: 0.7902808, y: -0.58190084, z: 0}
+  - {x: 0.5286441, y: -0.5782838, z: 0}
+  - {x: 0.3592062, y: -0.42296553, z: 0}
+  - {x: -0.3722024, y: -0.40884566, z: 0}
+  - {x: -0.5218725, y: -0.57545996, z: 0}
+  m_ShapePathHash: 215806179
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -6937896
+  m_LocalBounds:
+    m_Center: {x: 0.012170911, y: 1.363688, z: 0}
+    m_Extent: {x: 0.8652433, y: 1.9512367, z: 0}

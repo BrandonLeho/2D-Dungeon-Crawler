@@ -58,14 +58,14 @@ TagManager:
   - name: Player
     uniqueID: 3291447199
     locked: 0
-  - name: Bullet
-    uniqueID: 4063065543
-    locked: 0
   - name: Passthrough Wall
     uniqueID: 1023699463
     locked: 0
   - name: Layer Wall
     uniqueID: 2992575737
+    locked: 0
+  - name: Bullet
+    uniqueID: 4063065543
     locked: 0
   - name: Pillars
     uniqueID: 4041694981
