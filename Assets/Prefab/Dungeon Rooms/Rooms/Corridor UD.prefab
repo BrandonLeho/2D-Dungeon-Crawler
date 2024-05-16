@@ -1473,10 +1473,10 @@ MonoBehaviour:
   allowImmediateRepeats: 1
   AllowRotation: 0
   RepeatMode: 1
-  OverrideAutomaticTileBounds: 0
+  OverrideAutomaticTileBounds: 1
   TileBoundsOverride:
-    m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 0.5, y: 0.5, z: 0.5}
+    m_Center: {x: 8, y: -1, z: -0.000000029802322}
+    m_Extent: {x: 3, y: 9, z: 0.00000014901161}
   Entrance: {fileID: 0}
   Exit: {fileID: 0}
   OverrideConnectionChance: 0
@@ -3663,7 +3663,7 @@ MonoBehaviour:
   - {x: 5.046856, y: 7.977473, z: 0}
   m_ShapePathHash: 1743815344
   m_Mesh: {fileID: 0}
-  m_InstanceId: 302662
+  m_InstanceId: 98856
   m_LocalBounds:
     m_Center: {x: 5.499527, y: -1.0116978, z: 0}
     m_Extent: {x: 0.49324727, y: 8.992185, z: 0}
@@ -5788,7 +5788,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2129347486972135408, guid: 86c9cbe523cbceb42951311ca425a340, type: 3}
       propertyPath: m_InstanceId
-      value: -7019116
+      value: -805312
       objectReference: {fileID: 0}
     - target: {fileID: 2163773086551219460, guid: 86c9cbe523cbceb42951311ca425a340, type: 3}
       propertyPath: m_SortingLayer
@@ -8000,7 +8000,7 @@ MonoBehaviour:
   - {x: 10.976835, y: -9.97896, z: 0}
   m_ShapePathHash: 882925649
   m_Mesh: {fileID: 0}
-  m_InstanceId: 302664
+  m_InstanceId: 98858
   m_LocalBounds:
     m_Center: {x: 10.488418, y: -1.0104952, z: 0}
     m_Extent: {x: 0.48841763, y: 8.989505, z: 0}
@@ -8650,7 +8650,7 @@ MonoBehaviour:
   - {x: 15.982773, y: -4.1800375, z: 0.00000071423335}
   m_ShapePathHash: 757226830
   m_Mesh: {fileID: 0}
-  m_InstanceId: 302668
+  m_InstanceId: 98862
   m_LocalBounds:
     m_Center: {x: 14.586167, y: -1.9790735, z: 0}
     m_Extent: {x: 1.41255, y: 2.213502, z: 0}
