@@ -15,15 +15,15 @@ MonoBehaviour:
   globalPropGroupID_obsolete: 
   globalPropRanges_obsolete: []
   Length:
-    Min: 10
-    Max: 20
-  BranchMode: 0
+    Min: 45
+    Max: 50
+  BranchMode: 1
   BranchCount:
-    Min: 1
+    Min: 0
     Max: 5
   GlobalProps: []
   KeyManager: {fileID: 0}
-  DoorwayConnectionChance: 0
+  DoorwayConnectionChance: 1
   RestrictConnectionToSameSection: 0
   TileInjectionRules: []
   TileTagConnectionMode: 0
@@ -46,6 +46,60 @@ MonoBehaviour:
     NodeType: 2
     Position: 1
     Label: Goal
+    Keys: []
+    Locks: []
+    LockPlacement: 0
+  - Graph: {fileID: 11400000}
+    TileSets:
+    - {fileID: 11400000, guid: b6d62ec1a3d917d4a9ed30b7dc600176, type: 2}
+    NodeType: 0
+    Position: 0.07435898
+    Label: New Node
+    Keys: []
+    Locks: []
+    LockPlacement: 0
+  - Graph: {fileID: 11400000}
+    TileSets:
+    - {fileID: 11400000, guid: b6d62ec1a3d917d4a9ed30b7dc600176, type: 2}
+    NodeType: 0
+    Position: 0.25384617
+    Label: New Node
+    Keys: []
+    Locks: []
+    LockPlacement: 0
+  - Graph: {fileID: 11400000}
+    TileSets:
+    - {fileID: 11400000, guid: b6d62ec1a3d917d4a9ed30b7dc600176, type: 2}
+    NodeType: 0
+    Position: 0.43076923
+    Label: New Node
+    Keys: []
+    Locks: []
+    LockPlacement: 0
+  - Graph: {fileID: 11400000}
+    TileSets:
+    - {fileID: 11400000, guid: b6d62ec1a3d917d4a9ed30b7dc600176, type: 2}
+    NodeType: 0
+    Position: 0.61025643
+    Label: New Node
+    Keys: []
+    Locks: []
+    LockPlacement: 0
+  - Graph: {fileID: 11400000}
+    TileSets:
+    - {fileID: 11400000, guid: b6d62ec1a3d917d4a9ed30b7dc600176, type: 2}
+    NodeType: 0
+    Position: 0.95897436
+    Label: New Node
+    Keys: []
+    Locks: []
+    LockPlacement: 0
+  - Graph: {fileID: 11400000}
+    TileSets:
+    - {fileID: 11400000, guid: b6d62ec1a3d917d4a9ed30b7dc600176, type: 2}
+    NodeType: 0
+    Position: 0.78717947
+    Label: New Node
     Keys: []
     Locks: []
     LockPlacement: 0
