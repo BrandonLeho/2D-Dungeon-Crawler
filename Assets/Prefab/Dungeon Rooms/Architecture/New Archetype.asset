@@ -21,6 +21,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 97e23452b92d1b24ba46b08eeae1cf5c, type: 2}
   - {fileID: 11400000, guid: 119b33712bef66348bcc3951ae1956fc, type: 2}
   - {fileID: 11400000, guid: 635c097dcb21d1c448e0260dd0ca14a0, type: 2}
+  - {fileID: 11400000, guid: 84823aaa1d5b32041831f28403169a83, type: 2}
   BranchCapTileSets: []
   BranchCapType: 1
   BranchingDepth:
