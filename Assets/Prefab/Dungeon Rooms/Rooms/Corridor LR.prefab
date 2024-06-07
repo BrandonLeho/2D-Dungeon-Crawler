@@ -3434,7 +3434,7 @@ MonoBehaviour:
   - {x: 15.985677, y: -4.989331, z: 0}
   m_ShapePathHash: -2122823110
   m_Mesh: {fileID: 0}
-  m_InstanceId: 55602
+  m_InstanceId: 49158
   m_LocalBounds:
     m_Center: {x: 8.004404, y: -3.5792003, z: 0}
     m_Extent: {x: 7.9812727, y: 1.4101306, z: 0}
@@ -3454,6 +3454,10 @@ PrefabInstance:
     - target: {fileID: 4441800138295504499, guid: ef8f9f345a0cc3740aae0819863c10f1, type: 3}
       propertyPath: m_Name
       value: Wall (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7548830274290354815, guid: ef8f9f345a0cc3740aae0819863c10f1, type: 3}
+      propertyPath: m_InstanceId
+      value: -34134
       objectReference: {fileID: 0}
     - target: {fileID: 7599022679305720999, guid: ef8f9f345a0cc3740aae0819863c10f1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4542,7 +4546,7 @@ MonoBehaviour:
   - {x: 15.976278, y: -2.944771, z: 0}
   m_ShapePathHash: -731663377
   m_Mesh: {fileID: 0}
-  m_InstanceId: 55612
+  m_InstanceId: 49166
   m_LocalBounds:
     m_Center: {x: 15.507057, y: -0.04534006, z: 0}
     m_Extent: {x: 0.49069166, y: 2.92264, z: 0}
@@ -4923,7 +4927,7 @@ MonoBehaviour:
   - {x: 15.929407, y: -6.847524, z: -0}
   m_ShapePathHash: 1355486525
   m_Mesh: {fileID: 0}
-  m_InstanceId: 55588
+  m_InstanceId: 49144
   m_LocalBounds:
     m_Center: {x: 15.482953, y: -3.4298654, z: 0}
     m_Extent: {x: 0.4659052, y: 3.4232855, z: 0}
@@ -5010,6 +5014,10 @@ PrefabInstance:
     - target: {fileID: 6678427535944493088, guid: ccaa81296f68dfa4f909ce3ec6d01f78, type: 3}
       propertyPath: m_Name
       value: Enemy Spawner (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6678427535944493088, guid: ccaa81296f68dfa4f909ce3ec6d01f78, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -3581,6 +3581,10 @@ PrefabInstance:
       propertyPath: m_Tiles.Array.data[71].second.m_TileObjectToInstantiateIndex
       value: 65535
       objectReference: {fileID: 0}
+    - target: {fileID: 7548830274290354815, guid: ef8f9f345a0cc3740aae0819863c10f1, type: 3}
+      propertyPath: m_InstanceId
+      value: -35112
+      objectReference: {fileID: 0}
     - target: {fileID: 7599022679305720999, guid: ef8f9f345a0cc3740aae0819863c10f1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -5775,7 +5779,7 @@ MonoBehaviour:
   - {x: 5.046856, y: 7.977473, z: 0}
   m_ShapePathHash: 1743815344
   m_Mesh: {fileID: 0}
-  m_InstanceId: 71440
+  m_InstanceId: 49298
   m_LocalBounds:
     m_Center: {x: 5.499527, y: -1.0116978, z: 0}
     m_Extent: {x: 0.49324727, y: 8.992185, z: 0}
@@ -7840,6 +7844,10 @@ PrefabInstance:
       propertyPath: m_Tiles.Array.data[71].second.m_TileObjectToInstantiateIndex
       value: 65535
       objectReference: {fileID: 0}
+    - target: {fileID: 7548830274290354815, guid: ef8f9f345a0cc3740aae0819863c10f1, type: 3}
+      propertyPath: m_InstanceId
+      value: -35122
+      objectReference: {fileID: 0}
     - target: {fileID: 7599022679305720999, guid: ef8f9f345a0cc3740aae0819863c10f1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -7974,6 +7982,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Spawner (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6678427535944493088, guid: ccaa81296f68dfa4f909ce3ec6d01f78, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7994,7 +8006,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2129347486972135408, guid: 86c9cbe523cbceb42951311ca425a340, type: 3}
       propertyPath: m_InstanceId
-      value: -199028
+      value: -35066
       objectReference: {fileID: 0}
     - target: {fileID: 2163773086551219460, guid: 86c9cbe523cbceb42951311ca425a340, type: 3}
       propertyPath: m_SortingLayer
@@ -10206,7 +10218,7 @@ MonoBehaviour:
   - {x: 10.976835, y: -9.97896, z: 0}
   m_ShapePathHash: 882925649
   m_Mesh: {fileID: 0}
-  m_InstanceId: 71442
+  m_InstanceId: 49300
   m_LocalBounds:
     m_Center: {x: 10.488418, y: -1.0104952, z: 0}
     m_Extent: {x: 0.48841763, y: 8.989505, z: 0}
@@ -10856,7 +10868,7 @@ MonoBehaviour:
   - {x: 15.982773, y: -4.1800375, z: 0.00000071423335}
   m_ShapePathHash: 757226830
   m_Mesh: {fileID: 0}
-  m_InstanceId: 71446
+  m_InstanceId: 49304
   m_LocalBounds:
     m_Center: {x: 14.586167, y: -1.9790735, z: 0}
     m_Extent: {x: 1.41255, y: 2.213502, z: 0}
@@ -12920,6 +12932,10 @@ PrefabInstance:
     - target: {fileID: 7049217440622611948, guid: ef8f9f345a0cc3740aae0819863c10f1, type: 3}
       propertyPath: m_Tiles.Array.data[71].second.m_TileObjectToInstantiateIndex
       value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 7548830274290354815, guid: ef8f9f345a0cc3740aae0819863c10f1, type: 3}
+      propertyPath: m_InstanceId
+      value: -35050
       objectReference: {fileID: 0}
     - target: {fileID: 7599022679305720999, guid: ef8f9f345a0cc3740aae0819863c10f1, type: 3}
       propertyPath: m_LocalPosition.x
