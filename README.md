@@ -1,4 +1,4 @@
-Game Title: Dreadnauts
+![2024-06-0720-13-25-ezgif com-optimize](https://github.com/BrandonLeho/2D-Dungeon-Crawler/assets/89223038/5ef262fd-923a-4d04-8eb5-8693e33a6485)Game Title: Dreadnauts
 _________________________________________________________________________
 Gameplay Mechanics
 
@@ -221,3 +221,35 @@ Resetting The Timer Using The Clock
 Very Basic Main Menu w/Title
 
 ![image](https://github.com/BrandonLeho/2D-Dungeon-Crawler/assets/89223038/74fadb41-730b-4888-8ed2-9f09155e4c32)
+
+_________________________________________________________________________
+(June 7, 2024)
+
+DUNGEON UPDATE!!!
+
+This update may not list out a bunch of new features, but the outcome of the 2 features listed are a HUGE improvement from the previous update. Redesigning the dugeon took a lot of time to learn and even more time to produce each room. There are still more rooms to make that will help out with variety and layout of the dungeon, but now I felt was a good time to display what I have done so far with the new look of the dungeon.
+
+Changes Since Last Update:
+
+-Dungeon Overhaul (Redesigned the entire look of the dungeon. Different layouts and procedural architecture. Rooms no longer look basic and now have added depth. If you want to check out the tileset asset used check out "The Dungeon" by Sscary - https://sscary.itch.io/the-dungeon)
+
+-Lighting/Shadows Update (Light sources can now cast shadows on more than just characters. Light now cast shadows off of walls and objects laid out within the room. More light sources can be found throughout the dungeon.)
+
+Currently Working On:
+
+-Adding More Dungeon Rooms (Right now there are only 9 unique rooms, I want to at least double that amount in order to make dungeons have a good amount of variety.)
+
+-Hub Area (Trying to apply the new look of the dungeon to the hub area.)
+
+Spawn Room
+![2024-06-0720-11-02-ezgif com-optimize](https://github.com/BrandonLeho/2D-Dungeon-Crawler/assets/89223038/ca968f53-0e4a-4273-bfbe-4548b1356145)
+
+Corridor -> Clock Room
+![2024-06-0720-11-43-ezgif com-optimize](https://github.com/BrandonLeho/2D-Dungeon-Crawler/assets/89223038/17fc7666-5f6c-4ff3-a96e-17df87511160)
+
+Storage Room
+![2024-06-0720-12-24-ezgif com-optimize](https://github.com/BrandonLeho/2D-Dungeon-Crawler/assets/89223038/f835a854-4886-42c1-824d-ffef36260956)
+
+Library
+![2024-06-0720-13-25-ezgif com-optimize](https://github.com/BrandonLeho/2D-Dungeon-Crawler/assets/89223038/5ef262fd-923a-4d04-8eb5-8693e33a6485)
+
