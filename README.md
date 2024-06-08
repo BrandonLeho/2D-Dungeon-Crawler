@@ -1,6 +1,6 @@
-![2024-06-0720-13-25-ezgif com-optimize](https://github.com/BrandonLeho/2D-Dungeon-Crawler/assets/89223038/5ef262fd-923a-4d04-8eb5-8693e33a6485)Game Title: Dreadnauts
+# Game Title: Dreadnauts
 _________________________________________________________________________
-Gameplay Mechanics
+## Gameplay Mechanics
 
 Time-Based Gameplay: A timer constantly counts down from one minute. Players must strategically navigate the dungeon to reset the timer by reaching certain locations, using gold/currency. Resetting the timer becomes progressively more expensive.
 
@@ -9,7 +9,7 @@ Enemy Difficulty Scaling: If the timer hits zero, enemies become significantly s
 Boss Encounter: Players' main goal is to defeat the boss at the end of the dungeon to halt the timer and obtain substantial loot. After defeating the boss, players can explore the dungeon without time pressure.
 
 _________________________________________________________________________
-Camp Mechanics
+## Camp Mechanics
 
 Camp Hub: After completing a dungeon, players return to camp where they can:
 
@@ -24,21 +24,21 @@ Gain extra temporary health by spending time with a prostitute (cost gold).
 Gamble gold/currency at blackjack and/or texas hold'em tables (texas hold'em available only in multiplayer).
 
 _________________________________________________________________________
-Progression Systems
+## Progression Systems
 
 Leveling System: Players can spend points on attributes such as health, stamina, magic, strength, dexterity, intelligence, and luck, similar to Elden Ring's leveling system.
 
 Weapon Variety: Players can choose from multiple weapons, including basic swords, polearms, axes, greatswords, katanas, firearms (e.g., Glock, AK47, Sniper), and explosive weapons (e.g., RPG, nuke). Weapons can be upgraded at the blacksmith.
 
 _________________________________________________________________________
-Dungeon Mechanics
+## Dungeon Mechanics
 
 Procedural Generation: Dungeons are procedurally generated with premade rooms, ensuring each playthrough is unique.
 
 Scaling Difficulty and Loot: Enemies and loot scale based on the number of completed dungeons. Subsequent dungeons feature higher-level enemies and rarer loot, incentivizing progression and exploration.
 
 _________________________________________________________________________
-Multiplayer Mechanics
+## Multiplayer Mechanics
 
 Cooperative Play: Multiplayer co-op mode allows up to 4 players to team up and explore dungeons together. Proximity chat will be feature.
 
@@ -50,7 +50,7 @@ thx to chat for organizing this template <3
 _________________________________________________________________________
 (March 2, 2024)
 
-Combat Update 1!!!
+# Combat Update 1!!!
 
 -Added Katana
 
@@ -67,7 +67,7 @@ The character teleportation that looks like they are snapping around every now a
 _________________________________________________________________________
 (March 10, 2024)
 
-Another Combat Update!1!!!1!
+# Another Combat Update!1!!!1!
 
 Changes Since Last Update:
 
@@ -88,7 +88,7 @@ Changes Since Last Update:
 _________________________________________________________________________
 (March 17, 2024)
 
-HORY SHI ENVIRONMENT UPDATE JUST DROPPED!!!!
+# HORY SHI ENVIRONMENT UPDATE JUST DROPPED!!!!
 
 Changes Since Last Update:
 
@@ -109,7 +109,7 @@ The compression kinda ruined the lighting for the torches, but it looks better i
 _________________________________________________________________________
 (March 29, 2024)
 
-RAAAAAHHHHH MERICA BAAAABY!!!!! THE LORD SAID WE HAVE THE RIGHT TO BEAR ARMS!!!!!!! GOD BLESS AMERICA CUZ THE GUN UPDATE IS HERE!!!!!
+# RAAAAAHHHHH MERICA BAAAABY!!!!! THE LORD SAID WE HAVE THE RIGHT TO BEAR ARMS!!!!!!! GOD BLESS AMERICA CUZ THE GUN UPDATE IS HERE!!!!!
 
 Changes Since Last Update:
 
@@ -144,7 +144,7 @@ Back End
 _________________________________________________________________________
 (April 6, 2024)
 
-BOOOOOOOM!!!!! MOAR GUNS JUST DROPPED!! BRRRRRRRRRRRRR!!!! BLASTING YOU WITH A NEW UPDATE RIGHT HERE!!
+# BOOOOOOOM!!!!! MOAR GUNS JUST DROPPED!! BRRRRRRRRRRRRR!!!! BLASTING YOU WITH A NEW UPDATE RIGHT HERE!!
 
 Changes Since Last Update:
 
@@ -181,7 +181,8 @@ _________________________________________________________________________
 
 It's been a while since the last log; that's mainly because I've been working on my AI Boyfriend project. Here's the repo if you wanna check it out (https://github.com/AI-Boyfriend/Full-Stack). I got so addicted to working on that project that I put this game on the side for the time being. But now that I'm done with that project, I can put some more time into this game. But will I finish it? That is a very good question. Here's the new Update!
 
-Added so much stuff that I'm just gonna call this the VARIETY UPDATE!
+Added so much stuff that I'm just gonna call this the 
+# VARIETY UPDATE!
 
 Changes Since Last Update That Was 5 Billion Years Ago:
 
@@ -225,7 +226,7 @@ Very Basic Main Menu w/Title
 _________________________________________________________________________
 (June 7, 2024)
 
-DUNGEON UPDATE!!!
+# DUNGEON UPDATE!!!
 
 This update may not list out a bunch of new features, but the outcome of the 2 features listed are a HUGE improvement from the previous update. Redesigning the dugeon took a lot of time to learn and even more time to produce each room. There are still more rooms to make that will help out with variety and layout of the dungeon, but now I felt was a good time to display what I have done so far with the new look of the dungeon.
 
@@ -242,14 +243,18 @@ Currently Working On:
 -Hub Area (Trying to apply the new look of the dungeon to the hub area.)
 
 Spawn Room
+
 ![2024-06-0720-11-02-ezgif com-optimize](https://github.com/BrandonLeho/2D-Dungeon-Crawler/assets/89223038/ca968f53-0e4a-4273-bfbe-4548b1356145)
 
 Corridor -> Clock Room
+
 ![2024-06-0720-11-43-ezgif com-optimize](https://github.com/BrandonLeho/2D-Dungeon-Crawler/assets/89223038/17fc7666-5f6c-4ff3-a96e-17df87511160)
 
 Storage Room
+
 ![2024-06-0720-12-24-ezgif com-optimize](https://github.com/BrandonLeho/2D-Dungeon-Crawler/assets/89223038/f835a854-4886-42c1-824d-ffef36260956)
 
 Library
+
 ![2024-06-0720-13-25-ezgif com-optimize](https://github.com/BrandonLeho/2D-Dungeon-Crawler/assets/89223038/5ef262fd-923a-4d04-8eb5-8693e33a6485)
 
