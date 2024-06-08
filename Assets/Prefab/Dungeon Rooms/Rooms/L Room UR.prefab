@@ -3419,7 +3419,7 @@ MonoBehaviour:
   m_UseRendererSilhouette: 1
   m_CastsShadows: 1
   m_SelfShadows: 0
-  m_ApplyToSortingLayers: 00000000fd9b636b33d614a82b5215a89f7f2fc4c7752df2076a043df9145fb2055fe7f0
+  m_ApplyToSortingLayers: 00000000fd9b636b2b5215a89f7f2fc4c7752df2055fe7f0
   m_ShapePath:
   - {x: 5.0253673, y: -4.965913, z: 0}
   - {x: 5.0090766, y: 7.9934916, z: 0}
@@ -3429,7 +3429,7 @@ MonoBehaviour:
   - {x: 15.965574, y: -4.9376297, z: 0}
   m_ShapePathHash: -1098550965
   m_Mesh: {fileID: 0}
-  m_InstanceId: 50518
+  m_InstanceId: 82468
   m_LocalBounds:
     m_Center: {x: 10.494865, y: 1.5137892, z: 0}
     m_Extent: {x: 5.4857893, y: 6.479702, z: 0}
@@ -4000,7 +4000,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2129347486972135408, guid: 86c9cbe523cbceb42951311ca425a340, type: 3}
       propertyPath: m_InstanceId
-      value: -44714
+      value: -351302
       objectReference: {fileID: 0}
     - target: {fileID: 8385208204042003289, guid: 86c9cbe523cbceb42951311ca425a340, type: 3}
       propertyPath: m_Name
@@ -4400,7 +4400,7 @@ MonoBehaviour:
   - {x: 15.929407, y: -6.847524, z: -0}
   m_ShapePathHash: 1355486525
   m_Mesh: {fileID: 0}
-  m_InstanceId: 50494
+  m_InstanceId: 82444
   m_LocalBounds:
     m_Center: {x: 15.482953, y: -3.4298654, z: 0}
     m_Extent: {x: 0.4659052, y: 3.4232855, z: 0}
@@ -4423,6 +4423,10 @@ PrefabInstance:
     - target: {fileID: 4441800138295504499, guid: ef8f9f345a0cc3740aae0819863c10f1, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5315848458131941861, guid: ef8f9f345a0cc3740aae0819863c10f1, type: 3}
+      propertyPath: m_InstanceId
+      value: -341036
       objectReference: {fileID: 0}
     - target: {fileID: 6596807416624520100, guid: ef8f9f345a0cc3740aae0819863c10f1, type: 3}
       propertyPath: m_SortingLayer
@@ -6512,7 +6516,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5315848458131941861, guid: ef8f9f345a0cc3740aae0819863c10f1, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -8654,7 +8659,7 @@ MonoBehaviour:
   m_UseRendererSilhouette: 1
   m_CastsShadows: 1
   m_SelfShadows: 0
-  m_ApplyToSortingLayers: 00000000fd9b636b33d614a82b5215a89f7f2fc4c7752df2076a043df9145fb2055fe7f0
+  m_ApplyToSortingLayers: 00000000fd9b636b2b5215a89f7f2fc4c7752df2055fe7f0
   m_ShapePath:
   - {x: 9.997776, y: -0.004853606, z: 0}
   - {x: 10.011702, y: 7.9910054, z: 0}
@@ -8664,7 +8669,7 @@ MonoBehaviour:
   - {x: 16, y: 0, z: 0}
   m_ShapePathHash: 559755536
   m_Mesh: {fileID: 0}
-  m_InstanceId: 50530
+  m_InstanceId: 82480
   m_LocalBounds:
     m_Center: {x: 12.998888, y: 3.9930758, z: 0}
     m_Extent: {x: 3.001112, y: 3.9979296, z: 0}

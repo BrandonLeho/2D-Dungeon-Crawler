@@ -3427,7 +3427,7 @@ MonoBehaviour:
   m_UseRendererSilhouette: 1
   m_CastsShadows: 1
   m_SelfShadows: 0
-  m_ApplyToSortingLayers: 00000000fd9b636b33d614a82b5215a89f7f2fc4c7752df2076a043df9145fb2055fe7f039363858
+  m_ApplyToSortingLayers: 00000000fd9b636b2b5215a89f7f2fc4c7752df2055fe7f039363858
   m_ShapePath:
   - {x: 0.02662021, y: -4.975245, z: 0}
   - {x: 0.02313143, y: -2.1690695, z: 0}
@@ -3437,7 +3437,7 @@ MonoBehaviour:
   - {x: 5.0223494, y: -4.975964, z: 0}
   m_ShapePathHash: -2098151535
   m_Mesh: {fileID: 0}
-  m_InstanceId: 50136
+  m_InstanceId: 81032
   m_LocalBounds:
     m_Center: {x: 3.0079527, y: -6.0786514, z: 0}
     m_Extent: {x: 2.9848213, y: 3.9252312, z: 0}
@@ -5573,7 +5573,7 @@ MonoBehaviour:
   m_UseRendererSilhouette: 1
   m_CastsShadows: 1
   m_SelfShadows: 0
-  m_ApplyToSortingLayers: 00000000fd9b636b33d614a82b5215a89f7f2fc4c7752df2076a043df9145fb2055fe7f0
+  m_ApplyToSortingLayers: 00000000fd9b636b2b5215a89f7f2fc4c7752df2055fe7f039363858
   m_ShapePath:
   - {x: 0.012355328, y: 0.020209849, z: 0}
   - {x: 0.017166972, y: 2.8477933, z: 0}
@@ -5583,7 +5583,7 @@ MonoBehaviour:
   - {x: 10.029826, y: 0.028288335, z: 0}
   m_ShapePathHash: -1175871511
   m_Mesh: {fileID: 0}
-  m_InstanceId: 50152
+  m_InstanceId: 81048
   m_LocalBounds:
     m_Center: {x: 5.491793, y: -3.55968, z: 0}
     m_Extent: {x: 5.479438, y: 6.4074736, z: 0}
@@ -6433,7 +6433,7 @@ MonoBehaviour:
   - {x: 15.976278, y: -2.944771, z: 0}
   m_ShapePathHash: -731663377
   m_Mesh: {fileID: 0}
-  m_InstanceId: 50146
+  m_InstanceId: 81042
   m_LocalBounds:
     m_Center: {x: 15.507057, y: -0.04534006, z: 0}
     m_Extent: {x: 0.49069166, y: 2.92264, z: 0}
@@ -6594,7 +6594,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8758284208538772108, guid: dd12bfd2406d0464a82479285e0f40c2, type: 3}
       propertyPath: m_InstanceId
-      value: -42892
+      value: -342400
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6625,6 +6625,10 @@ PrefabInstance:
     - target: {fileID: 4441800138295504499, guid: ef8f9f345a0cc3740aae0819863c10f1, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5315848458131941861, guid: ef8f9f345a0cc3740aae0819863c10f1, type: 3}
+      propertyPath: m_InstanceId
+      value: -335154
       objectReference: {fileID: 0}
     - target: {fileID: 6596807416624520100, guid: ef8f9f345a0cc3740aae0819863c10f1, type: 3}
       propertyPath: m_SortingLayer
@@ -8714,7 +8718,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5315848458131941861, guid: ef8f9f345a0cc3740aae0819863c10f1, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
